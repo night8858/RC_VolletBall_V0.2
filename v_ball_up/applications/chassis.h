@@ -14,19 +14,11 @@
 #define M3505_MOTOR_SPEED_PID_MAX_OUT 4000.0f
 #define M3505_MOTOR_SPEED_PID_MAX_IOUT 14000.0f
 
-
-#define M6020_MOTOR_SPEED_PID_KP 1.0f
-#define M6020_MOTOR_SPEED_PID_KI 0.0f
-#define M6020_MOTOR_SPEED_PID_KD 0.0f
-#define M6020_MOTOR_SPEED_PID_MAX_OUT 30000.0f
-#define M6020_MOTOR_SPEED_PID_MAX_IOUT 20000.0f
-
-
-#define M6020_MOTOR_POSION_PID_KP 30000.0f
-#define M6020_MOTOR_POSION_PID_KI 0.0f
-#define M6020_MOTOR_POSION_PID_KD 7.0f
-#define M6020_MOTOR_POSION_PID_MAX_OUT 30000.0f
-#define M6020_MOTOR_POSION_PID_MAX_IOUT 20000.0f
+#define M3508_MOTOR_POSION_PID_KP 30000.0f
+#define M3508_MOTOR_POSION_PID_KI 0.0f
+#define M3508_MOTOR_POSION_PID_KD 7.0f
+#define M3508_MOTOR_POSION_PID_MAX_OUT 30000.0f
+#define M3508_MOTOR_POSION_PID_MAX_IOUT 20000.0f
 
 
 #define MOTOR_ECD_TO_RAD 0.000766990394f //      2*  PI  /8192
@@ -103,6 +95,11 @@ typedef struct
     pid_type_def chassis_motor_gyro_pid;
     uint16_t offset_ecd;
 
+    M3508_PID_t m3508_motor_relative_angle_pid;
+    pid_type_def m3508_motor_gyro_pid;
+
+    float motor_gyro;         //rad/s
+    float motor_gyro_set;
     float motor_speed;
     float motor_speed_set;
     float raw_cmd_current;
@@ -134,6 +131,7 @@ typedef struct
 
 void motor_init(motor_control_t *init);
 
+static void M3508_PID_init(M3508_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd);
 void motor_control_loop(motor_control_t *control_loop);
 
 void motor_feedback_update(motor_control_t *feedback_update);

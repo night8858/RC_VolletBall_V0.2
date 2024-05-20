@@ -85,7 +85,7 @@ void motor_init(motor_control_t *init)
 
     // 遥控器数据指针获取
     // init->rc_ctrl = get_remote_control_point();
-
+    M3508_PID_init(&init->M3508_M5.m3508_motor_relative_angle_pid, M3508_MOTOR_POSION_PID_MAX_OUT, M3508_MOTOR_POSION_PID_MAX_IOUT, M3508_MOTOR_POSION_PID_KP, M3508_MOTOR_POSION_PID_KI, M3508_MOTOR_POSION_PID_KD);
     PID_init(&init->M3508_M5.chassis_motor_gyro_pid, PID_POSITION, M3508_speed_pid, M3505_MOTOR_SPEED_PID_MAX_IOUT, M3505_MOTOR_SPEED_PID_MAX_OUT);
 
     // 清除所有PID
@@ -111,6 +111,63 @@ static fp32 motor_ecd_to_angle_change(uint16_t ecd, uint16_t offset_ecd)
     }
     return relative_ecd * MOTOR_ECD_TO_RAD;
 }
+
+
+
+//6020的PID初始化
+static void M3508_PID_init(M3508_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd)
+{
+    if (pid == NULL)
+    {
+        return;
+    }
+    pid->kp = kp;
+    pid->ki = ki;
+    pid->kd = kd;
+
+    pid->err = 0.0f;
+    pid->get = 0.0f;
+
+    pid->max_iout = max_iout;
+    pid->max_out = maxout;
+}
+
+//6020的PID计算
+static fp32 M6020_PID_calc(M6020_PID_t *pid, fp32 get, fp32 set, fp32 error_delta)
+{
+    fp32 err;
+    if (pid == NULL)
+    {
+        return 0.0f;
+    }
+    pid->get = get;
+    pid->set = set;
+
+    err = set - get;
+    pid->err = rad_format(err);
+    pid->Pout = pid->kp * pid->err;
+    pid->Iout += pid->ki * pid->err;
+    pid->Dout = pid->kd * error_delta;
+    abs_limit(&pid->Iout, pid->max_iout);
+    pid->out = pid->Pout + pid->Iout + pid->Dout;
+    abs_limit(&pid->out, pid->max_out);
+    return pid->out;
+}
+
+//清除6020的PID
+static void M6020_PID_clear(M6020_PID_t *M6020_pid_clear)
+{
+    if (M6020_pid_clear == NULL)
+    {
+        return;
+    }
+
+    M6020_pid_clear->err = M6020_pid_clear->set = M6020_pid_clear->get = 0.0f;
+    M6020_pid_clear->out = M6020_pid_clear->Pout = M6020_pid_clear->Iout = M6020_pid_clear->Dout = 0.0f;
+
+}
+
+
 
 // 电机主控制循环
 void motor_control_loop(motor_control_t *control_loop)

@@ -41,6 +41,8 @@ v_ball\top_ctrl.o: ..\applications\remote_control.h
 v_ball\top_ctrl.o: ../boards/bsp_rc.h
 v_ball\top_ctrl.o: D:\D P J\ARM\ARMCC\Bin\..\include\math.h
 v_ball\top_ctrl.o: ../Core/Inc/can.h
+v_ball\top_ctrl.o: ../Core/Inc/usart.h
+v_ball\top_ctrl.o: ../boards/bsp_usart.h
 v_ball\top_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 v_ball\top_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 v_ball\top_ctrl.o: ../Core/Inc/FreeRTOSConfig.h

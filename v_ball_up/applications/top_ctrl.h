@@ -8,8 +8,12 @@
 
 #define R1 89.0236f
 #define L1 150.f         //连杆1，mm
-#define La 150.f       //连杆2
+#define La 150.f         //连杆2
 #define R2 90.0f         //连接点到球拍中心的距离
+
+#define DM_MOTOR_KP 67.0f    //位置增益
+#define DM_MOTOR_KD 3.1f   //速度增益
+#define DM_MOTOR_t_ff -0.6f//前馈力矩
 
 
 typedef struct

@@ -5,6 +5,8 @@
 #include "can.h"
 #include "can_recv.h"
 #include "chassis.h"
+#include "usart.h"
+#include "bsp_usart.h"
 
 #include "cmsis_os.h"
 #include "FreeRTOS.h"
@@ -35,9 +37,9 @@ void top_contorl_Task(void const *argument)
     motor_init(&motor_control);
     while (1)
     {
-       juggle_Mode();
-       Institution_Pos_Contorl();
-       osDelay(2);
+        juggle_Mode();
+        // Institution_Pos_Contorl();
+        osDelay(2);
     }
 }
 
@@ -47,11 +49,11 @@ void DM_Motor_Init(void)
     for (int i = 0; i < 2; i++)
     {
         start_motor(&hcan2, 0x01);
-        osDelay(1000);
+        osDelay(500);
         start_motor(&hcan2, 0x02);
-        osDelay(1000);
+        osDelay(500);
         start_motor(&hcan2, 0x03);
-        osDelay(1000);
+        osDelay(500);
     }
 }
 
@@ -66,23 +68,37 @@ float float_constrain(float Value, float minValue, float maxValue)
         return Value;
 }
 
-void DMdate_feedback_update(void)
-{
-}
-//颠球模式
+// 颠球模式
 void juggle_Mode(void)
 {
-    DM4340_Date[0].target_angle = float_constrain(353 - (DBUS_ReceiveData.ch1) / 6, 323, 353);
-    DM4340_Date[1].target_angle = float_constrain(293 - (DBUS_ReceiveData.ch1) / 6, 262, 293);
-    DM4340_Date[2].target_angle = float_constrain(303 - (DBUS_ReceiveData.ch1) / 6, 271, 303);
-    DM_Motor_pid_Calc();
+    DM4340_Date[0].target_angle = (-(float_constrain(77 + (DBUS_ReceiveData.ch1) / 22, 77, 107)) / 180 * PI);
+    DM4340_Date[1].target_angle = (-(float_constrain(136 + (DBUS_ReceiveData.ch1) / 22, 136, 166)) / 180 * PI);
+    DM4340_Date[2].target_angle = (-(float_constrain(127 + (DBUS_ReceiveData.ch1) / 22, 127, 157)) / 180 * PI);
+    for (int i = 1; i < 4; i++)
+    {
+        MD_motor_SendCurrent(&hcan2, i, DM4340_Date[i - 1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+        osDelay(2);
+    }
 
-    		MD_motor_SendCurrent-(&hcan2,0x01,0,0,0,0,DM4340_Date[0].out_current);
-			//osDelay(2);
-			MD_motor_SendCurrent(&hcan2,0x02,0,0,0,0,DM4340_Date[1].out_current);
-			//osDelay(2);
-			MD_motor_SendCurrent(&hcan2,0x03,0,0,0,0,DM4340_Date[2].out_current);
-			osDelay(2);
+    //vofa测试代码，可注释
+    uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
+
+}
+
+float RUD_DirAngle_c(float Angle)
+{
+    while (Angle > 18000 || Angle < 0)
+    {
+        if (Angle < 0)
+        {
+            Angle += 360;
+        }
+        if (Angle > 360)
+        {
+            Angle -= 360;
+        }
+    }
+    return (float)Angle;
 }
 
 // 球拍姿态解算
@@ -120,46 +136,5 @@ void delta_arm_solution(void)
     THETA[0] = (180 * (2 * atan(T[1]))) / PI;
     THETA[1] = (180 * (2 * atan(T[2]))) / PI;
     THETA[2] = (180 * (2 * atan(T[0]))) / PI;
-}
-// DM电机的pid参数初始化
-void DM_Motor_pid_Init(void)
-{
-
-    pid_abs_param_init(&DM_motor_pid_p[0], 1.1, 0, 7, 1000, 1000);
-    pid_abs_param_init(&DM_motor_pid_p[1], 1.1, 0, 7, 1000, 1000);
-    pid_abs_param_init(&DM_motor_pid_p[2], 1.1, 0, 7, 1000, 1000);
-
-    pid_abs_param_init(&DM_motor_pid_s[0], 1.8, 0, 0, 1000, 10);
-    pid_abs_param_init(&DM_motor_pid_s[1], 1.8, 0, 0, 1000, 10);
-    pid_abs_param_init(&DM_motor_pid_s[2], 1.8, 0, 0, 1000, 10);
-}
-// DM电机的pid计算
-void DM_Motor_pid_Calc(void)
-{
-
-    DM_motor_pid_p[0].NowError = DM4340_Date[0].target_angle - DM4340_Date[0].serial_angle;
-    DM_motor_pid_p[1].NowError = DM4340_Date[1].target_angle - DM4340_Date[1].real_angle;
-    DM_motor_pid_p[2].NowError = DM4340_Date[2].target_angle - DM4340_Date[2].real_angle;
-
-    PID_AbsoluteMode(&DM_motor_pid_p[0]);
-    
-    PID_AbsoluteMode(&DM_motor_pid_p[1]);
-    PID_AbsoluteMode(&DM_motor_pid_p[2]);
-
-    DM4340_Date[0].target_speed = DM_motor_pid_p[0].PIDout;
-    DM4340_Date[1].target_speed = DM_motor_pid_p[1].PIDout;
-    DM4340_Date[2].target_speed = DM_motor_pid_p[2].PIDout;
-
-    DM_motor_pid_s[0].NowError = DM4340_Date[0].target_speed - DM4340_Date[0].esc_back_speed;
-    DM_motor_pid_s[1].NowError = DM4340_Date[1].target_speed - DM4340_Date[1].esc_back_speed;
-    DM_motor_pid_s[2].NowError = DM4340_Date[2].target_speed - DM4340_Date[2].esc_back_speed;
-
-    PID_AbsoluteMode(&DM_motor_pid_s[0]);
-    PID_AbsoluteMode(&DM_motor_pid_s[1]);
-    PID_AbsoluteMode(&DM_motor_pid_s[2]);
-
-    DM4340_Date[0].out_current = DM_motor_pid_s[0].PIDout;
-    DM4340_Date[1].out_current = DM_motor_pid_s[1].PIDout;
-    DM4340_Date[2].out_current = DM_motor_pid_s[2].PIDout;
 }
 

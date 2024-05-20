@@ -6,8 +6,8 @@
 #define CHASSIS_CAN hcan1
 #define GIMBAL_CAN hcan1
 
-#define P_MIN -18000.f // 位置最小值
-#define P_MAX 18000.f  // 位置最大值
+#define P_MIN -12.5f // 位置最小值
+#define P_MAX 12.5f  // 位置最大值
 #define V_MIN -10.0f   // 速度最小值
 #define V_MAX 10.0f    // 速度最大值
 #define KP_MIN 0.0f    // Kp最小值

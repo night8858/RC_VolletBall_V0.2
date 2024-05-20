@@ -1,6 +1,7 @@
 #include "main.h"
 #include "can_recv.h"
 #include "math.h"
+#include "chassis.h"
 
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
@@ -10,6 +11,9 @@ static motor_measure_t motor_Date[7]; // 电机回传数据结构体
 DM4340_motor_data_t DM4340_Date[3]; // DM4340回传数据结构体
 
 static CAN_TxHeaderTypeDef RM3508_tx_message; // can_3508发送邮箱
+
+CAN_TxHeaderTypeDef CAN_DMstart_TxHeader;
+CAN_TxHeaderTypeDef CAN_DMmsg_TxHeader;
 
 DBUSDecoding_Type DBUS_ReceiveData;
 
@@ -48,12 +52,13 @@ void CAN_cmd_3508(int16_t CMD_ID_1, int16_t CMD_ID_2, int16_t CMD_ID_3, int16_t 
 // 电机启动函数
 void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id)
 {
-    CAN_TxHeaderTypeDef CAN_TxHeader;
+    uint32_t send_mail_box;
+
     uint8_t TxData[8];
-    CAN_TxHeader.StdId = id;
-    CAN_TxHeader.IDE = CAN_ID_STD;
-    CAN_TxHeader.RTR = CAN_RTR_DATA;
-    CAN_TxHeader.DLC = 0x08;
+    CAN_DMstart_TxHeader.StdId = id;
+    CAN_DMstart_TxHeader.IDE = CAN_ID_STD;
+    CAN_DMstart_TxHeader.RTR = CAN_RTR_DATA;
+    CAN_DMstart_TxHeader.DLC = 0x08;
     TxData[0] = 0xFF;
     TxData[1] = 0xFF;
     TxData[2] = 0xFF;
@@ -62,13 +67,13 @@ void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id)
     TxData[5] = 0xFF;
     TxData[6] = 0xFF;
     TxData[7] = 0xFC;
-
-    HAL_CAN_AddTxMessage(Target_hcan, &CAN_TxHeader, TxData, (uint32_t *)CAN_TX_MAILBOX0);
+    
+    HAL_CAN_AddTxMessage(Target_hcan, &CAN_DMstart_TxHeader, TxData,  (uint32_t *)CAN_TX_MAILBOX0);
 }
 
 void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, float _vel, float _KP, float _KD, float _torq)
 {
-    CAN_TxHeaderTypeDef CanTxHeader;
+    uint32_t send_mail_box;
     uint8_t txData[8];
     uint16_t pos_tmp, vel_tmp, kp_tmp, kd_tmp, tor_tmp; // 声明临时变量
 
@@ -79,10 +84,10 @@ void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, floa
     kd_tmp = float_to_uint(_KD, KD_MIN, KD_MAX, 12);
     tor_tmp = float_to_uint(_torq, T_MIN, T_MAX, 12);
 
-    CanTxHeader.StdId = id;
-    CanTxHeader.IDE = CAN_ID_STD;
-    CanTxHeader.RTR = CAN_RTR_DATA;
-    CanTxHeader.DLC = 0x08;
+    CAN_DMmsg_TxHeader.StdId = id;
+    CAN_DMmsg_TxHeader.IDE = CAN_ID_STD;
+    CAN_DMmsg_TxHeader.RTR = CAN_RTR_DATA;
+    CAN_DMmsg_TxHeader.DLC = 0x08;
     txData[0] = pos_tmp >> 8;
     txData[1] = pos_tmp & 0xff;
     txData[2] = vel_tmp >> 4;
@@ -92,7 +97,7 @@ void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, floa
     txData[6] = ((kd_tmp & 0xf) << 4) | (tor_tmp >> 8);
     txData[7] = tor_tmp & 0xff;
 
-    HAL_CAN_AddTxMessage(hcan, &CanTxHeader, txData, (uint32_t *)CAN_TX_MAILBOX0);
+    HAL_CAN_AddTxMessage(hcan, &CAN_DMmsg_TxHeader, txData, (uint32_t *)CAN_TX_MAILBOX0);
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
@@ -161,11 +166,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             {
                 DM4340_Date[0].circle_num = 0;
             }
-            DM4340_Date[0].serial_angle = ((DM4340_Date[0].esc_back_position + DM4340_Date[0].circle_num * 36000.0f) / 100 + 112) * 4;
-            DM4340_Date[0].esc_back_speed = DM4340_Date[0].serial_angle - DM4340_Date[0].serial_angle_last;
+            //DM4340_Date[0].serial_angle = ((DM4340_Date[0].esc_back_position + DM4340_Date[0].circle_num * 36000.0f) / 100 + 112) * 4;
+            //DM4340_Date[0].esc_back_speed = DM4340_Date[0].serial_angle - DM4340_Date[0].serial_angle_last;
             DM4340_Date[0].esc_back_position_last = DM4340_Date[0].esc_back_position;
             DM4340_Date[0].serial_angle_last = DM4340_Date[0].serial_angle;
-            DM4340_Date[0].real_angle = RUD_DirAngle_Proc(DM4340_Date[0].serial_angle);
+            DM4340_Date[0].real_angle = DM4340_Date[0].esc_back_position / PI * 180;//RUD_DirAngle_Proc(DM4340_Date[0].serial_angle);
 
             break;
         }
@@ -186,11 +191,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             {
                 DM4340_Date[1].circle_num = 0;
             }
-            DM4340_Date[1].serial_angle = ((DM4340_Date[1].esc_back_position + DM4340_Date[1].circle_num * 36000.0f) / 100 + 112) * 4;
-            DM4340_Date[1].esc_back_speed = DM4340_Date[1].serial_angle - DM4340_Date[1].serial_angle_last;
+            //DM4340_Date[1].serial_angle = ((DM4340_Date[1].esc_back_position + DM4340_Date[1].circle_num * 36000.0f) / 100 + 112) * 4;
+            //DM4340_Date[1].esc_back_speed = DM4340_Date[1].serial_angle - DM4340_Date[1].serial_angle_last;
             DM4340_Date[1].esc_back_position_last = DM4340_Date[1].esc_back_position;
             DM4340_Date[1].serial_angle_last = DM4340_Date[1].serial_angle;
-            DM4340_Date[1].real_angle = RUD_DirAngle_Proc(DM4340_Date[1].serial_angle);
+            DM4340_Date[1].real_angle = DM4340_Date[1].esc_back_position / PI * 180;
             break;
         }
         case DM4340_M3:
@@ -210,11 +215,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             {
                 DM4340_Date[2].circle_num = 0;
             }
-            DM4340_Date[2].serial_angle = ((DM4340_Date[2].esc_back_position + DM4340_Date[2].circle_num * 36000.0f) / 100 + 112) * 4;
-            DM4340_Date[2].esc_back_speed = DM4340_Date[2].serial_angle - DM4340_Date[2].serial_angle_last;
+            //DM4340_Date[2].serial_angle = ((DM4340_Date[2].esc_back_position + DM4340_Date[2].circle_num * 36000.0f) / 100 + 112) * 4;
+            //DM4340_Date[2].esc_back_speed = DM4340_Date[2].serial_angle - DM4340_Date[2].serial_angle_last;
             DM4340_Date[2].esc_back_position_last = DM4340_Date[2].esc_back_position;
             DM4340_Date[2].serial_angle_last = DM4340_Date[2].serial_angle;
-            DM4340_Date[2].real_angle = RUD_DirAngle_Proc(DM4340_Date[2].serial_angle);
+            DM4340_Date[2].real_angle = DM4340_Date[2].esc_back_position / PI * 180;;
             break;
         }
         }

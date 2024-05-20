@@ -13,6 +13,7 @@ void DateExchange_Task(void const * argument)
     {
     osDelay(5);
     CAN_cmd_DT7_ch_Date();
+    osDelay(5);
     CAN_cmd_DT7_s_Date(); 
     }
     
