@@ -11,9 +11,9 @@
 #define La 150.f         //连杆2
 #define R2 90.0f         //连接点到球拍中心的距离
 
-#define DM_MOTOR_KP 67.0f    //位置增益
-#define DM_MOTOR_KD 3.1f   //速度增益
-#define DM_MOTOR_t_ff -0.6f//前馈力矩
+#define DM_MOTOR_KP     67.0f    //位置增益
+#define DM_MOTOR_KD     3.1f   //速度增益
+#define DM_MOTOR_t_ff  -2.0f//前馈力矩
 
 
 typedef struct
@@ -29,8 +29,7 @@ void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id);
 void DM_Motor_Init(void);
 float float_constrain(float Value, float minValue, float maxValue);
 void delta_arm_solution(void);
-void DM_Motor_pid_Init(void);
-void DM_Motor_pid_Calc(void);
+
 void juggle_Mode(void);
 
 #endif

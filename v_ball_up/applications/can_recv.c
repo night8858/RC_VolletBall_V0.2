@@ -144,7 +144,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         case CAN_3508_M5_ID:
         {
             static uint8_t i = 0;
-            i = rx_header_can1.StdId - CAN_3508_M1_ID;
+            i = rx_header_can2.StdId - CAN_3508_M1_ID;
             get_motor_measure(&motor_Date[i], rx_data_can2);
 
             break;

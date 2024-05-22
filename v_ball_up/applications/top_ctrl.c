@@ -33,7 +33,6 @@ double V[3] = {0};
 void top_contorl_Task(void const *argument)
 {
     DM_Motor_Init();
-    DM_Motor_pid_Init();
     motor_init(&motor_control);
     while (1)
     {
@@ -71,9 +70,9 @@ float float_constrain(float Value, float minValue, float maxValue)
 // 颠球模式
 void juggle_Mode(void)
 {
-    DM4340_Date[0].target_angle = (-(float_constrain(77 + (DBUS_ReceiveData.ch1) / 22, 77, 107)) / 180 * PI);
-    DM4340_Date[1].target_angle = (-(float_constrain(136 + (DBUS_ReceiveData.ch1) / 22, 136, 166)) / 180 * PI);
-    DM4340_Date[2].target_angle = (-(float_constrain(127 + (DBUS_ReceiveData.ch1) / 22, 127, 157)) / 180 * PI);
+    DM4340_Date[0].target_angle = (-(float_constrain(81 + (DBUS_ReceiveData.ch1) / 11, 81, 113)) / 180 * PI);
+    DM4340_Date[1].target_angle = (-(float_constrain(145 + (DBUS_ReceiveData.ch1) / 11, 145, 177)) / 180 * PI);
+    DM4340_Date[2].target_angle = (-(float_constrain(135 + (DBUS_ReceiveData.ch1) / 11, 135, 167)) / 180 * PI);
     for (int i = 1; i < 4; i++)
     {
         MD_motor_SendCurrent(&hcan2, i, DM4340_Date[i - 1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);

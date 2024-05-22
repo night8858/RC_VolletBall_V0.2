@@ -8,15 +8,15 @@
 
 #define PI 3.141592653824f
 
-#define M3505_MOTOR_SPEED_PID_KP 16.0f
-#define M3505_MOTOR_SPEED_PID_KI 2.4f
+#define M3505_MOTOR_SPEED_PID_KP 1.0f
+#define M3505_MOTOR_SPEED_PID_KI 0.0f
 #define M3505_MOTOR_SPEED_PID_KD 0.0f
 #define M3505_MOTOR_SPEED_PID_MAX_OUT 4000.0f
 #define M3505_MOTOR_SPEED_PID_MAX_IOUT 14000.0f
 
-#define M3508_MOTOR_POSION_PID_KP 30000.0f
+#define M3508_MOTOR_POSION_PID_KP 1.0f
 #define M3508_MOTOR_POSION_PID_KI 0.0f
-#define M3508_MOTOR_POSION_PID_KD 7.0f
+#define M3508_MOTOR_POSION_PID_KD 0.0f
 #define M3508_MOTOR_POSION_PID_MAX_OUT 30000.0f
 #define M3508_MOTOR_POSION_PID_MAX_IOUT 20000.0f
 
@@ -98,10 +98,21 @@ typedef struct
     M3508_PID_t m3508_motor_relative_angle_pid;
     pid_type_def m3508_motor_gyro_pid;
 
+    int motor_ecd;
+    int self_ecd_temp;
+    
     float motor_gyro;         //rad/s
     float motor_gyro_set;
+
+    float esc_back_position;
+    float esc_back_position_last;
+    
+    float serial_angle;           //总角度
+    float relative_angle_target;
+
     float motor_speed;
     float motor_speed_set;
+
     float raw_cmd_current;
     float current_set;
     int16_t given_current;
@@ -131,7 +142,9 @@ typedef struct
 
 void motor_init(motor_control_t *init);
 
-static void M3508_PID_init(M3508_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd);
+static void M3508_Pos_PID_init(M3508_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd);
+static void M3508_PID_clear(M3508_PID_t *M3508_pid_clear);
+
 void motor_control_loop(motor_control_t *control_loop);
 
 void motor_feedback_update(motor_control_t *feedback_update);
