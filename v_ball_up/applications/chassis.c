@@ -38,17 +38,17 @@ extern UART_HandleTypeDef huart1;
             (ecd) += ECD_RANGE; \
     }
 
-#define motor_total_pid_clear(motor_clear)                          \
-    {                                                               \
-        PID_clear(&(motor_clear)->M3508_M5.chassis_motor_gyro_pid); \
+#define motor_total_pid_clear(motor_clear)                                        \
+    {                                                                             \
+        PID_clear(&(motor_clear)->M3508_M5.chassis_motor_gyro_pid);               \
         M3508_PID_clear(&(motor_clear)->M3508_M5.m3508_motor_relative_angle_pid); \
-    }                                                         
+    }
 
 static void motor_feedback_update(motor_control_t *feedback_update);
-static void M3508_motor_speed_control(motor_3508_t *chassis_motor);
+//static void M3508_motor_speed_control(motor_3508_t *chassis_motor);
 static void motor_control_loop(motor_control_t *control_loop);
 static void motor_feedback_update(motor_control_t *feedback_update);
-static void movement_calc(void);
+//static void movement_calc(void);
 
 // 地盘主线程，颠球机构未使用
 void chassisTask(void const *argument)
@@ -59,10 +59,10 @@ void chassisTask(void const *argument)
     {
         // 取得回传数据结构体
         motor_feedback_update(&motor_control);
-        movement_calc();
+        //movement_calc();
         // 获取遥控器数据结构体测试
         // motor_control.M6020_M1.relative_angle_set = (float)rc_ctrl.rc.ch[2] / 660 * PI;  //-pi到pi
-        // motor_control.M3508_M5.motor_speed_set = (float)rc_ctrl.rc.ch[1] / 66 * 400;    // -4000到+4000
+        // motor_control.M3508_M5.motor_speed_set = (float)rc_ctrl.rc.ch[1] / 66 * 400;    // -4096到+4096
         // PID控制计算和输出循环
         motor_control_loop(&motor_control);
         // uart_dma_printf(&huart1,"%4.3f ,%4.3f\n",motor_control.M6020_M1.relative_angle , motor_control.M6020_M1.relative_angle_set);
@@ -81,8 +81,8 @@ void motor_init(motor_control_t *init)
     // 电机数据指针获取
     init->M3508_M5.chassis_motor_measure = get_3508_M5_motor_measure_point();
 
-    //3508PID的初始化
-    M3508_PID_init(&init->M3508_M5.m3508_motor_relative_angle_pid, M3508_MOTOR_POSION_PID_MAX_OUT, M3508_MOTOR_POSION_PID_MAX_IOUT, M3508_MOTOR_POSION_PID_KP, M3508_MOTOR_POSION_PID_KI, M3508_MOTOR_POSION_PID_KD);
+    // 3508PID的初始化
+    M3508_Pos_PID_init(&init->M3508_M5.m3508_motor_relative_angle_pid, M3508_MOTOR_POSION_PID_MAX_OUT, M3508_MOTOR_POSION_PID_MAX_IOUT, M3508_MOTOR_POSION_PID_KP, M3508_MOTOR_POSION_PID_KI, M3508_MOTOR_POSION_PID_KD);
     PID_init(&init->M3508_M5.chassis_motor_gyro_pid, PID_POSITION, M3508_speed_pid, M3505_MOTOR_SPEED_PID_MAX_IOUT, M3505_MOTOR_SPEED_PID_MAX_OUT);
 
     // 清除所有PID
@@ -93,6 +93,9 @@ void motor_init(motor_control_t *init)
     init->M3508_M5.motor_speed_set = init->M3508_M5.motor_speed;
     init->M3508_M5.motor_ecd = 0;
     init->M3508_M5.self_ecd_temp = 0;
+    init->M3508_M5.serial_angle = 0;
+    init->M3508_M5.relative_angle_target = 0;
+    //init->M3508_M5.self_ecd_temp += init->M3508_M5.esc_back_position;
 }
 
 // 编码值转为弧度制
@@ -110,9 +113,7 @@ static fp32 motor_ecd_to_angle_change(uint16_t ecd, uint16_t offset_ecd)
     return relative_ecd * MOTOR_ECD_TO_RAD;
 }
 
-
-
-//3508的PID初始化
+// 3508的PID初始化
 static void M3508_Pos_PID_init(M3508_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd)
 {
     if (pid == NULL)
@@ -130,8 +131,8 @@ static void M3508_Pos_PID_init(M3508_PID_t *pid, fp32 maxout, fp32 max_iout, fp3
     pid->max_out = maxout;
 }
 
-//3508的PID计算
-static fp32 M3508_Pos_PID_calc(M6020_PID_t *pid, fp32 get, fp32 set, fp32 error_delta)
+// 3508的PID计算
+static fp32 M3508_Pos_PID_calc(M3508_PID_t *pid, fp32 get, fp32 set, fp32 error_delta)
 {
     fp32 err;
     if (pid == NULL)
@@ -142,7 +143,7 @@ static fp32 M3508_Pos_PID_calc(M6020_PID_t *pid, fp32 get, fp32 set, fp32 error_
     pid->set = set;
 
     err = set - get;
-    pid->err = rad_format(err);
+    pid->err = err;
     pid->Pout = pid->kp * pid->err;
     pid->Iout += pid->ki * pid->err;
     pid->Dout = pid->kd * error_delta;
@@ -152,7 +153,7 @@ static fp32 M3508_Pos_PID_calc(M6020_PID_t *pid, fp32 get, fp32 set, fp32 error_
     return pid->out;
 }
 
-//清除3508的PID
+// 清除3508的PID
 static void M3508_PID_clear(M3508_PID_t *M3508_pid_clear)
 {
     if (M3508_pid_clear == NULL)
@@ -162,47 +163,9 @@ static void M3508_PID_clear(M3508_PID_t *M3508_pid_clear)
 
     M3508_pid_clear->err = M3508_pid_clear->set = M3508_pid_clear->get = 0.0f;
     M3508_pid_clear->out = M3508_pid_clear->Pout = M3508_pid_clear->Iout = M3508_pid_clear->Dout = 0.0f;
-
 }
 
 
-
-// 电机主控制循环
-void motor_control_loop(motor_control_t *control_loop)
-{
-    if (control_loop == NULL)
-    {
-        return;
-    }
-    uint16_t Counting_mark = 0;
-    // 计算所有3508电机pid
-    M3508_motor_speed_control(&control_loop->M3508_M5);
-    M3508_motor_Pos_control(&control_loop->M3508_M5);
-
-    Counting_mark = control_loop->M3508_M5.esc_back_position - control_loop->M3508_M5.esc_back_position_last;
-    	if(Counting_mark < 0){  Counting_mark *= -1; }
-		if(Counting_mark > 4000)
-		{
-			control_loop->M3508_M5.self_ecd_temp += 8192;
-		}
-		
-        control_loop->M3508_M5.self_ecd_temp += control_loop->M3508_M5.esc_back_position;
-    // 发送给电机数据
-    CAN_cmd_3508(motor_control.M3508_M5.given_current, 0 , 0 , 0);
-}
-
-// 3508的pid计算
-void M3508_motor_speed_control(motor_3508_t *chassis_motor)
-{
-    if (chassis_motor == NULL)
-    {
-        return;
-    }
-
-    // 速度环pid
-    chassis_motor->current_set = PID_calc(&chassis_motor->chassis_motor_gyro_pid, chassis_motor->motor_speed, chassis_motor->motor_speed_set); // 控制值赋值
-    chassis_motor->given_current = (int16_t)(chassis_motor->current_set);
-}
 
 // 3508的pid计算
 void M3508_motor_Pos_control(motor_3508_t *chassis_motor)
@@ -213,8 +176,25 @@ void M3508_motor_Pos_control(motor_3508_t *chassis_motor)
     }
 
     // 速度环pid
-    chassis_motor->current_set = PID_calc(&chassis_motor->chassis_motor_gyro_pid, chassis_motor->serial_angle, chassis_motor->relative_angle_target); // 控制值赋值
+    chassis_motor->motor_speed_set = M3508_Pos_PID_calc(&chassis_motor->m3508_motor_relative_angle_pid , chassis_motor->serial_angle ,chassis_motor->relative_angle_target ,chassis_motor->motor_gyro); // 控制值赋值
+    chassis_motor->current_set = PID_calc(&chassis_motor->chassis_motor_gyro_pid, chassis_motor->motor_speed, chassis_motor->motor_speed_set); // 控制值赋值
     chassis_motor->given_current = (int16_t)(chassis_motor->current_set);
+    // chassis_motor->given_current = (int16_t)(chassis_motor->current_set);
+}
+
+// 电机主控制循环
+void motor_control_loop(motor_control_t *control_loop)
+{
+    if (control_loop == NULL)
+    {
+        return;
+    }
+    // uint16_t Counting_mark = 0; // 计数标记
+    //  计算所有3508电机pid
+    motor_control.M3508_M5.relative_angle_target = motor_control.M3508_M5.serial_angle + DBUS_ReceiveData.ch0 * 10;
+    M3508_motor_Pos_control(&control_loop->M3508_M5);
+    // 发送给电机数据
+    CAN_cmd_3508(motor_control.M3508_M5.given_current, 0, 0, 0);
 }
 
 // 各个电机的数据反馈
@@ -224,33 +204,53 @@ void motor_feedback_update(motor_control_t *feedback_update)
     {
         return;
     }
+    int Counting_mark = 0;                                                                              // 计数标记
+    feedback_update->M3508_M5.motor_speed = feedback_update->M3508_M5.chassis_motor_measure->speed_rpm; // 获得当前的转速
+    feedback_update->M3508_M5.esc_back_position_last = feedback_update->M3508_M5.esc_back_position;     // 获得上一次的角度
+    feedback_update->M3508_M5.esc_back_position = feedback_update->M3508_M5.chassis_motor_measure->ecd; // 获得当前角度
 
-    feedback_update->M3508_M5.motor_speed = feedback_update->M3508_M5.chassis_motor_measure->speed_rpm;  //获得当前的转速
-    feedback_update->M3508_M5.esc_back_position_last = feedback_update->M3508_M5.esc_back_position;  //获得上一次的角度
-    feedback_update->M3508_M5.esc_back_position = feedback_update->M3508_M5.chassis_motor_measure->ecd;  //获得当前角度
-    // 数据更新,各个动力电机的速度数据
+    Counting_mark = feedback_update->M3508_M5.esc_back_position - feedback_update->M3508_M5.esc_back_position_last;
+    if (Counting_mark > 0)
+    {
+        if (Counting_mark < 4096)
+        {
+            feedback_update->M3508_M5.serial_angle += Counting_mark; 
+        }
+        if (Counting_mark > 4096)
+        {
+
+            feedback_update->M3508_M5.serial_angle += Counting_mark;
+            feedback_update->M3508_M5.serial_angle -= 8192;
+        }
+    }
+    if (Counting_mark < 0)
+    {
+        if (Counting_mark > -4096)
+        {
+            feedback_update->M3508_M5.serial_angle += Counting_mark; 
+        }
+        if (Counting_mark < -4096)
+        {
+            feedback_update->M3508_M5.serial_angle += Counting_mark;
+            feedback_update->M3508_M5.serial_angle += 8192;
+        }
+    }
+    // feedback_update->M3508_M5.serial_angle = feedback_update->M3508_M5.self_ecd_temp;
+    //  数据更新,各个动力电机的速度数据
 }
 
-// 运动计算
-void movement_calc(void)
-{
-    // 此处为遥控器控制的方式
-    DBUS_ReceiveData.ch0/66 * 20;
-    // vofa调试用的代码
-    // uart_dma_printf(&huart1,"%4.3f ,%4.3f\n",set_speed , set_angle);
-}
-
-
-//机构横向运动
+// 机构横向运动
 void Institution_Pos_Contorl(void)
 {
-        
-        // 取得回传数据结构体
-        motor_feedback_update(&motor_control);
 
-        movement_calc();
-        // PID控制计算和输出循环
-        motor_control_loop(&motor_control);
-
+    // 取得回传数据结构体
+    motor_feedback_update(&motor_control);
+    
+    // movement_calc();
+    //  PID控制计算和输出循环
+    motor_control_loop(&motor_control);
+    // vofa调试用的代码
+    //uart_dma_printf(&huart1, " %0.0f , %0.0f\n", motor_control.M3508_M5.relative_angle_target, motor_control.M3508_M5.serial_angle );//, motor_control.M3508_M5.raw_cmd_current ,motor_control.M3508_M5.current_set);
+    osDelay(5);
 
 }

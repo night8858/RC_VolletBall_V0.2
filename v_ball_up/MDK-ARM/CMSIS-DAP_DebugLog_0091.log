@@ -1,0 +1,21 @@
+CMSIS_AGDI.DLL - CMSIS-DAP Driver Log
+
+17:48:56:248 (23/05/2024) - START SEQUENCE "InitTarget", "default" - ID 0
+17:48:56:248 (23/05/2024) - START SEQUENCE "InitInternals", "default" - ID 1
+17:48:56:248 (23/05/2024) - START SEQUENCE "InitDriver", "default" - ID 2
+17:48:56:248 (23/05/2024) - END SEQUENCE "InitDriver", "success" - ID 3
+17:48:56:248 (23/05/2024) - START SEQUENCE "InitDebugger", "default" - ID 4
+17:48:56:296 (23/05/2024) - END SEQUENCE "InitDebugger", "success" - ID 5
+17:48:56:297 (23/05/2024) - END SEQUENCE "InitInternals", "success" - ID 6
+17:48:56:297 (23/05/2024) - START SEQUENCE "DebugPortSetup", "default" - ID 7
+17:48:56:300 (23/05/2024) - END SEQUENCE "DebugPortSetup", "failed" - ID 8
+17:48:56:301 (23/05/2024) - END SEQUENCE "InitTarget", "failed" - ID 9
+17:48:56:301 (23/05/2024) - START SEQUENCE "StopTarget", "default" - ID 10
+17:48:56:308 (23/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0x00000000, End Addr 0x00000007, "DAP Write Memory Block - FAILED" - ID 0
+17:48:56:308 (23/05/2024) - START SEQUENCE "_UnInitTrace", "default" - ID 11
+17:48:56:308 (23/05/2024) - END SEQUENCE "_UnInitTrace", "success" - ID 12
+17:48:56:308 (23/05/2024) - START SEQUENCE "UnInitDebugger", "default" - ID 13
+17:48:56:309 (23/05/2024) - END SEQUENCE "UnInitDebugger", "success" - ID 14
+17:48:56:309 (23/05/2024) - START SEQUENCE "_UnInitDriver", "default" - ID 15
+17:48:56:310 (23/05/2024) - END SEQUENCE "_UnInitDriver", "success" - ID 16
+17:48:56:310 (23/05/2024) - END SEQUENCE "StopTarget", "success" - ID 17

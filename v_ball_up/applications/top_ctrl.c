@@ -37,7 +37,7 @@ void top_contorl_Task(void const *argument)
     while (1)
     {
         juggle_Mode();
-        // Institution_Pos_Contorl();
+        Institution_Pos_Contorl();
         osDelay(2);
     }
 }
@@ -73,14 +73,15 @@ void juggle_Mode(void)
     DM4340_Date[0].target_angle = (-(float_constrain(81 + (DBUS_ReceiveData.ch1) / 11, 81, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(145 + (DBUS_ReceiveData.ch1) / 11, 145, 177)) / 180 * PI);
     DM4340_Date[2].target_angle = (-(float_constrain(135 + (DBUS_ReceiveData.ch1) / 11, 135, 167)) / 180 * PI);
-    for (int i = 1; i < 4; i++)
-    {
-        MD_motor_SendCurrent(&hcan2, i, DM4340_Date[i - 1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
-        osDelay(2);
-    }
 
+        MD_motor_SendCurrent(&hcan2, 1, DM4340_Date[0].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+        osDelay(2);
+        MD_motor_SendCurrent(&hcan2, 2, DM4340_Date[1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+        osDelay(2);
+        MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+        osDelay(2);
     //vofa测试代码，可注释
-    uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
+    //uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
 
 }
 

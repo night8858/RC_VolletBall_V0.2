@@ -14,9 +14,9 @@
 #define M3505_MOTOR_SPEED_PID_MAX_OUT 4000.0f
 #define M3505_MOTOR_SPEED_PID_MAX_IOUT 14000.0f
 
-#define M3508_MOTOR_POSION_PID_KP 1.0f
+#define M3508_MOTOR_POSION_PID_KP 12.0f
 #define M3508_MOTOR_POSION_PID_KI 0.0f
-#define M3508_MOTOR_POSION_PID_KD 0.0f
+#define M3508_MOTOR_POSION_PID_KD 7.0f
 #define M3508_MOTOR_POSION_PID_MAX_OUT 30000.0f
 #define M3508_MOTOR_POSION_PID_MAX_IOUT 20000.0f
 
@@ -148,9 +148,9 @@ static void M3508_PID_clear(M3508_PID_t *M3508_pid_clear);
 void motor_control_loop(motor_control_t *control_loop);
 
 void motor_feedback_update(motor_control_t *feedback_update);
-void M3508_motor_speed_control(motor_3508_t *chassis_motor);
 void motor_feedback_update(motor_control_t *feedback_update);
-void movement_calc(void);
+
+void M3508_motor_Pos_control(motor_3508_t *chassis_motor);
 
 void Institution_Pos_Contorl(void);
 

@@ -46,7 +46,7 @@ void CAN_cmd_3508(int16_t CMD_ID_1, int16_t CMD_ID_2, int16_t CMD_ID_3, int16_t 
     can_3508_send_data[5] = CMD_ID_3;
     can_3508_send_data[6] = (CMD_ID_4 >> 8);
     can_3508_send_data[7] = CMD_ID_4;
-    HAL_CAN_AddTxMessage(&hcan2, &RM3508_tx_message, can_3508_send_data, &send_mail_box);
+    HAL_CAN_AddTxMessage(&hcan1, &RM3508_tx_message, can_3508_send_data, &send_mail_box);
 }
 
 // 电机启动函数
@@ -111,7 +111,14 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 
         switch (rx_header_can1.StdId)
         {
+        case CAN_3508_M5_ID:
+        {
+            static uint8_t i = 0;
+            i = rx_header_can1.StdId - CAN_3508_M1_ID;
+            get_motor_measure(&motor_Date[i], rx_data_can1);
 
+            break;
+        }
         case DT7_RX_ch:
         {
             DBUS_ReceiveData.ch0 = rx_data_can1[0] << 8 | rx_data_can1[1];
@@ -141,35 +148,14 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         HAL_CAN_GetRxMessage(&hcan2, CAN_RX_FIFO0, &rx_header_can2, rx_data_can2); // 从FIFO中接收消息至rx_header_can2
         switch (rx_header_can2.StdId)
         {
-        case CAN_3508_M5_ID:
-        {
-            static uint8_t i = 0;
-            i = rx_header_can2.StdId - CAN_3508_M1_ID;
-            get_motor_measure(&motor_Date[i], rx_data_can2);
 
-            break;
-        }
         case DM4340_M1:
         {
             DM_circle_num[0]++;
             DM4340_Date[0].id = (rx_data_can2[0]) & 0x0F;
             MD_CanReceive(&DM4340_Date[0], rx_data_can2);
 
-            DM4340_Date[0].esc_back_angle = DM4340_Date[0].esc_back_position / 25;
-
-            if (DM4340_Date[0].esc_back_position - DM4340_Date[0].esc_back_position_last > 20000)
-                --DM4340_Date[0].circle_num;
-            else if (DM4340_Date[0].esc_back_position - DM4340_Date[0].esc_back_position_last < -20000)
-                ++DM4340_Date[0].circle_num;
-
-            if (DM_circle_num[0] <= 10)
-            {
-                DM4340_Date[0].circle_num = 0;
-            }
-            //DM4340_Date[0].serial_angle = ((DM4340_Date[0].esc_back_position + DM4340_Date[0].circle_num * 36000.0f) / 100 + 112) * 4;
-            //DM4340_Date[0].esc_back_speed = DM4340_Date[0].serial_angle - DM4340_Date[0].serial_angle_last;
             DM4340_Date[0].esc_back_position_last = DM4340_Date[0].esc_back_position;
-            DM4340_Date[0].serial_angle_last = DM4340_Date[0].serial_angle;
             DM4340_Date[0].real_angle = DM4340_Date[0].esc_back_position / PI * 180;//RUD_DirAngle_Proc(DM4340_Date[0].serial_angle);
 
             break;
@@ -180,21 +166,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             DM4340_Date[1].id = (rx_data_can2[0]) & 0x0F;
             MD_CanReceive(&DM4340_Date[1], rx_data_can2);
 
-            DM4340_Date[1].esc_back_angle = DM4340_Date[1].esc_back_position / 25;
-
-            if (DM4340_Date[1].esc_back_position - DM4340_Date[1].esc_back_position_last > 20000)
-                --DM4340_Date[1].circle_num;
-            else if (DM4340_Date[1].esc_back_position - DM4340_Date[1].esc_back_position_last < -20000)
-                ++DM4340_Date[1].circle_num;
-
-            if (DM_circle_num[1] <= 10)
-            {
-                DM4340_Date[1].circle_num = 0;
-            }
-            //DM4340_Date[1].serial_angle = ((DM4340_Date[1].esc_back_position + DM4340_Date[1].circle_num * 36000.0f) / 100 + 112) * 4;
-            //DM4340_Date[1].esc_back_speed = DM4340_Date[1].serial_angle - DM4340_Date[1].serial_angle_last;
             DM4340_Date[1].esc_back_position_last = DM4340_Date[1].esc_back_position;
-            DM4340_Date[1].serial_angle_last = DM4340_Date[1].serial_angle;
             DM4340_Date[1].real_angle = DM4340_Date[1].esc_back_position / PI * 180;
             break;
         }
@@ -204,21 +176,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             DM4340_Date[2].id = (rx_data_can2[0]) & 0x0F;
             MD_CanReceive(&DM4340_Date[2], rx_data_can2);
 
-            DM4340_Date[2].esc_back_angle = DM4340_Date[2].esc_back_position / 25;
-
-            if (DM4340_Date[2].esc_back_position - DM4340_Date[2].esc_back_position_last > 20000)
-                --DM4340_Date[2].circle_num;
-            else if (DM4340_Date[2].esc_back_position - DM4340_Date[2].esc_back_position_last < -20000)
-                ++DM4340_Date[2].circle_num;
-
-            if (DM_circle_num[2] <= 10)
-            {
-                DM4340_Date[2].circle_num = 0;
-            }
-            //DM4340_Date[2].serial_angle = ((DM4340_Date[2].esc_back_position + DM4340_Date[2].circle_num * 36000.0f) / 100 + 112) * 4;
-            //DM4340_Date[2].esc_back_speed = DM4340_Date[2].serial_angle - DM4340_Date[2].serial_angle_last;
             DM4340_Date[2].esc_back_position_last = DM4340_Date[2].esc_back_position;
-            DM4340_Date[2].serial_angle_last = DM4340_Date[2].serial_angle;
             DM4340_Date[2].real_angle = DM4340_Date[2].esc_back_position / PI * 180;;
             break;
         }
@@ -250,7 +208,7 @@ void MD_CanReceive(DM4340_motor_data_t *motor, uint8_t RxDate[8])
         // motor->esc_back_speed = uint_to_float(v_int,V_MIN,V_MAX,12)*100; // 电机速度
         motor->esc_back_current = uint_to_float(i_int, T_MIN, T_MAX, 12); //	电机扭矩/电流
         motor->Tmos = (float)(RxDate[6]);
-        motor->Tcoil = (float)(RxDate[7]);
+        motor->Tcoil = (float)(RxDate[7]);   
     }
     if (motor->id == 0x03)
     {
