@@ -32,6 +32,9 @@ v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
+v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
+v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 v_ball\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 v_ball\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 v_ball\main.o: ../Core/Inc/FreeRTOSConfig.h
@@ -50,6 +53,12 @@ v_ball\main.o: ../Core/Inc/can.h
 v_ball\main.o: ../Core/Inc/dma.h
 v_ball\main.o: ../Core/Inc/tim.h
 v_ball\main.o: ../Core/Inc/usart.h
+v_ball\main.o: ../USB_DEVICE/App/usb_device.h
+v_ball\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
+v_ball\main.o: ../USB_DEVICE/Target/usbd_conf.h
+v_ball\main.o: D:\D P J\ARM\ARMCC\Bin\..\include\stdio.h
+v_ball\main.o: D:\D P J\ARM\ARMCC\Bin\..\include\stdlib.h
+v_ball\main.o: D:\D P J\ARM\ARMCC\Bin\..\include\string.h
 v_ball\main.o: ../Core/Inc/gpio.h
 v_ball\main.o: ../boards/bsp_can.h
 v_ball\main.o: ../applications/remote_control.h

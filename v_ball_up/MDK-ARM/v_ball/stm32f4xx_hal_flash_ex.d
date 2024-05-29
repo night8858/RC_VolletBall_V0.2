@@ -31,3 +31,6 @@ v_ball\stm32f4xx_hal_flash_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 v_ball\stm32f4xx_hal_flash_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 v_ball\stm32f4xx_hal_flash_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 v_ball\stm32f4xx_hal_flash_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+v_ball\stm32f4xx_hal_flash_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
+v_ball\stm32f4xx_hal_flash_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
+v_ball\stm32f4xx_hal_flash_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
