@@ -64,3 +64,7 @@ v_ball\main.o: ../boards/bsp_can.h
 v_ball\main.o: ../applications/remote_control.h
 v_ball\main.o: ../boards/struct_typedef.h
 v_ball\main.o: ../boards/bsp_rc.h
+v_ball\main.o: ../applications/top_ctrl.h
+v_ball\main.o: ../applications/can_recv.h
+v_ball\main.o: ../applications/chassis.h
+v_ball\main.o: ../components/controller/pid.h

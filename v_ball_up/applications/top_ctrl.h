@@ -15,7 +15,17 @@
 #define DM_MOTOR_KD     3.1f   //速度增益
 #define DM_MOTOR_t_ff  -2.0f//前馈力矩
 
+//从上位机接收的球位置
+typedef struct
+{
+	float ball_pos_x;//画面x
 
+	float ball_pos_y;//画面y
+
+	float ball_pos_z;//画面z（深度）
+}Ball_Pos;
+
+//球拍的当前位置
 typedef struct
 {
 	float x;

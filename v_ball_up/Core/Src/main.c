@@ -30,6 +30,8 @@
 /* USER CODE BEGIN Includes */
 #include "bsp_can.h"
 #include "remote_control.h"
+#include "top_ctrl.h"
+#include "chassis.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

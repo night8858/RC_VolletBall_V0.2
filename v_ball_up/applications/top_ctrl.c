@@ -18,9 +18,8 @@ extern DBUSDecoding_Type DBUS_ReceiveData; // 底盘发来的dbus的数据
 double T[3];     // T是引入万能公式的一个变量。令tan（THETA/2） = T,这样就可以将式子中相关与THETA的复杂运算给简化成用T表示。
 double THETA[3]; // THETA变量表示三个电机的角度，可由万能公式的T解出
 
-s_pid_absolute_t DM_motor_pid_p[4] = {0};
-s_pid_absolute_t DM_motor_pid_s[4] = {0};
 Top_Pos delta_position;
+Ball_Pos RX_ball_pos;
 
 double A[3] = {0};
 double B[3] = {0};
@@ -30,6 +29,7 @@ double K[3] = {0};
 double U[3] = {0};
 double V[3] = {0};
 
+//球拍控制主循环
 void top_contorl_Task(void const *argument)
 {
     DM_Motor_Init();
@@ -42,6 +42,7 @@ void top_contorl_Task(void const *argument)
     }
 }
 
+//达妙电机初始化
 void DM_Motor_Init(void)
 {
 
@@ -53,6 +54,7 @@ void DM_Motor_Init(void)
         osDelay(500);
         start_motor(&hcan2, 0x03);
         osDelay(500);
+        
     }
 }
 

@@ -46,3 +46,10 @@ v_ball\usbd_cdc_if.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 v_ball\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 v_ball\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 v_ball\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+v_ball\usbd_cdc_if.o: ../applications/top_ctrl.h
+v_ball\usbd_cdc_if.o: ../applications/can_recv.h
+v_ball\usbd_cdc_if.o: ../boards/struct_typedef.h
+v_ball\usbd_cdc_if.o: ../applications/chassis.h
+v_ball\usbd_cdc_if.o: ../components/controller/pid.h
+v_ball\usbd_cdc_if.o: ../applications/remote_control.h
+v_ball\usbd_cdc_if.o: ../boards/bsp_rc.h
