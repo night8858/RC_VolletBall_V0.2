@@ -41,6 +41,7 @@ v_ball\remote_control.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_e
 v_ball\remote_control.o: ../Core/Inc/usart.h
 v_ball\remote_control.o: ..\applications\chassis.h
 v_ball\remote_control.o: ..\applications\can_recv.h
+v_ball\remote_control.o: ../Core/Inc/can.h
 v_ball\remote_control.o: ../components/controller/pid.h
 v_ball\remote_control.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 v_ball\remote_control.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h

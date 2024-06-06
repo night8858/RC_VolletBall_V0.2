@@ -38,14 +38,15 @@ v_ball\top_ctrl.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 v_ball\top_ctrl.o: ..\applications\top_ctrl.h
 v_ball\top_ctrl.o: ..\applications\can_recv.h
 v_ball\top_ctrl.o: ../boards/struct_typedef.h
+v_ball\top_ctrl.o: ../Core/Inc/can.h
 v_ball\top_ctrl.o: ..\applications\chassis.h
 v_ball\top_ctrl.o: ../components/controller/pid.h
 v_ball\top_ctrl.o: ..\applications\remote_control.h
 v_ball\top_ctrl.o: ../boards/bsp_rc.h
 v_ball\top_ctrl.o: D:\D P J\ARM\ARMCC\Bin\..\include\math.h
-v_ball\top_ctrl.o: ../Core/Inc/can.h
 v_ball\top_ctrl.o: ../Core/Inc/usart.h
 v_ball\top_ctrl.o: ../boards/bsp_usart.h
+v_ball\top_ctrl.o: ..\applications\ball_track.h
 v_ball\top_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 v_ball\top_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 v_ball\top_ctrl.o: ../Core/Inc/FreeRTOSConfig.h

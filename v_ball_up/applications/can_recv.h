@@ -2,6 +2,7 @@
 #define CAN_RECV_H
 
 #include "struct_typedef.h"
+#include "can.h"
 
 #define CHASSIS_CAN hcan1
 #define GIMBAL_CAN hcan1

@@ -2,6 +2,7 @@
 #define _TOP_CTRL_
 
 #include "can_recv.h"
+#include "can.h"
 #include "chassis.h"
 
 #define PI 3.141592653824f //圆周率
@@ -40,6 +41,8 @@ void DM_Motor_Init(void);
 float float_constrain(float Value, float minValue, float maxValue);
 void delta_arm_solution(void);
 
-void juggle_Mode(void);
+static void juggle_Mode(void);
+
+static void juggle_Mode_auto(void);
 
 #endif

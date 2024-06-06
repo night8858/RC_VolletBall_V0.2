@@ -1,0 +1,1277 @@
+CMSIS_AGDI.DLL - CMSIS-DAP Driver Log
+
+20:06:20:107 (31/05/2024) - START SEQUENCE "InitTarget", "default" - ID 0
+20:06:20:107 (31/05/2024) - START SEQUENCE "InitInternals", "default" - ID 1
+20:06:20:107 (31/05/2024) - START SEQUENCE "InitDriver", "default" - ID 2
+20:06:20:107 (31/05/2024) - END SEQUENCE "InitDriver", "success" - ID 3
+20:06:20:107 (31/05/2024) - START SEQUENCE "InitDebugger", "default" - ID 4
+20:06:20:146 (31/05/2024) - END SEQUENCE "InitDebugger", "success" - ID 5
+20:06:20:146 (31/05/2024) - END SEQUENCE "InitInternals", "success" - ID 6
+20:06:20:146 (31/05/2024) - START SEQUENCE "DebugPortSetup", "default" - ID 7
+20:06:20:149 (31/05/2024) - END SEQUENCE "DebugPortSetup", "success" - ID 8
+20:06:20:150 (31/05/2024) - START SEQUENCE "DebugGetDeviceList", "default" - ID 9
+20:06:20:151 (31/05/2024) - END SEQUENCE "DebugGetDeviceList", "success" - ID 10
+20:06:20:151 (31/05/2024) - START SEQUENCE "PDSCDebug_DebugGetDeviceNames", "default" - ID 11
+20:06:20:151 (31/05/2024) - END SEQUENCE "PDSCDebug_DebugGetDeviceNames", "success" - ID 12
+  20:06:20:151 (31/05/2024) - START SEQUENCE "DebugPortStart", "default" - ID 13
+  20:06:20:155 (31/05/2024) - END SEQUENCE "DebugPortStart", "success" - ID 14
+20:06:20:156 (31/05/2024) - START SEQUENCE "DebugDeviceUnlock", "calling sequence" - ID 15
+20:06:20:158 (31/05/2024) - READ  AP  Access, AP 0, Addr 0x000000F8, Val 0xE00FF003, "DAP Read AP - Success" - ID 0
+20:06:20:161 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE00FFFE4, End Addr 0xE00FFFE7, "DAP Read Memory Block (32-bit accesses) - Success" - ID 1
+  Item #0, AP 0, Addr 0xE00FFFE4, Value 0x00000004
+20:06:20:163 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE00FFFE8, End Addr 0xE00FFFEB, "DAP Read Memory Block (32-bit accesses) - Success" - ID 2
+  Item #0, AP 0, Addr 0xE00FFFE8, Value 0x0000000A
+20:06:20:163 (31/05/2024) - START SEQUENCE "DebugReadTargetFeatures", "default" - ID 16
+20:06:20:163 (31/05/2024) - START SEQUENCE "_EvalDPID", "default" - ID 17
+20:06:20:163 (31/05/2024) - END SEQUENCE "_EvalDPID", "success" - ID 18
+20:06:20:164 (31/05/2024) - WRITE DP  Access, Addr 0x00000008, Val 0x00000000, "DAP Write DP - Success" - ID 3
+20:06:20:171 (31/05/2024) - WRITE AP  Access, AP 0, Addr 0x00000000, Val 0x23000052, "DAP Write AP - Success" - ID 4
+20:06:20:171 (31/05/2024) - START SEQUENCE "DebugReadRomTable", "default" - ID 19
+20:06:20:172 (31/05/2024) - READ  AP  Access, AP 0, Addr 0x000000F8, Val 0xE00FF003, "DAP Read AP - Success" - ID 5
+20:06:20:177 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE00FFFF0, End Addr 0xE00FFFFF, "DAP Read Memory Block - Success" - ID 6
+  Item #0, AP 0, Addr 0xE00FFFF0, Value 0x0000000D
+  Item #1, AP 0, Addr 0xE00FFFF4, Value 0x00000010
+  Item #2, AP 0, Addr 0xE00FFFF8, Value 0x00000005
+  Item #3, AP 0, Addr 0xE00FFFFC, Value 0x000000B1
+20:06:20:180 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE00FFFD0, End Addr 0xE00FFFEF, "DAP Read Memory Block - Success" - ID 7
+  Item #0, AP 0, Addr 0xE00FFFD0, Value 0x00000000
+  Item #1, AP 0, Addr 0xE00FFFD4, Value 0x00000000
+  Item #2, AP 0, Addr 0xE00FFFD8, Value 0x00000000
+  Item #3, AP 0, Addr 0xE00FFFDC, Value 0x00000000
+  Item #4, AP 0, Addr 0xE00FFFE0, Value 0x00000011
+  Item #5, AP 0, Addr 0xE00FFFE4, Value 0x00000004
+  Item #6, AP 0, Addr 0xE00FFFE8, Value 0x0000000A
+  Item #7, AP 0, Addr 0xE00FFFEC, Value 0x00000000
+20:06:20:180 (31/05/2024) - ROM TABLE: Detected Unknown ROM Table at address 0xE00FF000 (PID 0x00000000000A0411, CID 0xB105100D)
+20:06:20:181 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE00FF000, Val 0xFFF0F003, "DAP Read Memory (32 bit) - Success" - ID 8
+20:06:20:183 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE000EFF0, End Addr 0xE000EFFF, "DAP Read Memory Block - Success" - ID 9
+  Item #0, AP 0, Addr 0xE000EFF0, Value 0x0000000D
+  Item #1, AP 0, Addr 0xE000EFF4, Value 0x000000E0
+  Item #2, AP 0, Addr 0xE000EFF8, Value 0x00000005
+  Item #3, AP 0, Addr 0xE000EFFC, Value 0x000000B1
+20:06:20:186 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE000EFD0, End Addr 0xE000EFEF, "DAP Read Memory Block - Success" - ID 10
+  Item #0, AP 0, Addr 0xE000EFD0, Value 0x00000004
+  Item #1, AP 0, Addr 0xE000EFD4, Value 0x00000000
+  Item #2, AP 0, Addr 0xE000EFD8, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000EFDC, Value 0x00000000
+  Item #4, AP 0, Addr 0xE000EFE0, Value 0x0000000C
+  Item #5, AP 0, Addr 0xE000EFE4, Value 0x000000B0
+  Item #6, AP 0, Addr 0xE000EFE8, Value 0x0000000B
+  Item #7, AP 0, Addr 0xE000EFEC, Value 0x00000000
+20:06:20:186 (31/05/2024) - ROM TABLE: Detected SCS (ARMv7-M with FP Extension) at address 0xE000E000 (PID 0x00000004000BB00C, CID 0xB105E00D)
+20:06:20:186 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x01000000, "DAP Write Memory (32 bit) - Success" - ID 11
+20:06:20:188 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE00FF004, Val 0xFFF02003, "DAP Read Memory (32 bit) - Success" - ID 12
+20:06:20:190 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0001FF0, End Addr 0xE0001FFF, "DAP Read Memory Block - Success" - ID 13
+  Item #0, AP 0, Addr 0xE0001FF0, Value 0x0000000D
+  Item #1, AP 0, Addr 0xE0001FF4, Value 0x000000E0
+  Item #2, AP 0, Addr 0xE0001FF8, Value 0x00000005
+  Item #3, AP 0, Addr 0xE0001FFC, Value 0x000000B1
+20:06:20:193 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0001FD0, End Addr 0xE0001FEF, "DAP Read Memory Block - Success" - ID 14
+  Item #0, AP 0, Addr 0xE0001FD0, Value 0x00000004
+  Item #1, AP 0, Addr 0xE0001FD4, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0001FD8, Value 0x00000000
+  Item #3, AP 0, Addr 0xE0001FDC, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0001FE0, Value 0x00000002
+  Item #5, AP 0, Addr 0xE0001FE4, Value 0x000000B0
+  Item #6, AP 0, Addr 0xE0001FE8, Value 0x0000003B
+  Item #7, AP 0, Addr 0xE0001FEC, Value 0x00000000
+20:06:20:193 (31/05/2024) - ROM TABLE: Detected DWT (ARMv7-M) at address 0xE0001000 (PID 0x00000004003BB002, CID 0xB105E00D)
+20:06:20:194 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE00FF008, Val 0xFFF03003, "DAP Read Memory (32 bit) - Success" - ID 15
+20:06:20:196 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0002FF0, End Addr 0xE0002FFF, "DAP Read Memory Block - Success" - ID 16
+  Item #0, AP 0, Addr 0xE0002FF0, Value 0x0000000D
+  Item #1, AP 0, Addr 0xE0002FF4, Value 0x000000E0
+  Item #2, AP 0, Addr 0xE0002FF8, Value 0x00000005
+  Item #3, AP 0, Addr 0xE0002FFC, Value 0x000000B1
+20:06:20:198 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0002FD0, End Addr 0xE0002FEF, "DAP Read Memory Block - Success" - ID 17
+  Item #0, AP 0, Addr 0xE0002FD0, Value 0x00000004
+  Item #1, AP 0, Addr 0xE0002FD4, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0002FD8, Value 0x00000000
+  Item #3, AP 0, Addr 0xE0002FDC, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0002FE0, Value 0x00000003
+  Item #5, AP 0, Addr 0xE0002FE4, Value 0x000000B0
+  Item #6, AP 0, Addr 0xE0002FE8, Value 0x0000002B
+  Item #7, AP 0, Addr 0xE0002FEC, Value 0x00000000
+20:06:20:198 (31/05/2024) - ROM TABLE: Detected FPB (ARMv7-M) at address 0xE0002000 (PID 0x00000004002BB003, CID 0xB105E00D)
+20:06:20:199 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE00FF00C, Val 0xFFF01003, "DAP Read Memory (32 bit) - Success" - ID 18
+20:06:20:201 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0000FF0, End Addr 0xE0000FFF, "DAP Read Memory Block - Success" - ID 19
+  Item #0, AP 0, Addr 0xE0000FF0, Value 0x0000000D
+  Item #1, AP 0, Addr 0xE0000FF4, Value 0x000000E0
+  Item #2, AP 0, Addr 0xE0000FF8, Value 0x00000005
+  Item #3, AP 0, Addr 0xE0000FFC, Value 0x000000B1
+20:06:20:203 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0000FD0, End Addr 0xE0000FEF, "DAP Read Memory Block - Success" - ID 20
+  Item #0, AP 0, Addr 0xE0000FD0, Value 0x00000004
+  Item #1, AP 0, Addr 0xE0000FD4, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0000FD8, Value 0x00000000
+  Item #3, AP 0, Addr 0xE0000FDC, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0000FE0, Value 0x00000001
+  Item #5, AP 0, Addr 0xE0000FE4, Value 0x000000B0
+  Item #6, AP 0, Addr 0xE0000FE8, Value 0x0000003B
+  Item #7, AP 0, Addr 0xE0000FEC, Value 0x00000000
+20:06:20:203 (31/05/2024) - ROM TABLE: Detected ITM (ARMv7-M) at address 0xE0000000 (PID 0x00000004003BB001, CID 0xB105E00D)
+20:06:20:204 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE00FF010, Val 0xFFF41003, "DAP Read Memory (32 bit) - Success" - ID 21
+20:06:20:207 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0040FF0, End Addr 0xE0040FFF, "DAP Read Memory Block - Success" - ID 22
+  Item #0, AP 0, Addr 0xE0040FF0, Value 0x0000000D
+  Item #1, AP 0, Addr 0xE0040FF4, Value 0x00000090
+  Item #2, AP 0, Addr 0xE0040FF8, Value 0x00000005
+  Item #3, AP 0, Addr 0xE0040FFC, Value 0x000000B1
+20:06:20:209 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0040FD0, End Addr 0xE0040FEF, "DAP Read Memory Block - Success" - ID 23
+  Item #0, AP 0, Addr 0xE0040FD0, Value 0x00000004
+  Item #1, AP 0, Addr 0xE0040FD4, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0040FD8, Value 0x00000000
+  Item #3, AP 0, Addr 0xE0040FDC, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0040FE0, Value 0x000000A1
+  Item #5, AP 0, Addr 0xE0040FE4, Value 0x000000B9
+  Item #6, AP 0, Addr 0xE0040FE8, Value 0x0000000B
+  Item #7, AP 0, Addr 0xE0040FEC, Value 0x00000000
+20:06:20:209 (31/05/2024) - ROM TABLE: Detected TPIU (Cortex-M4) at address 0xE0040000 (PID 0x00000004000BB9A1, CID 0xB105900D)
+20:06:20:210 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE00FF014, Val 0xFFF42003, "DAP Read Memory (32 bit) - Success" - ID 24
+20:06:20:212 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0041FF0, End Addr 0xE0041FFF, "DAP Read Memory Block - Success" - ID 25
+  Item #0, AP 0, Addr 0xE0041FF0, Value 0x0000000D
+  Item #1, AP 0, Addr 0xE0041FF4, Value 0x00000090
+  Item #2, AP 0, Addr 0xE0041FF8, Value 0x00000005
+  Item #3, AP 0, Addr 0xE0041FFC, Value 0x000000B1
+20:06:20:214 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0xE0041FD0, End Addr 0xE0041FEF, "DAP Read Memory Block - Success" - ID 26
+  Item #0, AP 0, Addr 0xE0041FD0, Value 0x00000004
+  Item #1, AP 0, Addr 0xE0041FD4, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0041FD8, Value 0x00000000
+  Item #3, AP 0, Addr 0xE0041FDC, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0041FE0, Value 0x00000025
+  Item #5, AP 0, Addr 0xE0041FE4, Value 0x000000B9
+  Item #6, AP 0, Addr 0xE0041FE8, Value 0x0000000B
+  Item #7, AP 0, Addr 0xE0041FEC, Value 0x00000000
+20:06:20:214 (31/05/2024) - ROM TABLE: Detected ETM (Cortex-M4) at address 0xE0041000 (PID 0x00000004000BB925, CID 0xB105900D)
+20:06:20:215 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE00FF018, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 27
+20:06:20:215 (31/05/2024) - END SEQUENCE "DebugReadRomTable", "success" - ID 20
+20:06:20:215 (31/05/2024) - START SEQUENCE "_EvalCPUID", "default" - ID 21
+20:06:20:216 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000ED00, Val 0x410FC241, "DAP Read Memory (32 bit) - Success" - ID 28
+20:06:20:217 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EF40, Val 0x10110021, "DAP Read Memory (32 bit) - Success" - ID 29
+20:06:20:217 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EF44, Val 0x11000011, "DAP Read Memory (32 bit) - Success" - ID 30
+20:06:20:217 (31/05/2024) - END SEQUENCE "_EvalCPUID", "success" - ID 22
+20:06:20:218 (31/05/2024) - READ  DP  Access, Addr 0x00000004, Val 0xF0000F40, "DAP Read DP - Success" - ID 31
+20:06:20:218 (31/05/2024) - END SEQUENCE "DebugReadTargetFeatures", "success" - ID 23
+20:06:20:218 (31/05/2024) - START SEQUENCE "DebugCoreStart", "calling sequence" - ID 24
+20:06:20:221 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE000EDF0, End Addr 0xE000EDF3, "DAP Write Memory Block (32-bit accesses) - Success" - ID 32
+  Item #0, AP 0, Addr 0xE000EDF0, Value 0xA05F0001
+20:06:20:224 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0042004, End Addr 0xE0042007, "DAP Write Memory Block (32-bit accesses) - Success" - ID 33
+  Item #0, AP 0, Addr 0xE0042004, Value 0x00000007
+20:06:20:226 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0042008, End Addr 0xE004200B, "DAP Write Memory Block (32-bit accesses) - Success" - ID 34
+  Item #0, AP 0, Addr 0xE0042008, Value 0x00000000
+20:06:20:228 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE004200C, End Addr 0xE004200F, "DAP Write Memory Block (32-bit accesses) - Success" - ID 35
+  Item #0, AP 0, Addr 0xE004200C, Value 0x00000000
+20:06:20:228 (31/05/2024) - END SEQUENCE "DebugCoreStart", "success" - ID 25
+20:06:20:229 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDFC, Val 0x01000000, "DAP Read Memory (32 bit) - Success" - ID 36
+20:06:20:230 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x01000001, "DAP Write Memory (32 bit) - Success" - ID 37
+20:06:20:231 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDF0, Val 0xA05F0003, "DAP Write Memory (32 bit) - Success" - ID 38
+20:06:20:232 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x03030003, "DAP Read Memory (32 bit) - Success" - ID 39
+20:06:20:232 (31/05/2024) - END SEQUENCE "_WaitForStop", "success" - ID 26
+20:06:20:232 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDF0, Val 0xA05F0003, "DAP Write Memory (32 bit) - Success" - ID 40
+20:06:20:232 (31/05/2024) - START SEQUENCE "_InitDebugComponents", "default" - ID 27
+20:06:20:233 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDFC, Val 0x01000001, "DAP Read Memory (32 bit) - Success" - ID 41
+20:06:20:234 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0002000, Val 0x00000260, "DAP Read Memory (32 bit) - Success" - ID 42
+20:06:20:235 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001000, Val 0x40000000, "DAP Read Memory (32 bit) - Success" - ID 43
+20:06:20:236 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001024, Val 0x0000001F, "DAP Write Memory (32 bit) - Success" - ID 44
+20:06:20:236 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001024, Val 0x0000000F, "DAP Read Memory (32 bit) - Success" - ID 45
+20:06:20:237 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001024, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 46
+20:06:20:239 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001028, Val 0x00000100, "DAP Write Memory (32 bit) - Success" - ID 47
+20:06:20:239 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001028, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 48
+20:06:20:240 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001028, Val 0x00000080, "DAP Write Memory (32 bit) - Success" - ID 49
+20:06:20:240 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001028, Val 0x00000080, "DAP Read Memory (32 bit) - Success" - ID 50
+20:06:20:241 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001028, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 51
+20:06:20:242 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001038, Val 0x00000100, "DAP Write Memory (32 bit) - Success" - ID 52
+20:06:20:243 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001038, Val 0x00000300, "DAP Read Memory (32 bit) - Success" - ID 53
+20:06:20:243 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001038, Val 0x00000080, "DAP Write Memory (32 bit) - Success" - ID 54
+20:06:20:244 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001038, Val 0x00000200, "DAP Read Memory (32 bit) - Success" - ID 55
+20:06:20:245 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001038, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 56
+20:06:20:246 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001048, Val 0x00000100, "DAP Write Memory (32 bit) - Success" - ID 57
+20:06:20:246 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001048, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 58
+20:06:20:247 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001048, Val 0x00000080, "DAP Write Memory (32 bit) - Success" - ID 59
+20:06:20:248 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001048, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 60
+20:06:20:248 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001048, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 61
+20:06:20:250 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001058, Val 0x00000100, "DAP Write Memory (32 bit) - Success" - ID 62
+20:06:20:251 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001058, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 63
+20:06:20:252 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001058, Val 0x00000080, "DAP Write Memory (32 bit) - Success" - ID 64
+20:06:20:252 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001058, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 65
+20:06:20:253 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001058, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 66
+20:06:20:254 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0002000, Val 0x00000002, "DAP Write Memory (32 bit) - Success" - ID 67
+20:06:20:255 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001028, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 68
+20:06:20:255 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001038, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 69
+20:06:20:256 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001048, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 70
+20:06:20:257 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001058, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 71
+20:06:20:258 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000E004, Val 0x00000002, "DAP Read Memory (32 bit) - Success" - ID 72
+20:06:20:260 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0001000, End Addr 0xE000101B, "DAP Write Memory Block - Success" - ID 73
+  Item #0, AP 0, Addr 0xE0001000, Value 0x00000001
+  Item #1, AP 0, Addr 0xE0001004, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0001008, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000100C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0001010, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0001014, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0001018, Value 0x00000000
+20:06:20:260 (31/05/2024) - END SEQUENCE "_InitDebugComponents", "success" - ID 28
+20:06:20:263 (31/05/2024) - START SEQUENCE "_InitTrace", "default" - ID 29
+20:06:20:263 (31/05/2024) - END SEQUENCE "_InitTrace", "success" - ID 30
+20:06:20:263 (31/05/2024) - END SEQUENCE "InitTarget", "success" - ID 31
+20:06:20:263 (31/05/2024) - START SEQUENCE "ResetCatchSet", "default" - ID 32
+20:06:20:265 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x00000001, "DAP Write Memory (32 bit) - Success" - ID 74
+20:06:20:266 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 75
+20:06:20:266 (31/05/2024) - END SEQUENCE "ResetCatchSet", "success" - ID 33
+20:06:20:266 (31/05/2024) - START SEQUENCE "ResetSystem", "default" - ID 34
+20:06:20:266 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000ED0C, Val 0x05FA0004, "DAP Write Memory (32 bit) - Success" - ID 76
+20:06:20:266 (31/05/2024) - START SEQUENCE "_ResetRecovery", "default" - ID 35
+20:06:20:268 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02010001, "DAP Read Memory (32 bit) - Success" - ID 77
+20:06:20:274 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02030003, "DAP Read Memory (32 bit) - Success" - ID 78
+20:06:20:275 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 79
+  20:06:20:277 (31/05/2024) - END SEQUENCE "_ResetRecovery", "success" - ID 36
+  20:06:20:277 (31/05/2024) - END SEQUENCE "ResetSystem", "success" - ID 37
+20:06:20:280 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 80
+20:06:20:314 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 81
+20:06:20:315 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 82
+  20:06:20:315 (31/05/2024) - END SEQUENCE "_WaitForStop", "success" - ID 38
+  20:06:20:315 (31/05/2024) - START SEQUENCE "ResetCatchClear", "default" - ID 39
+20:06:20:317 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDFC, Val 0x00000001, "DAP Read Memory (32 bit) - Success" - ID 83
+20:06:20:317 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x00000001, "DAP Write Memory (32 bit) - Success" - ID 84
+20:06:20:317 (31/05/2024) - END SEQUENCE "ResetCatchClear", "success" - ID 40
+20:06:20:318 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x01000001, "DAP Write Memory (32 bit) - Success" - ID 85
+20:06:20:328 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 86
+20:06:20:828 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 87
+20:06:21:012 (31/05/2024) - START SEQUENCE "ResetCatchSet", "default" - ID 41
+20:06:21:013 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x00000001, "DAP Write Memory (32 bit) - Success" - ID 88
+20:06:21:014 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 89
+20:06:21:014 (31/05/2024) - END SEQUENCE "ResetCatchSet", "success" - ID 42
+20:06:21:016 (31/05/2024) - START SEQUENCE "ResetSystem", "default" - ID 43
+20:06:21:016 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000ED0C, Val 0x05FA0004, "DAP Write Memory (32 bit) - Success" - ID 90
+20:06:21:016 (31/05/2024) - START SEQUENCE "_ResetRecovery", "default" - ID 44
+20:06:21:018 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02010001, "DAP Read Memory (32 bit) - Success" - ID 91
+20:06:21:019 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02010001, "DAP Read Memory (32 bit) - Success" - ID 92
+20:06:21:020 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02010001, "DAP Read Memory (32 bit) - Success" - ID 93
+20:06:21:020 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02010001, "DAP Read Memory (32 bit) - Success" - ID 94
+20:06:21:021 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02010001, "DAP Read Memory (32 bit) - Success" - ID 95
+20:06:21:022 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x02030003, "DAP Read Memory (32 bit) - Success" - ID 96
+20:06:21:022 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 97
+  20:06:21:025 (31/05/2024) - END SEQUENCE "_ResetRecovery", "success" - ID 45
+  20:06:21:025 (31/05/2024) - END SEQUENCE "ResetSystem", "success" - ID 46
+20:06:21:027 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 98
+20:06:21:030 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 99
+20:06:21:031 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 100
+  20:06:21:031 (31/05/2024) - END SEQUENCE "_WaitForStop", "success" - ID 47
+  20:06:21:031 (31/05/2024) - START SEQUENCE "ResetCatchClear", "default" - ID 48
+20:06:21:032 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDFC, Val 0x00000001, "DAP Read Memory (32 bit) - Success" - ID 101
+20:06:21:033 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x00000001, "DAP Write Memory (32 bit) - Success" - ID 102
+20:06:21:033 (31/05/2024) - END SEQUENCE "ResetCatchClear", "success" - ID 49
+20:06:21:034 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x01000001, "DAP Write Memory (32 bit) - Success" - ID 103
+20:06:21:257 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001008, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 104
+20:06:21:257 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000100C, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 105
+20:06:21:258 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001010, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 106
+20:06:21:258 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001014, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 107
+20:06:21:260 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001018, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 108
+20:06:21:282 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 109
+20:06:21:533 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 110
+20:06:21:784 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 111
+20:06:22:035 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 112
+20:06:22:286 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 113
+20:06:22:537 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 114
+20:06:22:787 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 115
+20:06:23:038 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 116
+20:06:23:288 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 117
+20:06:23:539 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 118
+20:06:23:790 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 119
+20:06:24:041 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 120
+20:06:24:292 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 121
+20:06:24:542 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 122
+20:06:24:619 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 123
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:24:698 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08000328, End Addr 0x08000329, "DAP Read Memory Block - Success" - ID 124
+  Item #0, AP 0, Addr 0x08000328, Value 0x4809
+20:06:24:715 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 125
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:24:781 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001008, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 126
+20:06:24:782 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000100C, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 127
+20:06:24:782 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001010, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 128
+20:06:24:783 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001014, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 129
+20:06:24:785 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE0001018, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 130
+20:06:24:799 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0001020, End Addr 0xE000105F, "DAP Write Memory Block - Success" - ID 131
+  Item #0, AP 0, Addr 0xE0001020, Value 0x00000000
+  Item #1, AP 0, Addr 0xE0001024, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0001028, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000102C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0001030, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0001034, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0001038, Value 0x00000000
+  Item #7, AP 0, Addr 0xE000103C, Value 0x00000000
+  Item #8, AP 0, Addr 0xE0001040, Value 0x00000000
+  Item #9, AP 0, Addr 0xE0001044, Value 0x00000000
+  Item #10, AP 0, Addr 0xE0001048, Value 0x00000000
+  Item #11, AP 0, Addr 0xE000104C, Value 0x00000000
+  Item #12, AP 0, Addr 0xE0001050, Value 0x00000000
+  Item #13, AP 0, Addr 0xE0001054, Value 0x00000000
+  Item #14, AP 0, Addr 0xE0001058, Value 0x00000000
+  Item #15, AP 0, Addr 0xE000105C, Value 0x00000000
+20:06:24:800 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000ED30, Val 0x0000001F, "DAP Write Memory (32 bit) - Success" - ID 132
+20:06:24:801 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDF0, Val 0xA05F0001, "DAP Write Memory (32 bit) - Success" - ID 133
+20:06:24:801 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 134
+20:06:24:802 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01030003, "DAP Read Memory (32 bit) - Success" - ID 135
+20:06:24:862 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0002000, End Addr 0xE000201F, "DAP Write Memory Block - Success" - ID 136
+  Item #0, AP 0, Addr 0xE0002000, Value 0x00000002
+  Item #1, AP 0, Addr 0xE0002004, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0002008, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000200C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0002010, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0002014, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0002018, Value 0x00000000
+  Item #7, AP 0, Addr 0xE000201C, Value 0x00000000
+20:06:24:868 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0001020, End Addr 0xE000105F, "DAP Write Memory Block - Success" - ID 137
+  Item #0, AP 0, Addr 0xE0001020, Value 0x00000000
+  Item #1, AP 0, Addr 0xE0001024, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0001028, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000102C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0001030, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0001034, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0001038, Value 0x00000000
+  Item #7, AP 0, Addr 0xE000103C, Value 0x00000000
+  Item #8, AP 0, Addr 0xE0001040, Value 0x00000000
+  Item #9, AP 0, Addr 0xE0001044, Value 0x00000000
+  Item #10, AP 0, Addr 0xE0001048, Value 0x00000000
+  Item #11, AP 0, Addr 0xE000104C, Value 0x00000000
+  Item #12, AP 0, Addr 0xE0001050, Value 0x00000000
+  Item #13, AP 0, Addr 0xE0001054, Value 0x00000000
+  Item #14, AP 0, Addr 0xE0001058, Value 0x00000000
+  Item #15, AP 0, Addr 0xE000105C, Value 0x00000000
+20:06:24:869 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000ED30, Val 0x00000002, "DAP Read Memory (32 bit) - Success" - ID 138
+20:06:24:870 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001028, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 139
+20:06:24:870 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001038, Val 0x00000200, "DAP Read Memory (32 bit) - Success" - ID 140
+20:06:24:871 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001048, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 141
+20:06:24:872 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001058, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 142
+20:06:24:918 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 143
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:24:936 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005954, End Addr 0x0800598F, "DAP Read Memory Block - Success" - ID 144
+  Item #0, AP 0, Addr 0x08005954, Value 0xF9B00A1A
+  Item #1, AP 0, Addr 0x08005958, Value 0xFB922002
+  Item #2, AP 0, Addr 0x0800595C, Value 0x3291F2F1
+  Item #3, AP 0, Addr 0x08005960, Value 0x2A10EE00
+  Item #4, AP 0, Addr 0x08005964, Value 0x0AC0EEB8
+  Item #5, AP 0, Addr 0x08005968, Value 0xFF9CF7FF
+  Item #6, AP 0, Addr 0x0800596C, Value 0x0A21EEC0
+  Item #7, AP 0, Addr 0x08005970, Value 0x1A32ED9F
+  Item #8, AP 0, Addr 0x08005974, Value 0x0A82EE20
+  Item #9, AP 0, Addr 0x08005978, Value 0x0A31EDDF
+  Item #10, AP 0, Addr 0x0800597C, Value 0x0A38ED84
+  Item #11, AP 0, Addr 0x08005980, Value 0x0002F9B0
+  Item #12, AP 0, Addr 0x08005984, Value 0xF0F1FB90
+  Item #13, AP 0, Addr 0x08005988, Value 0xEE003087
+  Item #14, AP 0, Addr 0x0800598C, Value 0xEEB80A10
+20:06:24:938 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005990, End Addr 0x080059CB, "DAP Read Memory Block - Success" - ID 145
+  Item #0, AP 0, Addr 0x08005990, Value 0xF7FF0AC0
+  Item #1, AP 0, Addr 0x08005994, Value 0xEEC0FF87
+  Item #2, AP 0, Addr 0x08005998, Value 0xED9F0A21
+  Item #3, AP 0, Addr 0x0800599C, Value 0xEDDF8A2A
+  Item #4, AP 0, Addr 0x080059A0, Value 0xED9F8A2A
+  Item #5, AP 0, Addr 0x080059A4, Value 0xEEF09A2A
+  Item #6, AP 0, Addr 0x080059A8, Value 0xEEB01A48
+  Item #7, AP 0, Addr 0x080059AC, Value 0x21011A68
+  Item #8, AP 0, Addr 0x080059B0, Value 0xEE204827
+  Item #9, AP 0, Addr 0x080059B4, Value 0xEEB80A82
+  Item #10, AP 0, Addr 0x080059B8, Value 0xEEF02A00
+  Item #11, AP 0, Addr 0x080059BC, Value 0xED840A49
+  Item #12, AP 0, Addr 0x080059C0, Value 0xED940A56
+  Item #13, AP 0, Addr 0x080059C4, Value 0xF7FD0A1A
+  Item #14, AP 0, Addr 0x080059C8, Value 0x2002FACF
+20:06:24:941 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x080059CC, End Addr 0x08005A07, "DAP Read Memory Block - Success" - ID 146
+  Item #0, AP 0, Addr 0x080059CC, Value 0xF956F000
+  Item #1, AP 0, Addr 0x080059D0, Value 0x0A38ED94
+  Item #2, AP 0, Addr 0x080059D4, Value 0x2A00EEB8
+  Item #3, AP 0, Addr 0x080059D8, Value 0x1A48EEF0
+  Item #4, AP 0, Addr 0x080059DC, Value 0x1A68EEB0
+  Item #5, AP 0, Addr 0x080059E0, Value 0x0A49EEF0
+  Item #6, AP 0, Addr 0x080059E4, Value 0x481A2102
+  Item #7, AP 0, Addr 0x080059E8, Value 0xFABEF7FD
+  Item #8, AP 0, Addr 0x080059EC, Value 0xF0002002
+  Item #9, AP 0, Addr 0x080059F0, Value 0xED94F945
+  Item #10, AP 0, Addr 0x080059F4, Value 0xEEB80A56
+  Item #11, AP 0, Addr 0x080059F8, Value 0xEEF02A00
+  Item #12, AP 0, Addr 0x080059FC, Value 0xEEB01A48
+  Item #13, AP 0, Addr 0x08005A00, Value 0xEEF01A68
+  Item #14, AP 0, Addr 0x08005A04, Value 0x21030A49
+20:06:24:943 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005A08, End Addr 0x08005A43, "DAP Read Memory Block - Success" - ID 147
+  Item #0, AP 0, Addr 0x08005A08, Value 0xF7FD4811
+  Item #1, AP 0, Addr 0x08005A0C, Value 0xECBDFAAD
+  Item #2, AP 0, Addr 0x08005A10, Value 0x20028B04
+  Item #3, AP 0, Addr 0x08005A14, Value 0x4010E8BD
+  Item #4, AP 0, Addr 0x08005A18, Value 0xB930F000
+  Item #5, AP 0, Addr 0x08005A1C, Value 0x200044B8
+  Item #6, AP 0, Addr 0x08005A20, Value 0x42E20000
+  Item #7, AP 0, Addr 0x08005A24, Value 0x42A20000
+  Item #8, AP 0, Addr 0x08005A28, Value 0x43340000
+  Item #9, AP 0, Addr 0x08005A2C, Value 0xC0490FDB
+  Item #10, AP 0, Addr 0x08005A30, Value 0x20004308
+  Item #11, AP 0, Addr 0x08005A34, Value 0x43310000
+  Item #12, AP 0, Addr 0x08005A38, Value 0x43110000
+  Item #13, AP 0, Addr 0x08005A3C, Value 0x43270000
+  Item #14, AP 0, Addr 0x08005A40, Value 0x43070000
+20:06:24:945 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005A52, End Addr 0x08005A53, "DAP Read Memory Block - Success" - ID 148
+  Item #0, AP 0, Addr 0x08005A52, Value 0x2000
+20:06:24:948 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005A54, End Addr 0x08005A8F, "DAP Read Memory Block - Success" - ID 149
+  Item #0, AP 0, Addr 0x08005A54, Value 0xFDA4F7FB
+  Item #1, AP 0, Addr 0x08005A58, Value 0xFE3CF7FD
+  Item #2, AP 0, Addr 0x08005A5C, Value 0xFB86F7FD
+  Item #3, AP 0, Addr 0x08005A60, Value 0xFB40F7FD
+  Item #4, AP 0, Addr 0x08005A64, Value 0xFAFAF7FD
+  Item #5, AP 0, Addr 0x08005A68, Value 0xFB1AF7FD
+  Item #6, AP 0, Addr 0x08005A6C, Value 0xFBACF7FD
+  Item #7, AP 0, Addr 0x08005A70, Value 0xFBFEF7FD
+  Item #8, AP 0, Addr 0x08005A74, Value 0xFBE0F7FD
+  Item #9, AP 0, Addr 0x08005A78, Value 0x21052200
+  Item #10, AP 0, Addr 0x08005A7C, Value 0xF7FB2014
+  Item #11, AP 0, Addr 0x08005A80, Value 0x2014FDF3
+  Item #12, AP 0, Addr 0x08005A84, Value 0xFDE2F7FB
+  Item #13, AP 0, Addr 0x08005A88, Value 0xFEE0F7FF
+  Item #14, AP 0, Addr 0x08005A8C, Value 0xFB56F000
+20:06:25:110 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 150
+20:06:25:360 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 151
+20:06:25:543 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005A54, End Addr 0x08005A55, "DAP Read Memory Block - Success" - ID 152
+  Item #0, AP 0, Addr 0x08005A54, Value 0xF7FB
+20:06:25:547 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0002000, End Addr 0xE000201F, "DAP Write Memory Block - Success" - ID 153
+  Item #0, AP 0, Addr 0xE0002000, Value 0x00000003
+  Item #1, AP 0, Addr 0xE0002004, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0002008, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000200C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0002010, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0002014, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0002018, Value 0x00000000
+  Item #7, AP 0, Addr 0xE000201C, Value 0x00000000
+20:06:25:551 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0001020, End Addr 0xE000105F, "DAP Write Memory Block - Success" - ID 154
+  Item #0, AP 0, Addr 0xE0001020, Value 0x00000000
+  Item #1, AP 0, Addr 0xE0001024, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0001028, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000102C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0001030, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0001034, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0001038, Value 0x00000200
+  Item #7, AP 0, Addr 0xE000103C, Value 0x00000000
+  Item #8, AP 0, Addr 0xE0001040, Value 0x00000000
+  Item #9, AP 0, Addr 0xE0001044, Value 0x00000000
+  Item #10, AP 0, Addr 0xE0001048, Value 0x00000000
+  Item #11, AP 0, Addr 0xE000104C, Value 0x00000000
+  Item #12, AP 0, Addr 0xE0001050, Value 0x00000000
+  Item #13, AP 0, Addr 0xE0001054, Value 0x00000000
+  Item #14, AP 0, Addr 0xE0001058, Value 0x00000000
+  Item #15, AP 0, Addr 0xE000105C, Value 0x00000000
+20:06:25:553 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000ED30, Val 0x0000001F, "DAP Write Memory (32 bit) - Success" - ID 155
+20:06:25:554 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDF0, Val 0xA05F0001, "DAP Write Memory (32 bit) - Success" - ID 156
+20:06:25:554 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 157
+20:06:25:555 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 158
+20:06:25:605 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 159
+20:06:25:657 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 160
+20:06:25:708 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 161
+20:06:25:759 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 162
+20:06:25:811 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 163
+20:06:25:862 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 164
+20:06:25:912 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 165
+20:06:25:963 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 166
+20:06:26:014 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 167
+20:06:26:065 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 168
+20:06:26:115 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 169
+20:06:26:116 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x05A24E60, "DAP Read Memory (32 bit) - Success" - ID 170
+20:06:26:121 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 171
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:26:177 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 172
+20:06:26:243 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 173
+20:06:26:294 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 174
+20:06:26:345 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 175
+20:06:26:396 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 176
+20:06:26:448 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 177
+20:06:26:500 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 178
+20:06:26:537 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 179
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:26:539 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 180
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:26:542 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 181
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:26:544 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 182
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:26:546 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 183
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:26:548 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 184
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:26:550 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 185
+20:06:26:560 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 186
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:26:562 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 187
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:26:565 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 188
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:26:601 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 189
+20:06:26:652 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 190
+20:06:26:653 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x0B020ACA, "DAP Read Memory (32 bit) - Success" - ID 191
+20:06:26:657 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 192
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:26:659 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 193
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:26:663 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 194
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:26:665 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 195
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:26:721 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 196
+20:06:26:771 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 197
+20:06:26:826 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 198
+20:06:26:877 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 199
+20:06:26:928 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 200
+20:06:26:980 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 201
+20:06:27:035 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 202
+20:06:27:085 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 203
+20:06:27:136 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 204
+20:06:27:187 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 205
+20:06:27:189 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x105E2310, "DAP Read Memory (32 bit) - Success" - ID 206
+20:06:27:195 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 207
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:27:197 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 208
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:27:199 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 209
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:27:201 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 210
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:27:259 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 211
+20:06:27:309 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 212
+20:06:27:360 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 213
+20:06:27:415 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 214
+20:06:27:465 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 215
+20:06:27:516 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 216
+20:06:27:567 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 217
+20:06:27:619 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 218
+20:06:27:669 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 219
+20:06:27:720 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 220
+20:06:27:721 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x15B49BA8, "DAP Read Memory (32 bit) - Success" - ID 221
+20:06:27:726 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 222
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:27:728 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 223
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:27:730 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 224
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:27:732 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 225
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:27:789 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 226
+20:06:27:840 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 227
+20:06:27:891 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 228
+20:06:27:942 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 229
+20:06:27:992 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 230
+20:06:28:043 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 231
+20:06:28:093 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 232
+20:06:28:144 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 233
+20:06:28:194 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 234
+20:06:28:246 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 235
+20:06:28:247 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x1AF8CDE8, "DAP Read Memory (32 bit) - Success" - ID 236
+20:06:28:253 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 237
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:28:255 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 238
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:28:258 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 239
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:28:261 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 240
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:28:318 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 241
+20:06:28:368 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 242
+20:06:28:420 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 243
+20:06:28:471 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 244
+20:06:28:521 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 245
+20:06:28:572 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 246
+20:06:28:623 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 247
+20:06:28:673 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 248
+20:06:28:724 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 249
+20:06:28:774 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 250
+20:06:28:775 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x2042DCE8, "DAP Read Memory (32 bit) - Success" - ID 251
+20:06:28:782 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 252
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:28:785 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 253
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:28:789 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 254
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:28:791 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 255
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:28:857 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 256
+20:06:28:908 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 257
+20:06:28:958 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 258
+20:06:29:011 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 259
+20:06:29:064 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 260
+20:06:29:114 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 261
+20:06:29:164 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 262
+20:06:29:215 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 263
+20:06:29:266 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 264
+20:06:29:317 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 265
+20:06:29:318 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x25B21407, "DAP Read Memory (32 bit) - Success" - ID 266
+20:06:29:323 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 267
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:29:325 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 268
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:29:327 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 269
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:29:328 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 270
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:29:386 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 271
+20:06:29:437 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 272
+20:06:29:487 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 273
+20:06:29:538 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 274
+20:06:29:588 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 275
+20:06:29:639 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 276
+20:06:29:691 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 277
+20:06:29:741 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 278
+20:06:29:792 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 279
+20:06:29:843 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 280
+20:06:29:844 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x2AF6676A, "DAP Read Memory (32 bit) - Success" - ID 281
+20:06:29:855 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 282
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:29:858 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 283
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:29:860 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 284
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:29:862 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 285
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:29:920 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 286
+20:06:29:972 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 287
+20:06:30:023 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 288
+20:06:30:073 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 289
+20:06:30:124 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 290
+20:06:30:175 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 291
+20:06:30:227 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 292
+20:06:30:277 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 293
+20:06:30:330 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 294
+20:06:30:380 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 295
+20:06:30:381 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x3057E230, "DAP Read Memory (32 bit) - Success" - ID 296
+20:06:30:386 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 297
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:30:388 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 298
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:30:391 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 299
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:30:393 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 300
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:30:450 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 301
+20:06:30:502 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 302
+20:06:30:553 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 303
+20:06:30:604 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 304
+20:06:30:655 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 305
+20:06:30:707 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 306
+20:06:30:758 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 307
+20:06:30:808 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 308
+20:06:30:858 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 309
+20:06:30:909 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 310
+20:06:30:910 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x35A46C15, "DAP Read Memory (32 bit) - Success" - ID 311
+20:06:30:924 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 312
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:30:926 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 313
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:30:929 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 314
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:30:931 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 315
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:30:992 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 316
+20:06:31:043 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 317
+20:06:31:093 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 318
+20:06:31:144 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 319
+20:06:31:195 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 320
+20:06:31:246 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 321
+20:06:31:296 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 322
+20:06:31:347 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 323
+20:06:31:398 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 324
+20:06:31:449 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 325
+20:06:31:450 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x3B0A7149, "DAP Read Memory (32 bit) - Success" - ID 326
+20:06:31:454 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 327
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:31:456 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 328
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:31:459 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 329
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:31:461 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 330
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:31:517 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 331
+20:06:31:568 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 332
+20:06:31:618 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 333
+20:06:31:669 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 334
+20:06:31:720 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 335
+20:06:31:771 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 336
+20:06:31:821 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 337
+20:06:31:871 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 338
+20:06:31:923 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 339
+20:06:31:974 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 340
+20:06:31:974 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x404D3A34, "DAP Read Memory (32 bit) - Success" - ID 341
+20:06:31:980 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 342
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:31:982 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 343
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:31:984 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 344
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:31:986 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 345
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:32:044 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 346
+20:06:32:094 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 347
+20:06:32:145 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 348
+20:06:32:196 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 349
+20:06:32:247 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 350
+20:06:32:299 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 351
+20:06:32:350 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 352
+20:06:32:401 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 353
+20:06:32:452 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 354
+20:06:32:502 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 355
+20:06:32:503 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x4598A4DF, "DAP Read Memory (32 bit) - Success" - ID 356
+20:06:32:509 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 357
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:32:511 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 358
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:32:513 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 359
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:32:515 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 360
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:32:571 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 361
+20:06:32:622 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 362
+20:06:32:674 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 363
+20:06:32:724 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 364
+20:06:32:774 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 365
+20:06:32:825 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 366
+20:06:32:875 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 367
+20:06:32:926 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 368
+20:06:32:977 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 369
+20:06:33:028 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 370
+20:06:33:029 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x4ADB9AB1, "DAP Read Memory (32 bit) - Success" - ID 371
+20:06:33:037 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 372
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:33:040 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 373
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:33:042 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 374
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:33:044 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 375
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:33:100 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 376
+20:06:33:150 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 377
+20:06:33:200 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 378
+20:06:33:252 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 379
+20:06:33:302 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 380
+20:06:33:352 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 381
+20:06:33:403 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 382
+20:06:33:455 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 383
+20:06:33:506 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 384
+20:06:33:558 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 385
+20:06:33:559 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x502B7E50, "DAP Read Memory (32 bit) - Success" - ID 386
+20:06:33:564 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 387
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:33:566 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 388
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:33:568 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 389
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:33:571 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 390
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:33:626 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 391
+20:06:33:676 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 392
+20:06:33:727 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 393
+20:06:33:778 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 394
+20:06:33:829 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 395
+20:06:33:880 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 396
+20:06:33:931 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 397
+20:06:33:982 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 398
+20:06:34:032 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 399
+20:06:34:082 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 400
+20:06:34:083 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x556BCEF4, "DAP Read Memory (32 bit) - Success" - ID 401
+20:06:34:089 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 402
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:34:091 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 403
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:34:094 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 404
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:34:096 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 405
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:34:152 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 406
+20:06:34:202 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 407
+20:06:34:253 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 408
+20:06:34:303 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 409
+20:06:34:355 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 410
+20:06:34:405 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 411
+20:06:34:457 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 412
+20:06:34:508 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 413
+20:06:34:561 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 414
+20:06:34:615 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 415
+20:06:34:615 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x5ABFC47E, "DAP Read Memory (32 bit) - Success" - ID 416
+20:06:34:620 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 417
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:34:622 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 418
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:34:625 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 419
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:34:627 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 420
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:34:683 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 421
+20:06:34:733 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 422
+20:06:34:784 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 423
+20:06:34:836 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 424
+20:06:34:886 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 425
+20:06:34:939 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 426
+20:06:34:990 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 427
+20:06:35:041 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 428
+20:06:35:092 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 429
+20:06:35:142 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 430
+20:06:35:143 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x6008E1C7, "DAP Read Memory (32 bit) - Success" - ID 431
+20:06:35:149 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 432
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:35:151 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 433
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:35:153 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 434
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:35:155 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 435
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:35:211 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 436
+20:06:35:262 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 437
+20:06:35:313 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 438
+20:06:35:364 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 439
+20:06:35:415 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 440
+20:06:35:466 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 441
+20:06:35:516 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 442
+20:06:35:567 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 443
+20:06:35:617 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 444
+20:06:35:668 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 445
+20:06:35:669 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x654C2EBA, "DAP Read Memory (32 bit) - Success" - ID 446
+20:06:35:674 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 447
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:35:676 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 448
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:35:679 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 449
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:35:681 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 450
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:35:736 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 451
+20:06:35:787 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 452
+20:06:35:838 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 453
+20:06:35:889 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 454
+20:06:35:940 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 455
+20:06:35:990 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 456
+20:06:36:041 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 457
+20:06:36:091 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 458
+20:06:36:152 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 459
+20:06:36:202 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 460
+20:06:36:203 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x6AA5D414, "DAP Read Memory (32 bit) - Success" - ID 461
+20:06:36:208 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 462
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:36:210 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 463
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:36:212 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 464
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:36:214 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 465
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:36:270 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 466
+20:06:36:322 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 467
+20:06:36:374 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 468
+20:06:36:424 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 469
+20:06:36:475 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 470
+20:06:36:525 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 471
+20:06:36:576 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 472
+20:06:36:626 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 473
+20:06:36:676 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 474
+20:06:36:727 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 475
+20:06:36:728 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x6FE7A997, "DAP Read Memory (32 bit) - Success" - ID 476
+20:06:36:733 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 477
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:36:735 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 478
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:36:737 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 479
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:36:739 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 480
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:36:796 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 481
+20:06:36:847 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 482
+20:06:36:898 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 483
+20:06:36:949 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 484
+20:06:36:999 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 485
+20:06:37:049 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 486
+20:06:37:100 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 487
+20:06:37:150 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 488
+20:06:37:201 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 489
+20:06:37:252 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 490
+20:06:37:252 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x7527DEC7, "DAP Read Memory (32 bit) - Success" - ID 491
+20:06:37:257 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 492
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:37:259 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 493
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:37:261 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 494
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:37:263 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 495
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:37:319 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 496
+20:06:37:369 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 497
+20:06:37:419 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 498
+20:06:37:469 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 499
+20:06:37:520 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 500
+20:06:37:570 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 501
+20:06:37:620 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 502
+20:06:37:671 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 503
+20:06:37:723 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 504
+20:06:37:774 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 505
+20:06:37:775 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x7A6360DC, "DAP Read Memory (32 bit) - Success" - ID 506
+20:06:37:783 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 507
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:37:786 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 508
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:37:788 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 509
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:37:790 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 510
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:37:854 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 511
+20:06:37:905 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 512
+20:06:37:957 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 513
+20:06:38:009 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 514
+20:06:38:059 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 515
+20:06:38:109 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 516
+20:06:38:159 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 517
+20:06:38:210 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 518
+20:06:38:260 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 519
+20:06:38:311 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 520
+20:06:38:312 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x7FC2DF19, "DAP Read Memory (32 bit) - Success" - ID 521
+20:06:38:317 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 522
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:38:318 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 523
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:38:321 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 524
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:38:323 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 525
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:38:379 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 526
+20:06:38:434 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 527
+20:06:38:484 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 528
+20:06:38:536 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 529
+20:06:38:587 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 530
+20:06:38:638 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 531
+20:06:38:689 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 532
+20:06:38:741 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 533
+20:06:38:791 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 534
+20:06:38:842 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 535
+20:06:38:843 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x851529F5, "DAP Read Memory (32 bit) - Success" - ID 536
+20:06:38:851 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 537
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:38:853 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 538
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:38:855 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 539
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:38:857 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 540
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:38:921 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 541
+20:06:38:971 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 542
+20:06:39:021 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 543
+20:06:39:072 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 544
+20:06:39:124 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 545
+20:06:39:174 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 546
+20:06:39:226 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 547
+20:06:39:276 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 548
+20:06:39:326 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 549
+20:06:39:376 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 550
+20:06:39:377 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x8A6EE53F, "DAP Read Memory (32 bit) - Success" - ID 551
+20:06:39:382 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 552
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:39:384 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 553
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:39:386 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 554
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:39:389 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 555
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:39:446 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 556
+20:06:39:496 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 557
+20:06:39:546 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 558
+20:06:39:598 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 559
+20:06:39:651 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 560
+20:06:39:702 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 561
+20:06:39:752 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 562
+20:06:39:802 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 563
+20:06:39:854 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 564
+20:06:39:904 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 565
+20:06:39:905 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x8FB89891, "DAP Read Memory (32 bit) - Success" - ID 566
+20:06:39:914 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 567
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:39:916 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 568
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:39:918 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 569
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:39:921 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 570
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:39:978 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 571
+20:06:40:029 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 572
+20:06:40:080 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 573
+20:06:40:130 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 574
+20:06:40:181 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 575
+20:06:40:232 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 576
+20:06:40:283 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 577
+20:06:40:333 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 578
+20:06:40:384 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 579
+20:06:40:435 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 580
+20:06:40:436 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x9508E8B2, "DAP Read Memory (32 bit) - Success" - ID 581
+20:06:40:440 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 582
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:40:443 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 583
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:40:449 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 584
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:40:452 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 585
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:40:508 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 586
+20:06:40:559 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 587
+20:06:40:610 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 588
+20:06:40:661 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 589
+20:06:40:713 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 590
+20:06:40:764 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 591
+20:06:40:816 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 592
+20:06:40:866 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 593
+20:06:40:916 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 594
+20:06:40:966 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 595
+20:06:40:968 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x9A5C0D6E, "DAP Read Memory (32 bit) - Success" - ID 596
+20:06:40:973 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 597
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:40:975 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 598
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:40:978 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 599
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:40:980 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 600
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:41:036 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 601
+20:06:41:087 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 602
+20:06:41:138 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 603
+20:06:41:189 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 604
+20:06:41:239 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 605
+20:06:41:289 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 606
+20:06:41:341 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 607
+20:06:41:392 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 608
+20:06:41:443 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 609
+20:06:41:493 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 610
+20:06:41:494 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0x9FA248F2, "DAP Read Memory (32 bit) - Success" - ID 611
+20:06:41:499 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 612
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:41:502 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 613
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:41:504 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 614
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:41:506 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 615
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:41:561 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 616
+20:06:41:612 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 617
+20:06:41:663 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 618
+20:06:41:714 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 619
+20:06:41:764 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 620
+20:06:41:814 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 621
+20:06:41:865 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 622
+20:06:41:916 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 623
+20:06:41:968 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 624
+20:06:42:019 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 625
+20:06:42:019 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0xA4E3E780, "DAP Read Memory (32 bit) - Success" - ID 626
+20:06:42:024 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 627
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:42:026 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 628
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:42:028 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 629
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:42:031 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 630
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:42:088 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 631
+20:06:42:138 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 632
+20:06:42:189 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 633
+20:06:42:240 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 634
+20:06:42:290 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 635
+20:06:42:341 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 636
+20:06:42:391 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 637
+20:06:42:441 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 638
+20:06:42:492 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 639
+20:06:42:542 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 640
+20:06:42:543 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0xAA235108, "DAP Read Memory (32 bit) - Success" - ID 641
+20:06:42:549 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 642
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:42:551 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 643
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:42:553 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 644
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:42:557 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 645
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:42:613 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 646
+20:06:42:667 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 647
+20:06:42:718 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 648
+20:06:42:769 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 649
+20:06:42:819 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 650
+20:06:42:871 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 651
+20:06:42:921 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 652
+20:06:42:973 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 653
+20:06:43:023 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 654
+20:06:43:075 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 655
+20:06:43:076 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0xAF774441, "DAP Read Memory (32 bit) - Success" - ID 656
+20:06:43:080 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 657
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:43:082 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 658
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:43:084 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 659
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:43:086 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 660
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:43:141 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 661
+20:06:43:192 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 662
+20:06:43:243 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 663
+20:06:43:293 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 664
+20:06:43:344 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 665
+20:06:43:395 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 666
+20:06:43:445 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 667
+20:06:43:496 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 668
+20:06:43:546 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 669
+20:06:43:596 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 670
+20:06:43:597 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0xB4B14B97, "DAP Read Memory (32 bit) - Success" - ID 671
+20:06:43:603 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 672
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:43:605 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 673
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:43:607 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 674
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:43:609 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 675
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:43:665 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 676
+20:06:43:716 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 677
+20:06:43:767 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 678
+20:06:43:818 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 679
+20:06:43:868 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 680
+20:06:43:919 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 681
+20:06:43:969 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 682
+20:06:44:019 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 683
+20:06:44:071 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 684
+20:06:44:122 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 685
+20:06:44:123 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0xB9F4E128, "DAP Read Memory (32 bit) - Success" - ID 686
+20:06:44:132 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 687
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:44:134 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 688
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:44:136 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 689
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:44:138 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 690
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:44:193 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 691
+20:06:44:244 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 692
+20:06:44:295 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 693
+20:06:44:349 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 694
+20:06:44:399 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 695
+20:06:44:450 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 696
+20:06:44:501 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 697
+20:06:44:551 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 698
+20:06:44:601 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 699
+20:06:44:651 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 700
+20:06:44:652 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0xBF424A60, "DAP Read Memory (32 bit) - Success" - ID 701
+20:06:44:657 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 702
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:44:659 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 703
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:44:661 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 704
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:44:664 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 705
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:44:722 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 706
+20:06:44:772 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 707
+20:06:44:826 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 708
+20:06:44:876 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 709
+20:06:44:927 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 710
+20:06:44:978 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 711
+20:06:45:029 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 712
+20:06:45:080 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 713
+20:06:45:131 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 714
+20:06:45:182 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 715
+20:06:45:183 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001004, Val 0xC492FCDD, "DAP Read Memory (32 bit) - Success" - ID 716
+20:06:45:188 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 717
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:45:190 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 718
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:45:192 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 719
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:45:194 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 720
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:45:251 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 721
+20:06:45:303 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 722
+20:06:45:354 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 723
+20:06:45:405 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 724
+20:06:45:456 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 725
+20:06:45:506 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01010001, "DAP Read Memory (32 bit) - Success" - ID 726
+20:06:45:523 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDF0, Val 0xA05F0003, "DAP Write Memory (32 bit) - Success" - ID 727
+20:06:45:523 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x01030003, "DAP Read Memory (32 bit) - Success" - ID 728
+20:06:45:524 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 729
+20:06:45:530 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0002000, End Addr 0xE000201F, "DAP Write Memory Block - Success" - ID 730
+  Item #0, AP 0, Addr 0xE0002000, Value 0x00000002
+  Item #1, AP 0, Addr 0xE0002004, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0002008, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000200C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0002010, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0002014, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0002018, Value 0x00000000
+  Item #7, AP 0, Addr 0xE000201C, Value 0x00000000
+20:06:45:533 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0001020, End Addr 0xE000105F, "DAP Write Memory Block - Success" - ID 731
+  Item #0, AP 0, Addr 0xE0001020, Value 0x00000000
+  Item #1, AP 0, Addr 0xE0001024, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0001028, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000102C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0001030, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0001034, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0001038, Value 0x00000200
+  Item #7, AP 0, Addr 0xE000103C, Value 0x00000000
+  Item #8, AP 0, Addr 0xE0001040, Value 0x00000000
+  Item #9, AP 0, Addr 0xE0001044, Value 0x00000000
+  Item #10, AP 0, Addr 0xE0001048, Value 0x00000000
+  Item #11, AP 0, Addr 0xE000104C, Value 0x00000000
+  Item #12, AP 0, Addr 0xE0001050, Value 0x00000000
+  Item #13, AP 0, Addr 0xE0001054, Value 0x00000000
+  Item #14, AP 0, Addr 0xE0001058, Value 0x00000000
+  Item #15, AP 0, Addr 0xE000105C, Value 0x00000000
+20:06:45:534 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000ED30, Val 0x00000001, "DAP Read Memory (32 bit) - Success" - ID 732
+20:06:45:537 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001028, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 733
+20:06:45:537 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001038, Val 0x00000200, "DAP Read Memory (32 bit) - Success" - ID 734
+20:06:45:538 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001048, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 735
+20:06:45:539 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE0001058, Val 0x00000000, "DAP Read Memory (32 bit) - Success" - ID 736
+20:06:45:559 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x00000000, End Addr 0x00000003, "DAP Read Memory Block - Success" - ID 737
+  Item #0, AP 0, Addr 0x00000000, Value 0x20006F10
+20:06:45:566 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x2000431C, End Addr 0x2000431F, "DAP Read Memory Block - Success" - ID 738
+  Item #0, AP 0, Addr 0x2000431C, Value 0x00000000
+20:06:45:570 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC4, End Addr 0x20004CC7, "DAP Read Memory Block - Success" - ID 739
+  Item #0, AP 0, Addr 0x20004CC4, Value 0x00000000
+20:06:45:572 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CC8, End Addr 0x20004CCB, "DAP Read Memory Block - Success" - ID 740
+  Item #0, AP 0, Addr 0x20004CC8, Value 0x00000000
+20:06:45:574 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x20004CCC, End Addr 0x20004CCF, "DAP Read Memory Block - Success" - ID 741
+  Item #0, AP 0, Addr 0x20004CCC, Value 0x00000000
+20:06:45:583 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005EDA, End Addr 0x08005EDB, "DAP Read Memory Block - Success" - ID 742
+  Item #0, AP 0, Addr 0x08005EDA, Value 0x4628
+20:06:45:586 (31/05/2024) - READ  MEM BLOCK Access, AP 0, Start Addr 0x08005EDC, End Addr 0x08005F17, "DAP Read Memory Block - Success" - ID 743
+  Item #0, AP 0, Addr 0x08005EDC, Value 0xFFA4F7FF
+  Item #1, AP 0, Addr 0x08005EE0, Value 0x28006860
+  Item #2, AP 0, Addr 0x08005EE4, Value 0x6838D1EA
+  Item #3, AP 0, Addr 0x08005EE8, Value 0xD9F92801
+  Item #4, AP 0, Addr 0x08005EEC, Value 0x8000F8C9
+  Item #5, AP 0, Addr 0x08005EF0, Value 0x8F4FF3BF
+  Item #6, AP 0, Addr 0x08005EF4, Value 0x8F6FF3BF
+  Item #7, AP 0, Addr 0x08005EF8, Value 0x0000E7F2
+  Item #8, AP 0, Addr 0x08005EFC, Value 0x20000688
+  Item #9, AP 0, Addr 0x08005F00, Value 0x2000001C
+  Item #10, AP 0, Addr 0x08005F04, Value 0xE000ED04
+  Item #11, AP 0, Addr 0x08005F08, Value 0x47F0E92D
+  Item #12, AP 0, Addr 0x08005F0C, Value 0xE9DD469A
+  Item #13, AP 0, Addr 0x08005F10, Value 0x46818409
+  Item #14, AP 0, Addr 0x08005F14, Value 0x0303F06F
+20:06:45:776 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 744
+20:06:46:028 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 745
+20:06:46:293 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 746
+20:06:46:544 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 747
+20:06:46:794 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 748
+20:06:47:045 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 749
+20:06:47:155 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 750
+20:06:47:413 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 751
+20:06:47:664 (31/05/2024) - READ  MEM Access, AP 0, Addr 0xE000EDF0, Val 0x00030003, "DAP Read Memory (32 bit) - Success" - ID 752
+20:06:47:676 (31/05/2024) - START SEQUENCE "DebugCoreStop", "default" - ID 50
+20:06:47:677 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDF0, Val 0xA05F0000, "DAP Write Memory (32 bit) - Success" - ID 753
+20:06:47:677 (31/05/2024) - WRITE MEM Access, AP 0, Addr 0xE000EDFC, Val 0x00000000, "DAP Write Memory (32 bit) - Success" - ID 754
+20:06:47:677 (31/05/2024) - END SEQUENCE "DebugCoreStop", "success" - ID 51
+20:06:47:677 (31/05/2024) - START SEQUENCE "StopTarget", "default" - ID 52
+20:06:47:679 (31/05/2024) - WRITE MEM BLOCK Access, AP 0, Start Addr 0xE0002000, End Addr 0xE000201F, "DAP Write Memory Block - Success" - ID 755
+  Item #0, AP 0, Addr 0xE0002000, Value 0x00000002
+  Item #1, AP 0, Addr 0xE0002004, Value 0x00000000
+  Item #2, AP 0, Addr 0xE0002008, Value 0x00000000
+  Item #3, AP 0, Addr 0xE000200C, Value 0x00000000
+  Item #4, AP 0, Addr 0xE0002010, Value 0x00000000
+  Item #5, AP 0, Addr 0xE0002014, Value 0x00000000
+  Item #6, AP 0, Addr 0xE0002018, Value 0x00000000
+  Item #7, AP 0, Addr 0xE000201C, Value 0x00000000
+20:06:47:679 (31/05/2024) - START SEQUENCE "_UnInitTrace", "default" - ID 53
+20:06:47:679 (31/05/2024) - END SEQUENCE "_UnInitTrace", "success" - ID 54
+20:06:47:680 (31/05/2024) - START SEQUENCE "DebugPortStop", "default" - ID 55
+20:06:47:680 (31/05/2024) - WRITE DP  Access, Addr 0x00000004, Val 0x00000000, "DAP Write DP - Success" - ID 756
+20:06:47:680 (31/05/2024) - END SEQUENCE "DebugPortStop", "success" - ID 56
+20:06:47:680 (31/05/2024) - START SEQUENCE "UnInitDebugger", "default" - ID 57
+20:06:47:682 (31/05/2024) - END SEQUENCE "UnInitDebugger", "success" - ID 58
+20:06:47:682 (31/05/2024) - START SEQUENCE "_UnInitDriver", "default" - ID 59
+20:06:47:682 (31/05/2024) - END SEQUENCE "_UnInitDriver", "success" - ID 60
+20:06:47:682 (31/05/2024) - END SEQUENCE "StopTarget", "success" - ID 61

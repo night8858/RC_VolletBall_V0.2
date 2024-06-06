@@ -1,10 +1,36 @@
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\D P J\ARM\ARMCC\Bin'
 Build target 'v_ball'
+compiling can_recv.c...
+..\applications\can_recv.c(55): warning:  #177-D: variable "send_mail_box"  was declared but never referenced
+      uint32_t send_mail_box;
+..\applications\can_recv.c(76): warning:  #177-D: variable "send_mail_box"  was declared but never referenced
+      uint32_t send_mail_box;
+..\applications\can_recv.c(192): warning:  #177-D: variable "v_int"  was declared but never referenced
+      int v_int = (RxDate[3] << 4) | (RxDate[4] >> 4);
+..\applications\can_recv.c(194): warning:  #177-D: variable "T_int"  was declared but never referenced
+      int T_int = RxDate[6];
+..\applications\can_recv.c: 4 warnings, 0 errors
+compiling ball_track.c...
+..\applications\ball_track.c(38): warning:  #1-D: last line of file ends without a newline
+  }
+..\applications\ball_track.c: 1 warning, 0 errors
 compiling usbd_cdc_if.c...
 compiling top_ctrl.c...
+..\applications\top_ctrl.c(110): warning:  #187-D: use of "=" where "==" may have been intended
+      if (ball_track_target.hit_falg = 1)  {angle = 660;}
+..\applications\top_ctrl.c: 1 warning, 0 errors
 compiling main.c...
+compiling remote_control.c...
+compiling chassis.c...
+..\applications\chassis.c(296): warning:  #111-D: statement is unreachable
+      motor_control.M3508_M5.serial_angle = 0;
+..\applications\chassis.c(298): warning:  #1-D: last line of file ends without a newline
+  }
+..\applications\chassis.c(102): warning:  #177-D: function "motor_ecd_to_angle_change"  was declared but never referenced
+  static fp32 motor_ecd_to_angle_change(uint16_t ecd, uint16_t offset_ecd)
+..\applications\chassis.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=27168 RO-data=544 RW-data=388 ZI-data=28044  
+Program Size: Code=27720 RO-data=544 RW-data=388 ZI-data=28140  
 FromELF: creating hex file...
-"v_ball\v_ball.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:03
+"v_ball\v_ball.axf" - 0 Error(s), 9 Warning(s).
+Build Time Elapsed:  00:00:09

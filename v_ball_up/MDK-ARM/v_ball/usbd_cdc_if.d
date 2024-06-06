@@ -49,6 +49,7 @@ v_ball\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_c
 v_ball\usbd_cdc_if.o: ../applications/top_ctrl.h
 v_ball\usbd_cdc_if.o: ../applications/can_recv.h
 v_ball\usbd_cdc_if.o: ../boards/struct_typedef.h
+v_ball\usbd_cdc_if.o: ../Core/Inc/can.h
 v_ball\usbd_cdc_if.o: ../applications/chassis.h
 v_ball\usbd_cdc_if.o: ../components/controller/pid.h
 v_ball\usbd_cdc_if.o: ../applications/remote_control.h

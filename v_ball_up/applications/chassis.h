@@ -152,6 +152,10 @@ void motor_feedback_update(motor_control_t *feedback_update);
 
 void M3508_motor_Pos_control(motor_3508_t *chassis_motor);
 
+void M3508_motor_Pos_init(motor_3508_t *chassis_motor);
+
 void Institution_Pos_Contorl(void);
+
+void M3508_M5_Pos_init(void);
 
 #endif 

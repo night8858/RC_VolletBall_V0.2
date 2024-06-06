@@ -7,13 +7,15 @@
 #include "chassis.h"
 #include "usart.h"
 #include "bsp_usart.h"
+#include "ball_track.h"
 
 #include "cmsis_os.h"
 #include "FreeRTOS.h"
 
-extern DM4340_motor_data_t DM4340_Date[3]; // 引用DM4340回传数据结构体
-extern motor_control_t motor_control;
-extern DBUSDecoding_Type DBUS_ReceiveData; // 底盘发来的dbus的数据
+extern DM4340_motor_data_t DM4340_Date[3];    // 引用DM4340回传数据结构体
+extern motor_control_t motor_control;         // 引用底盘电机控制结构体
+extern DBUSDecoding_Type DBUS_ReceiveData;    // 底盘发来的dbus的数据
+extern ball_track_target_t ball_track_target; // 球追踪目标点
 
 double T[3];     // T是引入万能公式的一个变量。令tan（THETA/2） = T,这样就可以将式子中相关与THETA的复杂运算给简化成用T表示。
 double THETA[3]; // THETA变量表示三个电机的角度，可由万能公式的T解出
@@ -29,20 +31,36 @@ double K[3] = {0};
 double U[3] = {0};
 double V[3] = {0};
 
-//球拍控制主循环
+// 球拍控制主循环
 void top_contorl_Task(void const *argument)
 {
-    DM_Motor_Init();
+
     motor_init(&motor_control);
+    M3508_M5_Pos_init();
+    DM_Motor_Init();
+    ball_track_pid_init();
     while (1)
     {
-        juggle_Mode();
-        Institution_Pos_Contorl();
-        osDelay(2);
+        //此处为手动操作模式
+        if (DBUS_ReceiveData.switch_left == 1 && DBUS_ReceiveData.switch_right == 1)
+        {
+            juggle_Mode();
+            Institution_Pos_Contorl();
+            osDelay(2);
+        }
+
+        //此处为自动模式
+        if (DBUS_ReceiveData.switch_left == 0 && DBUS_ReceiveData.switch_right == 0)
+        {
+            juggle_Mode_auto();
+            osDelay(2);
+        }
+        
+
     }
 }
 
-//达妙电机初始化
+// 达妙电机初始化
 void DM_Motor_Init(void)
 {
 
@@ -54,7 +72,6 @@ void DM_Motor_Init(void)
         osDelay(500);
         start_motor(&hcan2, 0x03);
         osDelay(500);
-        
     }
 }
 
@@ -70,21 +87,41 @@ float float_constrain(float Value, float minValue, float maxValue)
 }
 
 // 颠球模式
-void juggle_Mode(void)
+static void juggle_Mode(void)
 {
+
     DM4340_Date[0].target_angle = (-(float_constrain(81 + (DBUS_ReceiveData.ch1) / 11, 81, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(145 + (DBUS_ReceiveData.ch1) / 11, 145, 177)) / 180 * PI);
     DM4340_Date[2].target_angle = (-(float_constrain(135 + (DBUS_ReceiveData.ch1) / 11, 135, 167)) / 180 * PI);
 
-        MD_motor_SendCurrent(&hcan2, 1, DM4340_Date[0].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
-        osDelay(2);
-        MD_motor_SendCurrent(&hcan2, 2, DM4340_Date[1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
-        osDelay(2);
-        MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
-        osDelay(2);
-    //vofa测试代码，可注释
-    //uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
+    MD_motor_SendCurrent(&hcan2, 1, DM4340_Date[0].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    MD_motor_SendCurrent(&hcan2, 2, DM4340_Date[1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    // vofa测试代码，可注释
+    // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
+}
 
+//自动颠球模式
+static void juggle_Mode_auto(void)
+{
+    uint16_t angle = 0;
+
+    if (ball_track_target.hit_falg == 1)  {angle = 660;}
+    DM4340_Date[0].target_angle = (-(float_constrain(81 + (angle) / 11, 81, 113)) / 180 * PI);
+    DM4340_Date[1].target_angle = (-(float_constrain(145 + (angle) / 11, 145, 177)) / 180 * PI);
+    DM4340_Date[2].target_angle = (-(float_constrain(135 + (angle) / 11, 135, 167)) / 180 * PI);
+
+    MD_motor_SendCurrent(&hcan2, 1, DM4340_Date[0].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    MD_motor_SendCurrent(&hcan2, 2, DM4340_Date[1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    // vofa测试代码，可注释
+    // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
 }
 
 float RUD_DirAngle_c(float Angle)
@@ -139,4 +176,3 @@ void delta_arm_solution(void)
     THETA[1] = (180 * (2 * atan(T[2]))) / PI;
     THETA[2] = (180 * (2 * atan(T[0]))) / PI;
 }
-

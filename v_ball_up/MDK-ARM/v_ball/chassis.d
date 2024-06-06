@@ -53,6 +53,7 @@ v_ball\chassis.o: ../components/controller/pid.h
 v_ball\chassis.o: ../boards/struct_typedef.h
 v_ball\chassis.o: ..\applications\chassis.h
 v_ball\chassis.o: ..\applications\can_recv.h
+v_ball\chassis.o: ../Core/Inc/can.h
 v_ball\chassis.o: ..\applications\remote_control.h
 v_ball\chassis.o: ../boards/bsp_rc.h
 v_ball\chassis.o: ../components/algorithm/user_lib.h

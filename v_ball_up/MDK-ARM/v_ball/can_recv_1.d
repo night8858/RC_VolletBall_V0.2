@@ -37,6 +37,7 @@ v_ball\can_recv_1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 v_ball\can_recv_1.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 v_ball\can_recv_1.o: ..\applications\can_recv.h
 v_ball\can_recv_1.o: ../boards/struct_typedef.h
+v_ball\can_recv_1.o: ../Core/Inc/can.h
 v_ball\can_recv_1.o: D:\D P J\ARM\ARMCC\Bin\..\include\math.h
 v_ball\can_recv_1.o: ..\applications\chassis.h
 v_ball\can_recv_1.o: ../components/controller/pid.h
