@@ -25,10 +25,10 @@ void ball_track_pid_init(void)
 void ball_track_calc(void)
 {
 
-    ball_track_target.offset_pos = sqrt(pow(RX_ball_pos.ball_pos_x - BALL_TRACK_TARGET_X , 2) + pow(RX_ball_pos.ball_pos_y - BALL_TRACK_TARGET_Y , 2));
+    ball_track_target.offset_pos = hypot((RX_ball_pos.ball_pos_x - BALL_TRACK_TARGET_X ) , (RX_ball_pos.ball_pos_y - BALL_TRACK_TARGET_Y ));
 
     ball_track_target.angle   = atan2(RX_ball_pos.ball_pos_y - BALL_TRACK_TARGET_Y , RX_ball_pos.ball_pos_x - BALL_TRACK_TARGET_X);
-    ball_track_target.speed  = PID_calc(&track_pid , 0 , ball_track_target.offset_pos);
+    ball_track_target.speed  = PID_calc(&track_pid , ball_track_target.offset_pos , 0);
 
     if(RX_ball_pos.ball_pos_z < BALL_TRACK_TARGET_DEEPTH)
     {ball_track_target.hit_falg = 1;}

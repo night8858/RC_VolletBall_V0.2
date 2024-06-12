@@ -43,3 +43,5 @@ v_ball\can_recv_1.o: ..\applications\chassis.h
 v_ball\can_recv_1.o: ../components/controller/pid.h
 v_ball\can_recv_1.o: ..\applications\remote_control.h
 v_ball\can_recv_1.o: ../boards/bsp_rc.h
+v_ball\can_recv_1.o: ..\applications\ball_track.h
+v_ball\can_recv_1.o: ..\applications\top_ctrl.h

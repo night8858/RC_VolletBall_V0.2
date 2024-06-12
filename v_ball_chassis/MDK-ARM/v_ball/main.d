@@ -27,11 +27,8 @@ v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
-v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
-v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
-v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 v_ball\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
@@ -51,8 +48,6 @@ v_ball\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 v_ball\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 v_ball\main.o: ../Core/Inc/can.h
 v_ball\main.o: ../Core/Inc/dma.h
-v_ball\main.o: ../Core/Inc/i2c.h
-v_ball\main.o: ../Core/Inc/spi.h
 v_ball\main.o: ../Core/Inc/tim.h
 v_ball\main.o: ../Core/Inc/usart.h
 v_ball\main.o: ../Core/Inc/gpio.h

@@ -8,16 +8,17 @@
 
 #define PI 3.141592653824f
 
-#define M3505_MOTOR_SPEED_PID_KP 7.0f
-#define M3505_MOTOR_SPEED_PID_KI 1.2f
-#define M3505_MOTOR_SPEED_PID_KD 0.0f
+#define M3505_MOTOR_SPEED_PID_KP 12.0f
+#define M3505_MOTOR_SPEED_PID_KI 0.0f
+#define M3505_MOTOR_SPEED_PID_KD 3.4f
 #define M3505_MOTOR_SPEED_PID_MAX_OUT 3000.0f
 #define M3505_MOTOR_SPEED_PID_MAX_IOUT 14000.0f
 
 
+
 #define M6020_MOTOR_SPEED_PID_KP 2.0f
 #define M6020_MOTOR_SPEED_PID_KI 0.0f
-#define M6020_MOTOR_SPEED_PID_KD 0.0f
+#define M6020_MOTOR_SPEED_PID_KD 1.2f
 #define M6020_MOTOR_SPEED_PID_MAX_OUT 30000.0f
 #define M6020_MOTOR_SPEED_PID_MAX_IOUT 20000.0f
 
@@ -137,6 +138,17 @@ typedef struct
 
 } chassis_move_date;
 
+typedef struct
+{
+    uint32_t rc_speed;
+    uint32_t rc_angle;
+    float speed;
+    float angle;
+    float W;
+
+} chassis_auto_move_cmd;
+
+
 //extern void chasis_Task(void const * argument);
 
 static void motor_init(motor_control_t *init);
@@ -159,4 +171,5 @@ static void motor_feedback_update(motor_control_t *feedback_update);
 
 static void movement_calc(void);
 
+static void movement_calc_auto(void);
 #endif 

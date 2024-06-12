@@ -21,8 +21,6 @@
 #include "cmsis_os.h"
 #include "can.h"
 #include "dma.h"
-#include "i2c.h"
-#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -57,6 +55,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
+static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -100,9 +99,7 @@ int main(void)
   MX_TIM4_Init();
   MX_USART3_UART_Init();
   MX_USART1_UART_Init();
-  MX_SPI1_Init();
   MX_TIM10_Init();
-  MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
   can_filter_init();
   remote_control_init();

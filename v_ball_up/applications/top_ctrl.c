@@ -34,29 +34,39 @@ double V[3] = {0};
 // 球拍控制主循环
 void top_contorl_Task(void const *argument)
 {
-
-    motor_init(&motor_control);
-    M3508_M5_Pos_init();
     DM_Motor_Init();
+    motor_init(&motor_control);
+    // M3508_M5_Pos_init();
     ball_track_pid_init();
     while (1)
     {
-        //此处为手动操作模式
+        // 此处为手动操作模式
         if (DBUS_ReceiveData.switch_left == 1 && DBUS_ReceiveData.switch_right == 1)
         {
             juggle_Mode();
-            Institution_Pos_Contorl();
+            // Institution_Pos_Contorl();
             osDelay(2);
         }
 
-        //此处为自动模式
-        if (DBUS_ReceiveData.switch_left == 0 && DBUS_ReceiveData.switch_right == 0)
+        // 此处为自动模式
+        if (DBUS_ReceiveData.switch_left == 3 && DBUS_ReceiveData.switch_right == 3)
         {
-            juggle_Mode_auto();
+            // ball_track_target.speed = 0.1;
+            // ball_track_target.angle = 0;
+            // chassis_cmd_aotu(&hcan1);
+            ball_track_calc();
+            juggle_Mode();
+            // juggle_Mode_auto();
             osDelay(2);
         }
-        
-
+        // 复位
+        if (DBUS_ReceiveData.switch_left != DBUS_ReceiveData.switch_right)
+        {
+            DM_Motor_Init();
+            motor_init(&motor_control);
+            ball_track_pid_init();
+            osDelay(2);
+        }
     }
 }
 
@@ -64,7 +74,7 @@ void top_contorl_Task(void const *argument)
 void DM_Motor_Init(void)
 {
 
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 3; i++)
     {
         start_motor(&hcan2, 0x01);
         osDelay(500);
@@ -73,6 +83,16 @@ void DM_Motor_Init(void)
         start_motor(&hcan2, 0x03);
         osDelay(500);
     }
+    DM4340_Date[0].target_angle = (-(float_constrain(81, 81, 113)) / 180 * PI);
+    DM4340_Date[1].target_angle = (-(float_constrain(145, 145, 177)) / 180 * PI);
+    DM4340_Date[2].target_angle = (-(float_constrain(136, 136, 167)) / 180 * PI);
+
+    MD_motor_SendCurrent(&hcan2, 1, DM4340_Date[0].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    MD_motor_SendCurrent(&hcan2, 2, DM4340_Date[1].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
+    MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
+    osDelay(2);
 }
 
 // 限幅函数
@@ -101,15 +121,18 @@ static void juggle_Mode(void)
     MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
     osDelay(2);
     // vofa测试代码，可注释
-    // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
+    // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[0].target_angle / PI * 180, DM4340_Date[0].out_current);
 }
 
-//自动颠球模式
+// 自动颠球模式
 static void juggle_Mode_auto(void)
 {
     uint16_t angle = 0;
 
-    if (ball_track_target.hit_falg == 1)  {angle = 660;}
+    if (ball_track_target.hit_falg == 1)
+    {
+        angle = 660;
+    }
     DM4340_Date[0].target_angle = (-(float_constrain(81 + (angle) / 11, 81, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(145 + (angle) / 11, 145, 177)) / 180 * PI);
     DM4340_Date[2].target_angle = (-(float_constrain(135 + (angle) / 11, 135, 167)) / 180 * PI);

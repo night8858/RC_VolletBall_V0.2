@@ -23,6 +23,7 @@ typedef enum
 
     DT7_RX_ch = 0x301,
     DT7_RX_S  = 0x302,
+    AUTO_MODE_CMD = 0x303,
 
 } can_msg_id_e;
 
@@ -41,6 +42,8 @@ void CAN_cmd_3508(int16_t CMD_ID_1, int16_t CMD_ID_2, int16_t CMD_ID_3, int16_t 
 
 void CAN_cmd_DT7_ch_Date(void);
 void CAN_cmd_DT7_s_Date(void);
+
+void Byte_to_Float(float *date1, float *date2, unsigned char byte[]);
 
 extern const motor_measure_t *get_3508_M1_motor_measure_point(void);
 extern const motor_measure_t *get_3508_M2_motor_measure_point(void);

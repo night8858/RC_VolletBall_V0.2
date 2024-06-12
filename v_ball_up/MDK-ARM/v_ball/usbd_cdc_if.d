@@ -54,3 +54,4 @@ v_ball\usbd_cdc_if.o: ../applications/chassis.h
 v_ball\usbd_cdc_if.o: ../components/controller/pid.h
 v_ball\usbd_cdc_if.o: ../applications/remote_control.h
 v_ball\usbd_cdc_if.o: ../boards/bsp_rc.h
+v_ball\usbd_cdc_if.o: ../applications/ball_track.h

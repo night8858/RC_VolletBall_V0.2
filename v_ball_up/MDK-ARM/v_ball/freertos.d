@@ -49,3 +49,4 @@ v_ball\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 v_ball\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 v_ball\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 v_ball\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+v_ball\freertos.o: ../applications/date_exchange.h

@@ -85,6 +85,9 @@
   "files.associations": {
     "usbd_cdc_if.h": "c",
     "bsp_usart.h": "c",
-    "iterator": "c"
+    "iterator": "c",
+    "cmsis_os.h": "c",
+    "ball_track.h": "c",
+    "top_ctrl.h": "c"
   }
 }

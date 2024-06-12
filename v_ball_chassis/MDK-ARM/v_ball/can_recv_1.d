@@ -39,3 +39,5 @@ v_ball\can_recv_1.o: ..\applications\can_recv.h
 v_ball\can_recv_1.o: ../boards/struct_typedef.h
 v_ball\can_recv_1.o: ..\applications\remote_control.h
 v_ball\can_recv_1.o: ../boards/bsp_rc.h
+v_ball\can_recv_1.o: ..\applications\chassis.h
+v_ball\can_recv_1.o: ../components/controller/pid.h

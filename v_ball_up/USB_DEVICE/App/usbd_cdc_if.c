@@ -23,10 +23,10 @@
 
 /* USER CODE BEGIN INCLUDE */
 #include "top_ctrl.h"
+#include "ball_track.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
-extern Ball_Pos RX_ball_pos;
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 
@@ -50,7 +50,7 @@ extern Ball_Pos RX_ball_pos;
   */
 
 /* USER CODE BEGIN PRIVATE_TYPES */
-
+extern Ball_Pos RX_ball_pos;
 /* USER CODE END PRIVATE_TYPES */
 
 /**
@@ -63,6 +63,7 @@ extern Ball_Pos RX_ball_pos;
   */
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
+#define APP_RX_DATA_SIZE  2048
 /* USER CODE END PRIVATE_DEFINES */
 
 /**
@@ -264,12 +265,11 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 6 */
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-  *Len = 6;  //设定只接收六位数据
-  //此处程序会自动接收上位机的球坐标信息，并将其存入RX_ball_pos结构体中
+  //*Len = 12;  
   RX_ball_pos.ball_pos_x = Buf[0] << 24 | Buf[1] << 16 | Buf[2] << 8 | Buf[3];
   RX_ball_pos.ball_pos_y = Buf[4] << 24 | Buf[5] << 16 | Buf[6] << 8 | Buf[7];
   RX_ball_pos.ball_pos_z = Buf[8] << 24 | Buf[9] << 16 | Buf[10] << 8 | Buf[11];
-  //将接收到的球坐标信息打印到控制台
+  
 
   return (USBD_OK);
   /* USER CODE END 6 */

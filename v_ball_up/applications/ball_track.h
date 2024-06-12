@@ -8,12 +8,12 @@
 #define RACKET_TO_CAMERA_DISTANCE 0        //球拍到摄像头的距离
 #define RACQUET_CENTER_OFFSET_DISTANCE 0   //球拍中心偏移距离
 
-#define BALL_TRACK_PID_KP 0        //PID参数KP
+#define BALL_TRACK_PID_KP 3        //PID参数KP
 #define BALL_TRACK_PID_KI 0        //PID参数KI
-#define BALL_TRACK_PID_KD 0        //PID参数KD
+#define BALL_TRACK_PID_KD 1.1        //PID参数KD
 
-#define BALL_TRACK_PID_MAX_OUTPUT 0
-#define BALL_TRACK_PID_MAX_IOUT 0
+#define BALL_TRACK_PID_MAX_OUTPUT 3000
+#define BALL_TRACK_PID_MAX_IOUT 1000
 
 typedef struct
 {

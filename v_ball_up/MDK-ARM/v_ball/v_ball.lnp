@@ -48,6 +48,7 @@
 "v_ball\remote_control.o"
 "v_ball\top_ctrl.o"
 "v_ball\ball_track.o"
+"v_ball\date_exchange.o"
 "v_ball\mahonyahrs.o"
 "v_ball\pid.o"
 "v_ball\user_lib.o"

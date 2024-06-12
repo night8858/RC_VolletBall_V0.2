@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "date_exchange.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,6 +49,7 @@
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 osThreadId topTaskHandle;
+osThreadId CMD_SENDHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -57,6 +58,7 @@ osThreadId topTaskHandle;
 
 void StartDefaultTask(void const * argument);
 void top_contorl_Task(void const * argument);
+void CMD_to_chassis_task(void const * argument);
 
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -112,6 +114,10 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(topTask, top_contorl_Task, osPriorityHigh, 0, 1024);
   topTaskHandle = osThreadCreate(osThread(topTask), NULL);
 
+  /* definition and creation of CMD_SEND */
+  osThreadDef(CMD_SEND, CMD_to_chassis_task, osPriorityAboveNormal, 0, 256);
+  CMD_SENDHandle = osThreadCreate(osThread(CMD_SEND), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -154,6 +160,24 @@ __weak void top_contorl_Task(void const * argument)
     osDelay(1);
   }
   /* USER CODE END top_contorl_Task */
+}
+
+/* USER CODE BEGIN Header_CMD_to_chassis_task */
+/**
+* @brief Function implementing the CMD_SEND thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_CMD_to_chassis_task */
+__weak void CMD_to_chassis_task(void const * argument)
+{
+  /* USER CODE BEGIN CMD_to_chassis_task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END CMD_to_chassis_task */
 }
 
 /* Private application code --------------------------------------------------*/

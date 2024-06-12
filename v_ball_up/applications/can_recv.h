@@ -27,6 +27,7 @@ typedef enum
 
     DT7_RX_ch = 0x301,
     DT7_RX_S = 0x302,
+    AUTO_MODE_CMD = 0x303,
 
     DM4340_M1 = 0x11,
     DM4340_M2 = 0x12,
@@ -120,6 +121,10 @@ void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, floa
 float RUD_DirAngle_Proc(float Angle);
 int float_to_uint(float x, float x_min, float x_max, unsigned int bits);
 static float uint_to_float(int x_int, float x_min, float x_max, int bits);
+void chassis_cmd_aotu(CAN_HandleTypeDef *Target_hcan);
+void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id);
+
+void Float_to_Byte(float a, float b, unsigned char byte[]);
 
 extern const motor_measure_t *get_3508_M5_motor_measure_point(void);
 const DM4340_motor_data_t *get_4340_M1_motor_measure_point(void);

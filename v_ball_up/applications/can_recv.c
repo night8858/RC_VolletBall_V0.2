@@ -2,14 +2,15 @@
 #include "can_recv.h"
 #include "math.h"
 #include "chassis.h"
+#include "ball_track.h"
+#include "top_ctrl.h"
 
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
+extern ball_track_target_t ball_track_target; // 球追踪目标点
 
-static motor_measure_t motor_Date[7]; // 电机回传数据结构体
-
-DM4340_motor_data_t DM4340_Date[3]; // DM4340回传数据结构体
-
+static motor_measure_t motor_Date[7];         // 电机回传数据结构体
+DM4340_motor_data_t DM4340_Date[3];           // DM4340回传数据结构体
 static CAN_TxHeaderTypeDef RM3508_tx_message; // can_3508发送邮箱
 
 CAN_TxHeaderTypeDef CAN_DMstart_TxHeader;
@@ -49,16 +50,17 @@ void CAN_cmd_3508(int16_t CMD_ID_1, int16_t CMD_ID_2, int16_t CMD_ID_3, int16_t 
     HAL_CAN_AddTxMessage(&hcan1, &RM3508_tx_message, can_3508_send_data, &send_mail_box);
 }
 
+
 // 电机启动函数
 void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id)
 {
-    uint32_t send_mail_box;
-
+    //uint32_t send_mail_box;
+    CAN_TxHeaderTypeDef CAN_TxHeader;
     uint8_t TxData[8];
-    CAN_DMstart_TxHeader.StdId = id;
-    CAN_DMstart_TxHeader.IDE = CAN_ID_STD;
-    CAN_DMstart_TxHeader.RTR = CAN_RTR_DATA;
-    CAN_DMstart_TxHeader.DLC = 0x08;
+    CAN_TxHeader.StdId = id;
+    CAN_TxHeader.IDE = CAN_ID_STD;
+    CAN_TxHeader.RTR = CAN_RTR_DATA;
+    CAN_TxHeader.DLC = 0x08;
     TxData[0] = 0xFF;
     TxData[1] = 0xFF;
     TxData[2] = 0xFF;
@@ -67,8 +69,63 @@ void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id)
     TxData[5] = 0xFF;
     TxData[6] = 0xFF;
     TxData[7] = 0xFC;
-    
-    HAL_CAN_AddTxMessage(Target_hcan, &CAN_DMstart_TxHeader, TxData,  (uint32_t *)CAN_TX_MAILBOX0);
+
+    HAL_CAN_AddTxMessage(Target_hcan, &CAN_TxHeader, TxData, (uint32_t *)CAN_TX_MAILBOX0);
+    //HAL_CAN_AddTxMessage(Target_hcan, &CAN_DMstart_TxHeader, TxData, (uint32_t *)CAN_TX_MAILBOX0);
+}
+
+
+// auto_mode下底盘电机指令发送
+void chassis_cmd_aotu(CAN_HandleTypeDef *Target_hcan)
+{
+    uint32_t send_mail_box;
+
+    uint8_t TxData[8];
+    CAN_DMstart_TxHeader.StdId = AUTO_MODE_CMD;
+    CAN_DMstart_TxHeader.IDE = CAN_ID_STD;
+    CAN_DMstart_TxHeader.RTR = CAN_RTR_DATA;
+    CAN_DMstart_TxHeader.DLC = 0x08;
+
+    Float_to_Byte(ball_track_target.speed ,ball_track_target.angle , TxData);
+
+    HAL_CAN_AddTxMessage(Target_hcan, &CAN_DMstart_TxHeader, TxData, &send_mail_box);
+}
+
+typedef union
+{
+    float fdata;
+    unsigned long ldata;
+} FloatLongType;
+
+/*
+将浮点数f转化为4个字节数据存放在byte[4]中
+*/
+void Float_to_Byte(float a, float b, unsigned char byte[])
+{
+    FloatLongType fl, f2;
+    fl.fdata = a;
+    f2.fdata = b;
+    byte[0] = (unsigned char)fl.ldata;
+    byte[1] = (unsigned char)(fl.ldata >> 8);
+    byte[2] = (unsigned char)(fl.ldata >> 16);
+    byte[3] = (unsigned char)(fl.ldata >> 24);
+    byte[4] = (unsigned char)f2.ldata;
+    byte[5] = (unsigned char)(f2.ldata >> 8);
+    byte[6] = (unsigned char)(f2.ldata >> 16);
+    byte[7] = (unsigned char)(f2.ldata >> 24);
+}
+/*
+将4个字节数据byte[4]转化为浮点数存放在*f中
+*/
+void Byte_to_Float(float *f, unsigned char byte[])
+{
+    FloatLongType fl;
+    fl.ldata = 0;
+    fl.ldata = byte[3];
+    fl.ldata = (fl.ldata << 8) | byte[2];
+    fl.ldata = (fl.ldata << 8) | byte[1];
+    fl.ldata = (fl.ldata << 8) | byte[0];
+    *f = fl.fdata;
 }
 
 void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, float _vel, float _KP, float _KD, float _torq)
@@ -131,8 +188,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         case DT7_RX_S:
         {
             DBUS_ReceiveData.dial = rx_data_can1[0] << 8 | rx_data_can1[1];
-            DBUS_ReceiveData.switch_left = rx_data_can1[2] << 8 | rx_data_can1[3];
-            DBUS_ReceiveData.switch_right = rx_data_can1[4] << 8 | rx_data_can1[5];
+            DBUS_ReceiveData.switch_left = rx_data_can1[2];
+            DBUS_ReceiveData.switch_right = rx_data_can1[3];
             break;
         }
 
@@ -156,7 +213,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             MD_CanReceive(&DM4340_Date[0], rx_data_can2);
 
             DM4340_Date[0].esc_back_position_last = DM4340_Date[0].esc_back_position;
-            DM4340_Date[0].real_angle = DM4340_Date[0].esc_back_position / PI * 180;//RUD_DirAngle_Proc(DM4340_Date[0].serial_angle);
+            DM4340_Date[0].real_angle = DM4340_Date[0].esc_back_position / PI * 180; // RUD_DirAngle_Proc(DM4340_Date[0].serial_angle);
 
             break;
         }
@@ -177,7 +234,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             MD_CanReceive(&DM4340_Date[2], rx_data_can2);
 
             DM4340_Date[2].esc_back_position_last = DM4340_Date[2].esc_back_position;
-            DM4340_Date[2].real_angle = DM4340_Date[2].esc_back_position / PI * 180;;
+            DM4340_Date[2].real_angle = DM4340_Date[2].esc_back_position / PI * 180;
+            ;
             break;
         }
         }
@@ -208,7 +266,7 @@ void MD_CanReceive(DM4340_motor_data_t *motor, uint8_t RxDate[8])
         // motor->esc_back_speed = uint_to_float(v_int,V_MIN,V_MAX,12)*100; // 电机速度
         motor->esc_back_current = uint_to_float(i_int, T_MIN, T_MAX, 12); //	电机扭矩/电流
         motor->Tmos = (float)(RxDate[6]);
-        motor->Tcoil = (float)(RxDate[7]);   
+        motor->Tcoil = (float)(RxDate[7]);
     }
     if (motor->id == 0x03)
     {
