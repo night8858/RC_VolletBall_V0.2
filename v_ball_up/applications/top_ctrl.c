@@ -56,7 +56,7 @@ void top_contorl_Task(void const *argument)
             // chassis_cmd_aotu(&hcan1);
             ball_track_calc();
             juggle_Mode();
-            // juggle_Mode_auto();
+
             osDelay(2);
         }
         // 复位
@@ -110,9 +110,9 @@ float float_constrain(float Value, float minValue, float maxValue)
 static void juggle_Mode(void)
 {
 
-    DM4340_Date[0].target_angle = (-(float_constrain(81 + (DBUS_ReceiveData.ch1) / 11, 81, 113)) / 180 * PI);
-    DM4340_Date[1].target_angle = (-(float_constrain(145 + (DBUS_ReceiveData.ch1) / 11, 145, 177)) / 180 * PI);
-    DM4340_Date[2].target_angle = (-(float_constrain(135 + (DBUS_ReceiveData.ch1) / 11, 135, 167)) / 180 * PI);
+    DM4340_Date[0].target_angle = (-(float_constrain(83 + (DBUS_ReceiveData.ch1) / 5, 83, 113)) / 180 * PI);
+    DM4340_Date[1].target_angle = (-(float_constrain(147 + (DBUS_ReceiveData.ch1) / 5, 147, 177)) / 180 * PI);
+    DM4340_Date[2].target_angle = (-(float_constrain(137 + (DBUS_ReceiveData.ch1) / 5, 137, 167)) / 180 * PI);
 
     MD_motor_SendCurrent(&hcan2, 1, DM4340_Date[0].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
     osDelay(2);
@@ -124,7 +124,7 @@ static void juggle_Mode(void)
     // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[0].target_angle / PI * 180, DM4340_Date[0].out_current);
 }
 
-// 自动颠球模式
+// 自动颠球模式（暂时未启用）
 static void juggle_Mode_auto(void)
 {
     uint16_t angle = 0;

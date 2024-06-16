@@ -45,6 +45,8 @@ v_ball\date_exchange.o: ../components/controller/pid.h
 v_ball\date_exchange.o: ..\applications\remote_control.h
 v_ball\date_exchange.o: ../boards/bsp_rc.h
 v_ball\date_exchange.o: ..\applications\ball_track.h
+v_ball\date_exchange.o: ../boards/bsp_usart.h
+v_ball\date_exchange.o: ../Core/Inc/usart.h
 v_ball\date_exchange.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 v_ball\date_exchange.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 v_ball\date_exchange.o: ../Core/Inc/FreeRTOSConfig.h
