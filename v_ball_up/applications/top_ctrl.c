@@ -40,6 +40,9 @@ void top_contorl_Task(void const *argument)
     ball_track_pid_init();
     while (1)
     {
+        ball_track_calc();
+        juggle_Mode_auto();
+        osDelay(2);
         // 此处为手动操作模式
         if (DBUS_ReceiveData.switch_left == 1 && DBUS_ReceiveData.switch_right == 1)
         {
@@ -51,12 +54,9 @@ void top_contorl_Task(void const *argument)
         // 此处为自动模式
         if (DBUS_ReceiveData.switch_left == 3 && DBUS_ReceiveData.switch_right == 3)
         {
-            // ball_track_target.speed = 0.1;
-            // ball_track_target.angle = 0;
-            // chassis_cmd_aotu(&hcan1);
-            ball_track_calc();
-            juggle_Mode();
 
+            // juggle_Mode();
+            juggle_Mode_auto();
             osDelay(2);
         }
         // 复位
@@ -132,6 +132,12 @@ static void juggle_Mode_auto(void)
     if (ball_track_target.hit_falg == 1)
     {
         angle = 660;
+        HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
+    }
+    if (ball_track_target.hit_falg == 0)
+    {
+        angle = 0;
+        HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET);
     }
     DM4340_Date[0].target_angle = (-(float_constrain(81 + (angle) / 11, 81, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(145 + (angle) / 11, 145, 177)) / 180 * PI);

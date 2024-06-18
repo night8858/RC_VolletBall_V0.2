@@ -50,11 +50,10 @@ void CAN_cmd_3508(int16_t CMD_ID_1, int16_t CMD_ID_2, int16_t CMD_ID_3, int16_t 
     HAL_CAN_AddTxMessage(&hcan1, &RM3508_tx_message, can_3508_send_data, &send_mail_box);
 }
 
-
 // 电机启动函数
 void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id)
 {
-    //uint32_t send_mail_box;
+    // uint32_t send_mail_box;
     CAN_TxHeaderTypeDef CAN_TxHeader;
     uint8_t TxData[8];
     CAN_TxHeader.StdId = id;
@@ -71,9 +70,8 @@ void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id)
     TxData[7] = 0xFC;
 
     HAL_CAN_AddTxMessage(Target_hcan, &CAN_TxHeader, TxData, (uint32_t *)CAN_TX_MAILBOX0);
-    //HAL_CAN_AddTxMessage(Target_hcan, &CAN_DMstart_TxHeader, TxData, (uint32_t *)CAN_TX_MAILBOX0);
+    // HAL_CAN_AddTxMessage(Target_hcan, &CAN_DMstart_TxHeader, TxData, (uint32_t *)CAN_TX_MAILBOX0);
 }
-
 
 // auto_mode下底盘电机指令发送
 void chassis_cmd_aotu(CAN_HandleTypeDef *Target_hcan)
@@ -86,7 +84,7 @@ void chassis_cmd_aotu(CAN_HandleTypeDef *Target_hcan)
     CAN_DMstart_TxHeader.RTR = CAN_RTR_DATA;
     CAN_DMstart_TxHeader.DLC = 0x08;
 
-    Float_to_Byte(ball_track_target.speed ,ball_track_target.angle , TxData);
+    Float_to_Byte(ball_track_target.speed, ball_track_target.angle, TxData);
 
     HAL_CAN_AddTxMessage(Target_hcan, &CAN_DMstart_TxHeader, TxData, &send_mail_box);
 }
@@ -117,15 +115,30 @@ void Float_to_Byte(float a, float b, unsigned char byte[])
 /*
 将4个字节数据byte[4]转化为浮点数存放在*f中
 */
-void Byte_to_Float(float *f, unsigned char byte[])
+// 用于接收上位机的三个float数据，
+void Byte_to_Float(float *fx, float *fy, float *fz, unsigned char byte[])
 {
-    FloatLongType fl;
-    fl.ldata = 0;
-    fl.ldata = byte[3];
-    fl.ldata = (fl.ldata << 8) | byte[2];
-    fl.ldata = (fl.ldata << 8) | byte[1];
-    fl.ldata = (fl.ldata << 8) | byte[0];
-    *f = fl.fdata;
+    FloatLongType flx, fly, flz;
+    flx.ldata = 0;
+    fly.ldata = 0;
+    flz.ldata = 0;
+
+    flz.ldata = byte[11];
+    flz.ldata = (flz.ldata << 8) | byte[10];
+    flz.ldata = (flz.ldata << 8) | byte[9];
+    flz.ldata = (flz.ldata << 8) | byte[8];
+    fly.ldata = byte[7];
+    fly.ldata = (fly.ldata << 8) | byte[6];
+    fly.ldata = (fly.ldata << 8) | byte[5];
+    fly.ldata = (fly.ldata << 8) | byte[4];
+    flx.ldata = byte[3];
+    flx.ldata = (flx.ldata << 8) | byte[2];
+    flx.ldata = (flx.ldata << 8) | byte[1];
+    flx.ldata = (flx.ldata << 8) | byte[0];
+
+    *fx = flx.fdata;
+    *fy = fly.fdata;
+    *fz = flz.fdata;
 }
 
 void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, float _vel, float _KP, float _KD, float _torq)

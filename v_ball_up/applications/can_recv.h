@@ -123,6 +123,7 @@ int float_to_uint(float x, float x_min, float x_max, unsigned int bits);
 static float uint_to_float(int x_int, float x_min, float x_max, int bits);
 void chassis_cmd_aotu(CAN_HandleTypeDef *Target_hcan);
 void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id);
+void Byte_to_Float(float *fx, float *fy, float *fz, unsigned char byte[]);
 
 void Float_to_Byte(float a, float b, unsigned char byte[]);
 

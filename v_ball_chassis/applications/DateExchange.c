@@ -11,9 +11,9 @@ void DateExchange_Task(void const * argument)
 {
     while (1)
     {
-    osDelay(5);
+    osDelay(3);
     CAN_cmd_DT7_ch_Date();
-    osDelay(5);
+    osDelay(3);
     CAN_cmd_DT7_s_Date(); 
     }
     

@@ -24,6 +24,7 @@
 /* USER CODE BEGIN INCLUDE */
 #include "top_ctrl.h"
 #include "ball_track.h"
+#include "can_recv.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -266,11 +267,11 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   //*Len = 12;  
-  RX_ball_pos.ball_pos_x = Buf[0] << 24 | Buf[1] << 16 | Buf[2] << 8 | Buf[3];
-  RX_ball_pos.ball_pos_y = Buf[4] << 24 | Buf[5] << 16 | Buf[6] << 8 | Buf[7];
-  RX_ball_pos.ball_pos_z = Buf[8] << 24 | Buf[9] << 16 | Buf[10] << 8 | Buf[11];
+  //RX_ball_pos.ball_pos_x = (float)(Buf[0] << 24 | Buf[1] << 16 | Buf[2] << 8 | Buf[3]);
+  //RX_ball_pos.ball_pos_y = (float)(Buf[4] << 24 | Buf[5] << 16 | Buf[6] << 8 | Buf[7]);
+  //RX_ball_pos.ball_pos_z = (float)(Buf[8] << 24 | Buf[9] << 16 | Buf[10] << 8 | Buf[11]);
   
-
+  Byte_to_Float(&RX_ball_pos.ball_pos_x ,&RX_ball_pos.ball_pos_y ,&RX_ball_pos.ball_pos_z , Buf);
   return (USBD_OK);
   /* USER CODE END 6 */
 }

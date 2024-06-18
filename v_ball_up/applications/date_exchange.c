@@ -14,8 +14,9 @@ extern Ball_Pos RX_ball_pos;
 void CMD_to_chassis_task(void const * argument)
 {
     //初始化数值设定为没有排球的情况，防止启动乱跑
-    RX_ball_pos.ball_pos_x = 240;
-    RX_ball_pos.ball_pos_y = 320;
+    RX_ball_pos.ball_pos_x = 320;
+    RX_ball_pos.ball_pos_y = 240;
+    RX_ball_pos.ball_pos_z = 0;
     while(1)
     {
         //uart_dma_printf(&huart1, "%4.3f ,%4.3f \n", RX_ball_pos.ball_pos_x, RX_ball_pos.ball_pos_y);
@@ -23,7 +24,7 @@ void CMD_to_chassis_task(void const * argument)
         if(DBUS_ReceiveData.switch_left == 3 && DBUS_ReceiveData.switch_right == 3)
         {
             chassis_cmd_aotu(&hcan1);
-            osDelay(5);
+            osDelay(2);
         } 
     }
 }
