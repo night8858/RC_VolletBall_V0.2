@@ -47,6 +47,7 @@ v_ball\top_ctrl.o: D:\D P J\ARM\ARMCC\Bin\..\include\math.h
 v_ball\top_ctrl.o: ../Core/Inc/usart.h
 v_ball\top_ctrl.o: ../boards/bsp_usart.h
 v_ball\top_ctrl.o: ..\applications\ball_track.h
+v_ball\top_ctrl.o: ../components/algorithm/user_lib.h
 v_ball\top_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 v_ball\top_ctrl.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 v_ball\top_ctrl.o: ../Core/Inc/FreeRTOSConfig.h

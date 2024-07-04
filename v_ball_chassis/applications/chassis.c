@@ -254,8 +254,9 @@ static void M6020_motor_relative_angle_control(motor_6020_t *gimbal_motor)
     {
         return;
     }
-
+    int flag = 1;
     // 角度环，速度环串级pid
+
     gimbal_motor->motor_gyro_set = M6020_PID_calc(&gimbal_motor->gimbal_motor_relative_angle_pid, gimbal_motor->relative_angle, gimbal_motor->relative_angle_set, gimbal_motor->motor_gyro);
     gimbal_motor->current_set = PID_calc(&gimbal_motor->gimbal_motor_gyro_pid, gimbal_motor->motor_gyro, gimbal_motor->motor_gyro_set); // 控制值赋值
     gimbal_motor->given_current = (int16_t)(gimbal_motor->current_set);
@@ -350,6 +351,7 @@ static void movement_calc_auto(void)
     motor_control.M3508_M4.motor_speed_set = -(chassis_float.speed + chassis_float.W);
     if (fabs(chassis_float.W) < 10)
     {
+        
         motor_control.M6020_M1.relative_angle_set = chassis_float.angle + 6144 * MOTOR_ECD_TO_RAD;
         motor_control.M6020_M2.relative_angle_set = chassis_float.angle + 3413 * MOTOR_ECD_TO_RAD;
         motor_control.M6020_M3.relative_angle_set = chassis_float.angle + 7509 * MOTOR_ECD_TO_RAD;
@@ -357,14 +359,47 @@ static void movement_calc_auto(void)
     }
 
     else if (fabs(chassis_float.W) > 10)
-    {
+    {  
 
         motor_control.M6020_M1.relative_angle_set = chassis_float.angle + 6144 * MOTOR_ECD_TO_RAD + theta;
         motor_control.M6020_M2.relative_angle_set = chassis_float.angle + 3413 * MOTOR_ECD_TO_RAD - theta;
         motor_control.M6020_M3.relative_angle_set = chassis_float.angle + 7509 * MOTOR_ECD_TO_RAD - theta;
         motor_control.M6020_M4.relative_angle_set = chassis_float.angle + 2048 * MOTOR_ECD_TO_RAD + theta;
+
     }
     // vofa调试用的代码
     // uart_dma_printf(&huart1,"%4.3f ,%4.3f\n",set_speed , set_angle);
     //uart_dma_printf(&huart1, "%4.3f, %4.3f\n" , chassis_auto_move_cmd_data.speed , chassis_auto_move_cmd_data.angle);
+}
+
+/**
+  * @brief  找出两角的较小差值
+  * @param  角1，角2
+  * @retval 
+  * @attention 
+  */
+fp32 Find_min_Angle(int16_t angle1,fp32 angle2)
+{
+	  fp32 err;
+    err = (fp32)angle1 - angle2;
+    if(fabs(err) > 4096)
+    {
+        err = 8192 - fabs(err);
+    }
+    return err;
+}
+
+
+void AngleLoop_f (float* angle ,float max){
+	while((*angle<-(max/2)) ||(*angle>(max/2)))
+	{
+		if(*angle<-(max/2))
+		{
+			*angle+=max;
+		}
+		else if(*angle>(max/2))
+		{
+			*angle-=max;
+		}
+  }
 }

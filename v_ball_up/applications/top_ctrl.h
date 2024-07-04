@@ -24,6 +24,8 @@ typedef struct
 	float ball_pos_y;//画面y
 
 	float ball_pos_z;//画面z（深度）
+
+	float White_ratio;        //白色占比
 }Ball_Pos;
 
 //球拍的当前位置
@@ -41,8 +43,23 @@ void DM_Motor_Init(void);
 float float_constrain(float Value, float minValue, float maxValue);
 void delta_arm_solution(void);
 
+//static void POS_PID_init(M6020_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd);
+//static fp32 POS_PID_calc(M6020_PID_t *pid, fp32 get, fp32 set, fp32 error_delta);
+
 static void juggle_Mode(void);
 
+static void test_Mode(void);
+
+static void resolving_Mode(void);
+
+static void hit_big_once(void);
+
+static void hit_once(void);
+
+static void hit_start(void);
+
 static void juggle_Mode_auto(void);
+
+static void back_to_zero(void);
 
 #endif

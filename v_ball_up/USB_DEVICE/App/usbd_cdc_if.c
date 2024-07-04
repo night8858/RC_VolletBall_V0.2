@@ -52,6 +52,15 @@
 
 /* USER CODE BEGIN PRIVATE_TYPES */
 extern Ball_Pos RX_ball_pos;
+
+USBD_CDC_LineCodingTypeDef LineCoding =
+{
+	  115200, /* 娉㈢壒锟�??*/
+    0x00,   /* 鍋滄锟�??-1*/
+    0x00,   /* 鏍￠獙 - none*/
+    0x08    /* 鏁版嵁锟�?? 8*/
+};
+
 /* USER CODE END PRIVATE_TYPES */
 
 /**
@@ -155,6 +164,7 @@ USBD_CDC_ItfTypeDef USBD_Interface_fops_FS =
 static int8_t CDC_Init_FS(void)
 {
   /* USER CODE BEGIN 3 */
+
   /* Set Application Buffers */
   USBD_CDC_SetTxBuffer(&hUsbDeviceFS, UserTxBufferFS, 0);
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, UserRxBufferFS);
@@ -266,12 +276,13 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 6 */
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-  //*Len = 12;  
+  
+  *Len = 16;  
   //RX_ball_pos.ball_pos_x = (float)(Buf[0] << 24 | Buf[1] << 16 | Buf[2] << 8 | Buf[3]);
   //RX_ball_pos.ball_pos_y = (float)(Buf[4] << 24 | Buf[5] << 16 | Buf[6] << 8 | Buf[7]);
   //RX_ball_pos.ball_pos_z = (float)(Buf[8] << 24 | Buf[9] << 16 | Buf[10] << 8 | Buf[11]);
   
-  Byte_to_Float(&RX_ball_pos.ball_pos_x ,&RX_ball_pos.ball_pos_y ,&RX_ball_pos.ball_pos_z , Buf);
+  Byte_to_Float(&RX_ball_pos.ball_pos_x ,&RX_ball_pos.ball_pos_y ,&RX_ball_pos.ball_pos_z, &RX_ball_pos.White_ratio ,Buf);
   return (USBD_OK);
   /* USER CODE END 6 */
 }

@@ -115,23 +115,32 @@ void Float_to_Byte(float a, float b, unsigned char byte[])
 /*
 将4个字节数据byte[4]转化为浮点数存放在*f中
 */
-// 用于接收上位机的三个float数据，
-void Byte_to_Float(float *fx, float *fy, float *fz, unsigned char byte[])
+// 用于接收上位机的四个float数据，
+void Byte_to_Float(float *fx, float *fy, float *fz,float *fw, unsigned char byte[])
 {
-    FloatLongType flx, fly, flz;
+    FloatLongType flx, fly, flz, flw;
     flx.ldata = 0;
     fly.ldata = 0;
     flz.ldata = 0;
+    flw.ldata = 0;
 
+   // 获取白色占比
+    flw.ldata = byte[15];
+    flw.ldata = (flw.ldata << 8) | byte[14];
+    flw.ldata = (flw.ldata << 8) | byte[13];
+    flw.ldata = (flw.ldata << 8) | byte[12];
+    //获取深度数据
     flz.ldata = byte[11];
     flz.ldata = (flz.ldata << 8) | byte[10];
     flz.ldata = (flz.ldata << 8) | byte[9];
     flz.ldata = (flz.ldata << 8) | byte[8];
+    //获取y坐标数据
     fly.ldata = byte[7];
     fly.ldata = (fly.ldata << 8) | byte[6];
     fly.ldata = (fly.ldata << 8) | byte[5];
     fly.ldata = (fly.ldata << 8) | byte[4];
     flx.ldata = byte[3];
+    //获取x坐标数据
     flx.ldata = (flx.ldata << 8) | byte[2];
     flx.ldata = (flx.ldata << 8) | byte[1];
     flx.ldata = (flx.ldata << 8) | byte[0];
@@ -139,8 +148,10 @@ void Byte_to_Float(float *fx, float *fy, float *fz, unsigned char byte[])
     *fx = flx.fdata;
     *fy = fly.fdata;
     *fz = flz.fdata;
+    *fw = flw.fdata;
 }
 
+//达妙电机的数据发送
 void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, float _vel, float _KP, float _KD, float _torq)
 {
     uint32_t send_mail_box;

@@ -32,6 +32,7 @@
 
 #define MOTOR_ECD_TO_RAD 0.000766990394f //      2*  PI  /8192
 
+
 typedef struct
 {
     float kp;
@@ -172,4 +173,7 @@ static void motor_feedback_update(motor_control_t *feedback_update);
 static void movement_calc(void);
 
 static void movement_calc_auto(void);
-#endif 
+
+fp32 Find_min_Angle(int16_t angle1, fp32 angle2);
+void AngleLoop_f(float *angle, float max);
+#endif

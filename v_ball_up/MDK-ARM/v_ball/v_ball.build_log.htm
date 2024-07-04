@@ -22,23 +22,37 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 d:\cubeMX f\volleyball_V0.2\RC_VolletBall_V0.2\v_ball_up\MDK-ARM\v_ball.uvprojx
-Project File Date:  06/18/2024
+Project File Date:  06/28/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\D P J\ARM\ARMCC\Bin'
 Build target 'v_ball'
+compiling date_exchange.c...
+compiling usbd_cdc_if.c...
 compiling can_recv.c...
-..\applications\can_recv.c(146): warning:  #177-D: variable "send_mail_box"  was declared but never referenced
+..\applications\can_recv.c(157): warning:  #177-D: variable "send_mail_box"  was declared but never referenced
       uint32_t send_mail_box;
-..\applications\can_recv.c(263): warning:  #177-D: variable "v_int"  was declared but never referenced
+..\applications\can_recv.c(274): warning:  #177-D: variable "v_int"  was declared but never referenced
       int v_int = (RxDate[3] << 4) | (RxDate[4] >> 4);
-..\applications\can_recv.c(265): warning:  #177-D: variable "T_int"  was declared but never referenced
+..\applications\can_recv.c(276): warning:  #177-D: variable "T_int"  was declared but never referenced
       int T_int = RxDate[6];
 ..\applications\can_recv.c: 3 warnings, 0 errors
+compiling ball_track.c...
+..\applications\ball_track.c(50): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      if (ball_track_target.real_distance > 3.5) { ball_track_target.real_distance = ball_track_target.last_distance; }
+..\applications\ball_track.c: 1 warning, 0 errors
+compiling top_ctrl.c...
+..\applications\top_ctrl.c(177): warning:  #177-D: function "test_Mode"  was declared but never referenced
+  static void test_Mode(void)
+..\applications\top_ctrl.c(194): warning:  #177-D: function "resolving_Mode"  was declared but never referenced
+  static void resolving_Mode(void)
+..\applications\top_ctrl.c(256): warning:  #177-D: function "back_to_zero"  was declared but never referenced
+  static void back_to_zero(void)
+..\applications\top_ctrl.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=32328 RO-data=744 RW-data=392 ZI-data=34808  
+Program Size: Code=42188 RO-data=1308 RW-data=408 ZI-data=35968  
 FromELF: creating hex file...
-"v_ball\v_ball.axf" - 0 Error(s), 3 Warning(s).
+"v_ball\v_ball.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -1,38 +1,78 @@
 #ifndef __BALL_TRACK_H__
 #define __BALL_TRACK_H__
+#include "struct_typedef.h"
 
-#define BALL_TRACK_TARGET_X 320            //目标点的x坐标
-#define BALL_TRACK_TARGET_Y 240            //目标点的y坐标    
-#define BALL_TRACK_TARGET_DEEPTH 0.3         //目标点的深度
+#define BALL_TRACK_TARGET_X 320        // 目标点的x坐标
+#define BALL_TRACK_TARGET_Y 240        // 目标点的y坐标
+#define BALL_TRACK_TARGET_DEEPTH 0.40f // 目标点的深度
 
-#define RACKET_TO_CAMERA_DISTANCE 0        //球拍到摄像头的距离
-#define RACQUET_CENTER_OFFSET_DISTANCE 0   //球拍中心偏移距离
+#define RACKET_TO_CAMERA_DISTANCE 0 // 球拍到摄像头的距离
+#define RACQUET_CENTER_HIGHT 0.08f  // 球拍中心高度
 
-#define BALL_TRACK_PID_KP 27        //PID参数KP
-#define BALL_TRACK_PID_KI 0.0        //PID参数KI
-#define BALL_TRACK_PID_KD 4.3        //PID参数KD
+#define RACKET_UP_HIGHT 0.10f // 球拍上升高度
 
-#define BALL_TRACK_PID_MAX_OUTPUT 8000
+#define BALL_TRACK_PID_KP 27.0f // PID参数KP
+#define BALL_TRACK_PID_KI 0.0f  // PID参数KI
+#define BALL_TRACK_PID_KD 2.8f  // PID参数KD
+
+#define BALL_TRACK_PID_MAX_OUTPUT 16000
 #define BALL_TRACK_PID_MAX_IOUT 1000
+
+#define POS_PID_KP 3.0f // PID参数KP
+#define POS_PID_KI 0.0f  // PID参数KI
+#define POS_PID_KD 2.8f  // PID参数KD
+
+#define POS_PID_MAX_OUTPUT 8000
+#define POS_PID_MAX_IOUT 1000
+
+
+typedef struct 
+{ 
+   
+    float LastP;//上次估算协方差 初始化值为0.02
+    float Now_P;//当前估算协方差 初始化值为0
+    float out;//卡尔曼滤波器输出 初始化值为0
+    float Kg;//卡尔曼增益 初始化值为0
+    float Q;//过程噪声协方差 初始化值为0.001
+    float R;//观测噪声协方差 初始化值为0.543
+}KFP;//Kalman Filter parameter
+
 
 typedef struct
 {
-    float speed;             //方向速度
-    float angle;             //角度
-    float distance;          //距离
-    float last_distance;     //上次距离
-    float change_of_distance; //距离变化;   
+    float speed;              // 方向速度
+    float angle;              // 角度
+    float distance;           // 距离
+    float last_distance;      // 上次距离
+    float change_of_distance; // 距离变化;
 
+    float ball_speed; // 球速约值
 
-    float offset_pos;         //偏移位置
-    float offset_angle;       //偏移角度
+    float real_distance; // 球距离最低点的实际距离
+    float real_distance_K; // 球距离最低点的实际距离
 
+    float offset_pos_x;      // 偏移x位置
+    float last_offset_pos_x; // 上次偏移x位置
+    float offset_speed_x;    // 偏移x速度
 
-    int hit_falg;         //击打标志位
+    float offset_pos_y;      // 偏移y位置
+    float last_offset_pos_y; // 上次偏移y位置
+    float offset_speed_y;    // 偏移y速度
+
+    float offset_pos;      // 偏移位置大小
+    float last_offset_pos; // 上次偏移位置大小
+    float offset_speed;    // 偏移速度
+
+    float offset_angle; // 偏移角度
+    float WhiteRatio;   // 白球比例
+
+    int hit_flag; // 击打标志位   0:未击打  1:击打  2:大力击球
+    int mode_falg;
 
 } ball_track_target_t;
 
+
 void ball_track_pid_init(void);
 void ball_track_calc(void);
-
+float kalmanFilter(KFP *kfp, float input);
 #endif /* __BALL_TRACK_H__ */

@@ -32,6 +32,7 @@
 #include "remote_control.h"
 #include "top_ctrl.h"
 #include "chassis.h"
+#include "bsp_usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -110,7 +111,7 @@ int main(void)
   remote_control_init();
 	//DM_Motor_Init();
   MX_USB_DEVICE_Init();
-  // usart1_tx_dma_init();
+  //usart1_tx_dma_init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

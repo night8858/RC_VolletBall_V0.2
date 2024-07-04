@@ -1,8 +1,8 @@
 v_ball\ball_track.o: ..\applications\ball_track.c
 v_ball\ball_track.o: ..\applications\ball_track.h
+v_ball\ball_track.o: ../boards/struct_typedef.h
 v_ball\ball_track.o: ..\applications\top_ctrl.h
 v_ball\ball_track.o: ..\applications\can_recv.h
-v_ball\ball_track.o: ../boards/struct_typedef.h
 v_ball\ball_track.o: ../Core/Inc/can.h
 v_ball\ball_track.o: ../Core/Inc/main.h
 v_ball\ball_track.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
@@ -45,3 +45,4 @@ v_ball\ball_track.o: ../components/controller/pid.h
 v_ball\ball_track.o: ..\applications\remote_control.h
 v_ball\ball_track.o: ../boards/bsp_rc.h
 v_ball\ball_track.o: D:\D P J\ARM\ARMCC\Bin\..\include\math.h
+v_ball\ball_track.o: ../components/algorithm/user_lib.h

@@ -117,13 +117,13 @@ typedef struct
 void CAN_cmd_3508(int16_t CMD_ID_1, int16_t CMD_ID_2, int16_t CMD_ID_3, int16_t CMD_ID_4);
 
 extern void MD_CanReceive(DM4340_motor_data_t *motor, uint8_t RxDate[8]);
+void Byte_to_Float(float *fx, float *fy, float *fz, float *fw, unsigned char byte[]);
 void MD_motor_SendCurrent(CAN_HandleTypeDef *hcan, uint32_t id, float _pos, float _vel, float _KP, float _KD, float _torq);
 float RUD_DirAngle_Proc(float Angle);
 int float_to_uint(float x, float x_min, float x_max, unsigned int bits);
 static float uint_to_float(int x_int, float x_min, float x_max, int bits);
 void chassis_cmd_aotu(CAN_HandleTypeDef *Target_hcan);
 void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id);
-void Byte_to_Float(float *fx, float *fy, float *fz, unsigned char byte[]);
 
 void Float_to_Byte(float a, float b, unsigned char byte[]);
 

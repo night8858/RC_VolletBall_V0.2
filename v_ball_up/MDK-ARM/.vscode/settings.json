@@ -88,6 +88,8 @@
     "iterator": "c",
     "cmsis_os.h": "c",
     "ball_track.h": "c",
-    "top_ctrl.h": "c"
+    "top_ctrl.h": "c",
+    "struct_typedef.h": "c",
+    "user_lib.h": "c"
   }
 }

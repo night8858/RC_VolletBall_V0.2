@@ -68,3 +68,4 @@ v_ball\main.o: ../applications/top_ctrl.h
 v_ball\main.o: ../applications/can_recv.h
 v_ball\main.o: ../applications/chassis.h
 v_ball\main.o: ../components/controller/pid.h
+v_ball\main.o: ../boards/bsp_usart.h

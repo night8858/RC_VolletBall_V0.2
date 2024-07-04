@@ -57,7 +57,6 @@ void usart_printf(const char *fmt,...)
 
 }
 
-
 void uart_dma_printf(UART_HandleTypeDef *huart, char *fmt, ...)
 {
   static uint8_t tx_buf[128] = {0};

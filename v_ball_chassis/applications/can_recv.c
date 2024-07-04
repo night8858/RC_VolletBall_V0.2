@@ -22,6 +22,7 @@ extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
 extern chassis_auto_move_cmd chassis_auto_move_cmd_data;
 
+
 motor_measure_t motor_Date[8]; // 电机回传数据结构体
 
 static CAN_TxHeaderTypeDef RM6020_tx_message; // can_6020发送邮箱

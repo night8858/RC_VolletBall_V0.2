@@ -135,7 +135,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3 />
+          <Flash3>"" ()</Flash3>
           <Flash4 />
           <pFcarmOut />
           <pFcarmGrp />
@@ -1001,11 +1001,6 @@
               <FilePath>..\boards\struct_typedef.h</FilePath>
             </File>
             <File>
-              <FileName>bsp_rc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\boards\bsp_rc.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\boards\bsp_usart.c</FilePath>
@@ -1015,6 +1010,11 @@
         <Group>
           <GroupName>applications</GroupName>
           <Files>
+            <File>
+              <FileName>bsp_rc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\boards\bsp_rc.c</FilePath>
+            </File>
             <File>
               <FileName>can_recv.c</FileName>
               <FileType>1</FileType>
