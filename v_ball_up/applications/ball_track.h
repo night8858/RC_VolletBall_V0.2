@@ -11,18 +11,21 @@
 
 #define RACKET_UP_HIGHT 0.10f // 球拍上升高度
 
-#define BALL_TRACK_PID_KP 27.0f // PID参数KP
+//speed PID
+#define BALL_TRACK_PID_KP 1.0f // PID参数KP
 #define BALL_TRACK_PID_KI 0.0f  // PID参数KI
-#define BALL_TRACK_PID_KD 2.8f  // PID参数KD
-
-#define BALL_TRACK_PID_MAX_OUTPUT 16000
+#define BALL_TRACK_PID_KD 0.0f  // PID参数KD
+//目前的PID  32  0  2.8
+#define BALL_TRACK_PID_MAX_OUTPUT 15000
 #define BALL_TRACK_PID_MAX_IOUT 1000
 
-#define POS_PID_KP 3.0f // PID参数KP
+
+//POS PID
+#define POS_PID_KP 18.0f // PID参数KP
 #define POS_PID_KI 0.0f  // PID参数KI
 #define POS_PID_KD 2.8f  // PID参数KD
 
-#define POS_PID_MAX_OUTPUT 8000
+#define POS_PID_MAX_OUTPUT 14000
 #define POS_PID_MAX_IOUT 1000
 
 
@@ -40,6 +43,8 @@ typedef struct
 
 typedef struct
 {
+    float motor_real_speed; // 电机实际速度
+
     float speed;              // 方向速度
     float angle;              // 角度
     float distance;           // 距离
@@ -72,7 +77,49 @@ typedef struct
 } ball_track_target_t;
 
 
+typedef struct
+{
+    
+    //float max_relative_angle; //rad
+    //float min_relative_angle; //rad
+
+    float relative_pos;     //rad
+    float relative_pos_set; //rad
+
+    float motor_gyro;         //rad/s
+    float motor_gyro_set;
+    float motor_speed;
+    float raw_cmd_current;
+    float current_set;
+    int16_t given_current;
+
+} pos_t;
+
+typedef struct
+{
+    float kp;
+    float ki;
+    float kd;
+
+    float set;
+    float get;
+    float err;
+
+    float max_out;
+    float max_iout;
+
+    float Pout;
+    float Iout;
+    float Dout;
+
+    float out;
+
+} POS_PID_t;
+
+
 void ball_track_pid_init(void);
 void ball_track_calc(void);
 float kalmanFilter(KFP *kfp, float input);
+static fp32 POS_PID_calc(POS_PID_t *pid, fp32 get, fp32 set, fp32 error_delta);
+static void Pos_PID_init(POS_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd);
 #endif /* __BALL_TRACK_H__ */

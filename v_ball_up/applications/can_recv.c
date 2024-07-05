@@ -9,6 +9,7 @@ extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern ball_track_target_t ball_track_target; // 球追踪目标点
 
+
 static motor_measure_t motor_Date[7];         // 电机回传数据结构体
 DM4340_motor_data_t DM4340_Date[3];           // DM4340回传数据结构体
 static CAN_TxHeaderTypeDef RM3508_tx_message; // can_3508发送邮箱
@@ -214,6 +215,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             DBUS_ReceiveData.dial = rx_data_can1[0] << 8 | rx_data_can1[1];
             DBUS_ReceiveData.switch_left = rx_data_can1[2];
             DBUS_ReceiveData.switch_right = rx_data_can1[3];
+            ball_track_target.motor_real_speed = rx_data_can1[4] << 8 | rx_data_can1[5];
+
             break;
         }
 

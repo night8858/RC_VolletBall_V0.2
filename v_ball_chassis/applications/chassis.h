@@ -128,6 +128,7 @@ typedef struct
     motor_3508_t M3508_M3;
     motor_3508_t M3508_M4;
 
+    float chassis_speed_avg;
 } motor_control_t;
 
 

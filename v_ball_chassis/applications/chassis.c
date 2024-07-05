@@ -299,6 +299,8 @@ static void motor_feedback_update(motor_control_t *feedback_update)
     feedback_update->M3508_M2.motor_speed = feedback_update->M3508_M2.chassis_motor_measure->speed_rpm;
     feedback_update->M3508_M3.motor_speed = feedback_update->M3508_M3.chassis_motor_measure->speed_rpm;
     feedback_update->M3508_M4.motor_speed = feedback_update->M3508_M4.chassis_motor_measure->speed_rpm;
+
+    feedback_update->chassis_speed_avg = (feedback_update->M3508_M1.motor_speed + feedback_update->M3508_M2.motor_speed + feedback_update->M3508_M3.motor_speed + feedback_update->M3508_M4.motor_speed) / 4.0f;
     // 数据更新,各个动力电机的速度数据
 }
 

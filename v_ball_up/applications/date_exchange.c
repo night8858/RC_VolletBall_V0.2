@@ -34,5 +34,12 @@ void CMD_to_chassis_task(void const * argument)
             chassis_cmd_aotu(&hcan1);
             osDelay(2);
         } 
+         if (DBUS_ReceiveData.switch_left != DBUS_ReceiveData.switch_right)
+        {
+            ball_track_target.speed = 0;
+            ball_track_target.angle = 0;
+            chassis_cmd_aotu(&hcan1);
+            osDelay(2);
+        }
     }
 }

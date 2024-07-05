@@ -21,7 +21,7 @@ extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern RC_ctrl_t rc_ctrl;
 extern chassis_auto_move_cmd chassis_auto_move_cmd_data;
-
+extern motor_control_t motor_control;
 
 motor_measure_t motor_Date[8]; // 电机回传数据结构体
 
@@ -113,8 +113,8 @@ void CAN_cmd_DT7_s_Date(void)
     DT7_s_send_data[1] = (uint8_t)rc_ctrl.rc.ch[4];
     DT7_s_send_data[2] = (uint8_t)rc_ctrl.rc.s[0];
     DT7_s_send_data[3] = (uint8_t)rc_ctrl.rc.s[1];
-    DT7_s_send_data[4] = 0x00;
-    DT7_s_send_data[5] = 0x00;
+    DT7_s_send_data[4] = (uint8_t)motor_control.chassis_speed_avg >> 8;
+    DT7_s_send_data[5] = (uint8_t)motor_control.chassis_speed_avg;
     DT7_s_send_data[6] = 0x00;
     DT7_s_send_data[7] = 0x00;
 

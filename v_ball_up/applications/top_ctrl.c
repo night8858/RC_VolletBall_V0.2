@@ -52,12 +52,14 @@ void top_contorl_Task(void const *argument)
     while (1)
     {
         osDelay(2);
-        uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f,%5.5f, %4.3f\n",
+        uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f ,%5.5f, %4.3f , %3.3f\n",
                         ball_track_target.offset_pos,
-                        RX_ball_pos.ball_pos_x,
-                        RX_ball_pos.ball_pos_y,
+                        ball_track_target.speed,
+                        ball_track_target.change_of_distance,
                         ball_track_target.real_distance,
-                        ball_track_target.WhiteRatio);
+                        ball_track_target.ball_speed,
+                        ball_track_target.motor_real_speed);
+
         ball_track_target.mode_falg = 0;
         //  此处为手动操作模式
         if (DBUS_ReceiveData.switch_left == 1 && DBUS_ReceiveData.switch_right == 1)
@@ -68,7 +70,6 @@ void top_contorl_Task(void const *argument)
 
             juggle_Mode();
             // Institution_Pos_Contorl();
-
             osDelay(2);
         }
 
@@ -89,12 +90,10 @@ void top_contorl_Task(void const *argument)
                 osDelay(300);  //此处为颠球启动程序，
                 hit_start();
                 osDelay(100);
-
                 frist_hit_flag = 1;
             }
 
             ball_track_calc();
-            // ball_hit_judge();
             juggle_Mode_auto();
             // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n",RX_ball_pos.ball_pos_x, RX_ball_pos.ball_pos_y, RX_ball_pos.ball_pos_z);
             osDelay(2);
@@ -222,6 +221,7 @@ static void juggle_Mode_auto(void)
 {
     //uint16_t angle = 0;
 
+
     if (ball_track_target.hit_flag == 1)
     {
         hit_once();
@@ -238,7 +238,11 @@ static void juggle_Mode_auto(void)
         //angle = 0;
         // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET);
     }
+    if(ball_track_target.hit_flag == 0)
+    {
 
+        back_to_zero();
+    }
     //DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     //DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
     //DM4340_Date[2].target_angle = (-(float_constrain(139 + angle, 139, 169)) / 180 * PI);
