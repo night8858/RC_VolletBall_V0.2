@@ -38,7 +38,7 @@ static void offset_pos_pid_control(void)
     track_pos_pid_date.relative_pos = ball_track_target.offset_pos;
     float motor_gyro_set = POS_PID_calc(&track_pos_pid, track_pos_pid_date.relative_pos, 0, track_pos_pid_date.motor_gyro);
     track_speed_pid.out = PID_calc(&track_speed_pid, ball_track_target.motor_real_speed, motor_gyro_set); // 控制值赋值
-    ball_track_target.speed = (int16_t)(track_speed_pid.out);
+    ball_track_target.speed = -(int16_t)(track_speed_pid.out);
 }
 
 // 计算球的跟踪目标值
@@ -56,12 +56,12 @@ void ball_track_calc(void)
     ball_track_target.offset_pos_y = RX_ball_pos.ball_pos_y - BALL_TRACK_TARGET_Y;
 
     // 计算球的速度
-    ball_track_target.offset_speed_x = (ball_track_target.offset_pos_x - ball_track_target.last_offset_pos_x) / 0.013f;
-    ball_track_target.offset_speed_x = (ball_track_target.offset_pos_y - ball_track_target.last_offset_pos_y) / 0.013f;
+    // ball_track_target.offset_speed_x = (ball_track_target.offset_pos_x - ball_track_target.last_offset_pos_x) / 0.013f;
+    // ball_track_target.offset_speed_y = (ball_track_target.offset_pos_y - ball_track_target.last_offset_pos_y) / 0.013f;
 
     // ball_track_target.change_of_distance = ball_track_target.last_distance - ball_track_target.real_distance;
     // 计算球的竖直速度
-    ball_track_target.ball_speed = (ball_track_target.real_distance - ball_track_target.last_distance) / 0.013f;
+    // ball_track_target.ball_speed = hypot(ball_track_target.offset_speed_x , ball_track_target.offset_speed_y);
 
     ball_track_target.last_distance = ball_track_target.real_distance;
 
@@ -98,7 +98,7 @@ void ball_track_calc(void)
     }
 
     // 击球判断
-    if (ball_track_target.real_distance < 0.30f)
+    if (ball_track_target.real_distance < 0.32f)
     {
         if (ball_track_target.hit_flag == 2)
             return;
@@ -109,9 +109,15 @@ void ball_track_calc(void)
     {
         ball_track_target.hit_flag = 0;
     }
-
+     
+    float hit_distance = BALL_TRACK_TARGET_DEEPTH + 0.04f * ball_track_target.hit_num;
+    if (hit_distance > 0.5f)
+    {
+       hit_distance = 0.5f;
+    }
+    
     // 判断是否击球
-    if (ball_track_target.real_distance < 0.43f)
+    if (ball_track_target.real_distance < hit_distance)
     {
         if (ball_track_target.hit_flag == 2)
             return;
@@ -130,25 +136,26 @@ void ball_track_calc(void)
         ball_track_target.hit_flag = 0;
     }
 
+    // ball_track_target.offset_pos = invSqrt((ball_track_target.offset_pos_x*ball_track_target.offset_pos_x + ball_track_target.offset_pos_y*ball_track_target.offset_pos_y))
+    ball_track_target.offset_pos = hypot((ball_track_target.offset_pos_x), (ball_track_target.offset_pos_y));
+    // first_order_filter_cali( &filter_angle , (float)atan2(ball_offset_x, ball_offset_y));
     // 设置死区大约是每个方向的2.5%
-    if (RX_ball_pos.ball_pos_x < 16)
+    /*
+    if (RX_ball_pos.ball_pos_x < 8)
     {
-        if (RX_ball_pos.ball_pos_x > -16)
+        if (RX_ball_pos.ball_pos_x > -8)
         {
             RX_ball_pos.ball_pos_x = 0;
         }
     }
-    if (RX_ball_pos.ball_pos_y < 12)
+    if (RX_ball_pos.ball_pos_y < 6)
     {
-        if (RX_ball_pos.ball_pos_y > -12)
+        if (RX_ball_pos.ball_pos_y > -6)
         {
             RX_ball_pos.ball_pos_y = 0;
         }
     }
-
-    ball_track_target.offset_pos = hypot((ball_track_target.offset_pos_x), (ball_track_target.offset_pos_y));
-    // first_order_filter_cali( &filter_angle , (float)atan2(ball_offset_x, ball_offset_y));
-
+*/
     ball_track_target.angle = (float)atan2(ball_track_target.offset_pos_x, ball_track_target.offset_pos_y);
 
     // 运算pid
@@ -203,6 +210,7 @@ float kalmanFilter(KFP *kfp, float input)
 static fp32 POS_PID_calc(POS_PID_t *pid, fp32 get, fp32 set, fp32 error_delta)
 {
     fp32 err;
+    
     if (pid == NULL)
     {
         return 0.0f;
@@ -214,10 +222,12 @@ static fp32 POS_PID_calc(POS_PID_t *pid, fp32 get, fp32 set, fp32 error_delta)
     pid->err = err;
     pid->Pout = pid->kp * pid->err;
     pid->Iout += pid->ki * pid->err;
-    pid->Dout = pid->kd * error_delta;
+    pid->Dout = pid->kd * (pid->err - pid->lsat_err);
     abs_limit(&pid->Iout, pid->max_iout);
     pid->out = pid->Pout + pid->Iout + pid->Dout;
     abs_limit(&pid->out, pid->max_out);
+    pid->lsat_err = err;
+    
     return pid->out;
 }
 

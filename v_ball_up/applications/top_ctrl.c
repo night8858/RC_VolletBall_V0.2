@@ -46,31 +46,34 @@ void top_contorl_Task(void const *argument)
     motor_init(&motor_control);
     // M3508_M5_Pos_init();
     ball_track_pid_init();
-    int frist_hit_flag = 0;   //起颠标志位
+    ball_track_target.frist_hit_flag = 0;   //起颠标志位
     int date_zero_flag = 0;   //数据清零标志位
+    ball_track_target.hit_num = 0;
     // first_order_filter_init(&filter_angle , 50 , filter_coefficient);
     while (1)
     {
+       
         osDelay(2);
-        uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f ,%5.5f, %4.3f , %3.3f\n",
-                        ball_track_target.offset_pos,
+        uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f ,%4.3f, %4.3f , %3.3f\n",
+                        RX_ball_pos.ball_pos_x,
                         ball_track_target.speed,
-                        ball_track_target.change_of_distance,
-                        ball_track_target.real_distance,
+                        ball_track_target.motor_real_speed,
                         ball_track_target.ball_speed,
-                        ball_track_target.motor_real_speed);
+                        ball_track_target.offset_pos,
+                        ball_track_target.real_distance);
+                        
 
         ball_track_target.mode_falg = 0;
         //  此处为手动操作模式
         if (DBUS_ReceiveData.switch_left == 1 && DBUS_ReceiveData.switch_right == 1)
         {
              ball_track_target.mode_falg = 1;
-            frist_hit_flag = 0;
+            ball_track_target.frist_hit_flag = 0;
             date_zero_flag = 0; 
 
             juggle_Mode();
             // Institution_Pos_Contorl();
-            osDelay(2);
+            //osDelay(2);
         }
 
         // 此处为自动模式
@@ -84,30 +87,33 @@ void top_contorl_Task(void const *argument)
                date_zero_flag = 1;
             }
             
-
-            if (frist_hit_flag == 0)
+            if (ball_track_target.frist_hit_flag == 0)
             {
-                osDelay(300);  //此处为颠球启动程序，
+                osDelay(200);  //此处为颠球启动程序，
                 hit_start();
+                
                 osDelay(100);
-                frist_hit_flag = 1;
+                //ball_track_target.frist_hit_flag = 1;
             }
 
-            ball_track_calc();
+            //ball_track_calc();
             juggle_Mode_auto();
             // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n",RX_ball_pos.ball_pos_x, RX_ball_pos.ball_pos_y, RX_ball_pos.ball_pos_z);
-            osDelay(2);
+            //osDelay(2);
         }
         // 复位
         if (DBUS_ReceiveData.switch_left != DBUS_ReceiveData.switch_right)
         {
             ball_track_target.mode_falg = 0;
-            frist_hit_flag = 0;
+            ball_track_target.frist_hit_flag = 0;
+            ball_track_target.hit_flag = 0;
+            ball_track_target.hit_num = 0;
+             HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET);
             date_zero_flag =0;
             DM_Motor_Init();
             motor_init(&motor_control);
             ball_track_pid_init();
-            osDelay(2);
+            //osDelay(2);
         }
     }
 }
@@ -220,11 +226,10 @@ static void resolving_Mode(void)
 static void juggle_Mode_auto(void)
 {
     //uint16_t angle = 0;
-
-
     if (ball_track_target.hit_flag == 1)
     {
         hit_once();
+        ball_track_target.hit_num ++;
         //angle = 22;
         //// HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
         //if (ball_track_target.hit_flag == 2)
@@ -235,6 +240,7 @@ static void juggle_Mode_auto(void)
     if (ball_track_target.hit_flag == 2)
     {
         hit_big_once();
+        back_to_zero();
         //angle = 0;
         // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET);
     }
@@ -277,7 +283,7 @@ static void back_to_zero(void)
 
 static void hit_once(void)
 {
-    uint16_t angle = 22;
+    uint16_t angle = 16;   //21.6
 
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
@@ -328,7 +334,7 @@ static void hit_big_once(void)
 // 启动颠球
 static void hit_start(void)
 {
-    uint16_t angle = 22;
+    uint16_t angle = 25;
 
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
@@ -341,7 +347,7 @@ static void hit_start(void)
     MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
     osDelay(1);
 
-    osDelay(200);
+    osDelay(180);
 
     angle = 0;
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
@@ -355,10 +361,13 @@ static void hit_start(void)
     MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
     osDelay(1);
     // vofa测试代码，可注释
-    osDelay(200);
+    ball_track_target.frist_hit_flag = 1;
+    osDelay(100);
+    
     // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n", DM4340_Date[0].real_angle, DM4340_Date[1].real_angle, DM4340_Date[2].real_angle);
+    
+/*
     angle = 30;
-
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
     DM4340_Date[2].target_angle = (-(float_constrain(139 + angle, 139, 169)) / 180 * PI);
@@ -370,9 +379,9 @@ static void hit_start(void)
     MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
     osDelay(1);
 
-    osDelay(200);
+    osDelay(180);
 
-        angle = 0;
+    angle = 0;
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
     DM4340_Date[2].target_angle = (-(float_constrain(139 + angle, 139, 169)) / 180 * PI);
@@ -383,8 +392,9 @@ static void hit_start(void)
     osDelay(1);
     MD_motor_SendCurrent(&hcan2, 3, DM4340_Date[2].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
     osDelay(1);
+    ball_track_target.frist_hit_flag = 1;
     // vofa测试代码，可注释
-    osDelay(200);
+    osDelay(200);‘*/
 }
 
 float RUD_DirAngle_c(float Angle)
@@ -485,3 +495,11 @@ void delta_arm_solution(void)
 //     abs_limit(&pid->out, pid->max_out);
 //     return pid->out;
 // }
+
+//延时函数
+void delay(int count)
+{
+	int i;
+	for(i=1;i<=count;i++)
+	;
+}

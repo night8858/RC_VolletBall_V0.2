@@ -87,7 +87,7 @@ void chasis_Task(void const *argument)
              //uart_dma_printf(&huart1,"%4.3f ,%4.3f\n",motor_control.M3508_M2.motor_speed , motor_control.M3508_M2.motor_speed_set);
             // uart_dma_printf(&huart1,"%4.3f ,%4.3f , %4.3f\n",motor_control.M3508_M1.motor_speed / 19, motor_control.M3508_M1.motor_speed_set / 19 , motor_control.M3508_M1.motor_speed - motor_control.M3508_M1.motor_speed_set);
 
-            osDelay(2);
+            osDelay(1);
         }
 
          if (rc_ctrl.rc.s[0] == 3 && rc_ctrl.rc.s[1] == 3)
@@ -97,7 +97,7 @@ void chasis_Task(void const *argument)
             // PID控制计算和输出循环
             motor_control_loop(&motor_control);
                 // vofa调试用的代码
-            osDelay(2);
+            osDelay(1);
 
          }
     }
@@ -317,6 +317,7 @@ static void movement_calc(void)
     motor_control.M3508_M2.motor_speed_set = -(chassis_float.speed + chassis_float.W);
     motor_control.M3508_M3.motor_speed_set = chassis_float.speed - chassis_float.W;
     motor_control.M3508_M4.motor_speed_set = -(chassis_float.speed + chassis_float.W);
+
     if (fabs(chassis_float.W) < 10)
     {
         motor_control.M6020_M1.relative_angle_set = chassis_float.angle + 6144 * MOTOR_ECD_TO_RAD;

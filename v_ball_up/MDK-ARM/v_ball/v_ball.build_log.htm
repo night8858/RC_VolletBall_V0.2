@@ -22,21 +22,32 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 d:\cubeMX f\volleyball_V0.2\RC_VolletBall_V0.2\v_ball_up\MDK-ARM\v_ball.uvprojx
-Project File Date:  06/28/2024
+Project File Date:  07/07/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\D P J\ARM\ARMCC\Bin'
 Build target 'v_ball'
+compiling usbd_cdc_if.c...
+compiling ball_track.c...
+compiling date_exchange.c...
+compiling can_recv.c...
+..\applications\can_recv.c(158): warning:  #177-D: variable "send_mail_box"  was declared but never referenced
+      uint32_t send_mail_box;
+..\applications\can_recv.c(277): warning:  #177-D: variable "v_int"  was declared but never referenced
+      int v_int = (RxDate[3] << 4) | (RxDate[4] >> 4);
+..\applications\can_recv.c(279): warning:  #177-D: variable "T_int"  was declared but never referenced
+      int T_int = RxDate[6];
+..\applications\can_recv.c: 3 warnings, 0 errors
 compiling top_ctrl.c...
-..\applications\top_ctrl.c(176): warning:  #177-D: function "test_Mode"  was declared but never referenced
+..\applications\top_ctrl.c(182): warning:  #177-D: function "test_Mode"  was declared but never referenced
   static void test_Mode(void)
-..\applications\top_ctrl.c(193): warning:  #177-D: function "resolving_Mode"  was declared but never referenced
+..\applications\top_ctrl.c(199): warning:  #177-D: function "resolving_Mode"  was declared but never referenced
   static void resolving_Mode(void)
 ..\applications\top_ctrl.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=42780 RO-data=1308 RW-data=408 ZI-data=35848  
+Program Size: Code=42412 RO-data=1308 RW-data=408 ZI-data=36064  
 FromELF: creating hex file...
-"v_ball\v_ball.axf" - 0 Error(s), 2 Warning(s).
+"v_ball\v_ball.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -59,7 +70,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

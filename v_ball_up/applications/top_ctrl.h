@@ -12,9 +12,12 @@
 #define La 150.f         //连杆2
 #define R2 90.0f         //连接点到球拍中心的距离
 
-#define DM_MOTOR_KP     67.0f    //位置增益  67
-#define DM_MOTOR_KD     3.1f   //速度增益
-#define DM_MOTOR_t_ff  -2.0f//前馈力矩
+#define DM_MOTOR_KP     68.0f    //位置增益  67
+#define DM_MOTOR_KD     3.2f   //速度增益    可以尝试绑定发球速
+#define DM_MOTOR_t_ff  -3.0f//前馈力矩
+
+
+//过高5.6
 
 //从上位机接收的球位置
 typedef struct
@@ -42,6 +45,8 @@ void start_motor(CAN_HandleTypeDef *Target_hcan, uint16_t id);
 void DM_Motor_Init(void);
 float float_constrain(float Value, float minValue, float maxValue);
 void delta_arm_solution(void);
+
+void delay(int count);
 
 //static void POS_PID_init(M6020_PID_t *pid, fp32 maxout, fp32 max_iout, fp32 kp, fp32 ki, fp32 kd);
 //static fp32 POS_PID_calc(M6020_PID_t *pid, fp32 get, fp32 set, fp32 error_delta);

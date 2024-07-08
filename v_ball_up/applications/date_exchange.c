@@ -11,31 +11,42 @@ extern DBUSDecoding_Type DBUS_ReceiveData;    // 底盘发来的dbus的数据
 extern ball_track_target_t ball_track_target; // 球追踪目标点
 extern Ball_Pos RX_ball_pos;
 
-void CMD_to_chassis_task(void const * argument)
+void CMD_to_chassis_task(void const *argument)
 {
-    //初始化数值设定为没有排球的情况，防止启动乱跑
+    // 初始化数值设定为没有排球的情况，防止启动乱跑
     RX_ball_pos.ball_pos_x = 320;
     RX_ball_pos.ball_pos_y = 240;
     RX_ball_pos.ball_pos_z = 0;
-    //RX_ball_pos.White_ratio = 0;
-	
-    while(1)
+    // RX_ball_pos.White_ratio = 0;
+    //ball_track_target.frist_hit_flag = 0;
+    while (1)
     {
-		//uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n",RX_ball_pos.ball_pos_x, RX_ball_pos.ball_pos_y, RX_ball_pos.ball_pos_z );
-        osDelay(1);
-        if(DBUS_ReceiveData.switch_left == 3 && DBUS_ReceiveData.switch_right == 3)
+        // uart_dma_printf(&huart1, "%4.3f ,%4.3f ,%4.3f\n",RX_ball_pos.ball_pos_x, RX_ball_pos.ball_pos_y, RX_ball_pos.ball_pos_z );
+        osDelay(2);
+        ball_track_calc();
+
+        if (DBUS_ReceiveData.switch_left == 3 && DBUS_ReceiveData.switch_right == 3)
         {
-            if (ball_track_target.mode_falg == 0)
+            if (ball_track_target.frist_hit_flag == 1)
             {
-                ball_track_target.speed = 0;
-                ball_track_target.angle = 0;
+                if (ball_track_target.mode_falg == 0)
+                {
+                    ball_track_target.speed = 0;
+                    ball_track_target.angle = 0;
+                }
+
+                if (ball_track_target.frist_hit_flag == 0)
+                {
+                    ball_track_target.speed = 0;
+                    ball_track_target.angle = 0;
+                }
+
+                chassis_cmd_aotu(&hcan1);
             }
-            
-            chassis_cmd_aotu(&hcan1);
-            osDelay(2);
-        } 
-         if (DBUS_ReceiveData.switch_left != DBUS_ReceiveData.switch_right)
+        }
+        if (DBUS_ReceiveData.switch_left != DBUS_ReceiveData.switch_right)
         {
+            // frist_flag = 0;
             ball_track_target.speed = 0;
             ball_track_target.angle = 0;
             chassis_cmd_aotu(&hcan1);

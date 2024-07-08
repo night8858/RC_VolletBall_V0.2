@@ -4,34 +4,33 @@
 
 #define BALL_TRACK_TARGET_X 320        // 目标点的x坐标
 #define BALL_TRACK_TARGET_Y 240        // 目标点的y坐标
-#define BALL_TRACK_TARGET_DEEPTH 0.40f // 目标点的深度
-
+#define BALL_TRACK_TARGET_DEEPTH 0.32f // 目标点的深度  //36???怪   //0.38 OOK
 #define RACKET_TO_CAMERA_DISTANCE 0 // 球拍到摄像头的距离
 #define RACQUET_CENTER_HIGHT 0.08f  // 球拍中心高度
 
 #define RACKET_UP_HIGHT 0.10f // 球拍上升高度
 
 //speed PID
-#define BALL_TRACK_PID_KP 1.0f // PID参数KP
+#define BALL_TRACK_PID_KP 8.0f // PID参数KP
 #define BALL_TRACK_PID_KI 0.0f  // PID参数KI
 #define BALL_TRACK_PID_KD 0.0f  // PID参数KD
-//目前的PID  32  0  2.8
+
+//目前的PID  1.8  0  1.0
 #define BALL_TRACK_PID_MAX_OUTPUT 15000
 #define BALL_TRACK_PID_MAX_IOUT 1000
 
-
 //POS PID
-#define POS_PID_KP 18.0f // PID参数KP
-#define POS_PID_KI 0.0f  // PID参数KI
-#define POS_PID_KD 2.8f  // PID参数KD
-
-#define POS_PID_MAX_OUTPUT 14000
+//p:5.6 i:0 d:-0.9
+#define POS_PID_KP 5.6f   // PID参数KP
+#define POS_PID_KI 0.0f   // PID参数KI
+#define POS_PID_KD -8.0f  // PID参数KD
+ 
+ //19  0  2.8
+#define POS_PID_MAX_OUTPUT 10000
 #define POS_PID_MAX_IOUT 1000
-
 
 typedef struct 
 { 
-   
     float LastP;//上次估算协方差 初始化值为0.02
     float Now_P;//当前估算协方差 初始化值为0
     float out;//卡尔曼滤波器输出 初始化值为0
@@ -73,6 +72,9 @@ typedef struct
 
     int hit_flag; // 击打标志位   0:未击打  1:击打  2:大力击球
     int mode_falg;
+    int frist_hit_flag;
+
+    int hit_num; // 击打次数
 
 } ball_track_target_t;
 
@@ -104,6 +106,7 @@ typedef struct
     float set;
     float get;
     float err;
+    float lsat_err;
 
     float max_out;
     float max_iout;

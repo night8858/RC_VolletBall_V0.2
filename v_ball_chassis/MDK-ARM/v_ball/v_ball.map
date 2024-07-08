@@ -3663,7 +3663,7 @@ Image component sizes
         88          8          0          0          0        598   bsp_can.o
         96         12          0          0          0     583950   bsp_rc.o
        388         42          0          4         80       2602   can.o
-       700        116          0         34        176      15381   can_recv.o
+       700        116          0         34        176      15385   can_recv.o
       1878        138         24          0       1112       9884   chassis.o
        120          0          0          0          0      23413   cmsis_os.o
         22          0          0          0          0        544   dateexchange.o
@@ -3697,7 +3697,7 @@ Image component sizes
        106          0          0          0          0       2474   user_lib.o
 
     ----------------------------------------------------------------------
-     16526       1132        604        172      19676    2130075   Object Totals
+     16526       1132        604        172      19676    2130079   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         28          0          0          0          2          0   (incl. Padding)
 
@@ -3779,8 +3779,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     22900       1616        764        172      19772    2116167   Grand Totals
-     22900       1616        764        172      19772    2116167   ELF Image Totals
+     22900       1616        764        172      19772    2116171   Grand Totals
+     22900       1616        764        172      19772    2116171   ELF Image Totals
      22900       1616        764        172          0          0   ROM Totals
 
 ==============================================================================
