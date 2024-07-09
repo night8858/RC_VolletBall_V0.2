@@ -283,11 +283,11 @@ static void back_to_zero(void)
 
 static void hit_once(void)
 {
-    uint16_t angle = 25;   //21.6
+    uint16_t angle = BALL_TRACK_TARGET_FORCE;   //21.6
 
-    DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
-    DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
-    DM4340_Date[2].target_angle = (-(float_constrain(139 + angle, 139, 169)) / 180 * PI);
+    DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, (83+BALL_TRACK_TARGET_FORCE_MAX))) / 180 * PI);
+    DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, (147+BALL_TRACK_TARGET_FORCE_MAX))) / 180 * PI);
+    DM4340_Date[2].target_angle = (-(float_constrain(139 + angle, 139, (139+BALL_TRACK_TARGET_FORCE_MAX))) / 180 * PI);
 
     MD_motor_SendCurrent(&hcan2, 1, DM4340_Date[0].target_angle, 0, DM_MOTOR_KP, DM_MOTOR_KD, DM_MOTOR_t_ff);
     osDelay(1);
@@ -334,7 +334,7 @@ static void hit_big_once(void)
 // 启动颠球
 static void hit_start(void)
 {
-    uint16_t angle = BALL_TRACK_TARGET_FORCE;
+    uint16_t angle = BALL_TRACK_TARGET_FORCE_BEGIN;
 
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
