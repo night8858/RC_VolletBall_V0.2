@@ -1,0 +1,18 @@
+CMSIS_AGDI.DLL - CMSIS-DAP Driver Log
+
+20:59:48:542 (08/07/2024) - START SEQUENCE "InitTarget", "default" - ID 0
+20:59:48:542 (08/07/2024) - START SEQUENCE "InitInternals", "default" - ID 1
+20:59:48:542 (08/07/2024) - START SEQUENCE "InitDriver", "default" - ID 2
+20:59:48:542 (08/07/2024) - END SEQUENCE "InitDriver", "success" - ID 3
+20:59:48:543 (08/07/2024) - START SEQUENCE "InitDebugger", "default" - ID 4
+20:59:50:027 (08/07/2024) - END SEQUENCE "InitDebugger", "failed" - ID 5
+20:59:50:027 (08/07/2024) - END SEQUENCE "InitInternals", "failed" - ID 6
+20:59:52:251 (08/07/2024) - END SEQUENCE "InitTarget", "failed" - ID 7
+20:59:52:261 (08/07/2024) - START SEQUENCE "StopTarget", "default" - ID 8
+20:59:52:261 (08/07/2024) - START SEQUENCE "_UnInitTrace", "default" - ID 9
+20:59:52:261 (08/07/2024) - END SEQUENCE "_UnInitTrace", "success" - ID 10
+20:59:52:261 (08/07/2024) - START SEQUENCE "UnInitDebugger", "default" - ID 11
+20:59:52:263 (08/07/2024) - END SEQUENCE "UnInitDebugger", "failed" - ID 12
+20:59:52:263 (08/07/2024) - START SEQUENCE "_UnInitDriver", "default" - ID 13
+20:59:52:263 (08/07/2024) - END SEQUENCE "_UnInitDriver", "success" - ID 14
+20:59:52:263 (08/07/2024) - END SEQUENCE "StopTarget", "success" - ID 15

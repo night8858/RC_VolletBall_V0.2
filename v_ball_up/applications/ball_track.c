@@ -88,33 +88,34 @@ void ball_track_calc(void)
         break;
     }
 
-    if (ball_track_target.WhiteRatio > 0.82f)
-    {
-        ball_track_target.hit_flag = 2;
-    }
-    else
-    {
-        ball_track_target.hit_flag = 0;
-    }
+    // if (ball_track_target.WhiteRatio > 0.82f)
+    // {
+    //     ball_track_target.hit_flag = 2;
+    // }
+    // else
+    // {
+    //     ball_track_target.hit_flag = 0;
+    // }
 
-    // 击球判断
-    if (ball_track_target.real_distance < 0.32f)
-    {
-        if (ball_track_target.hit_flag == 2)
-            return;
-        if (ball_track_target.real_distance != 0)
-            ball_track_target.hit_flag = 2;
-    }
-    else
-    {
-        ball_track_target.hit_flag = 0;
-    }
+    // // 击球判断
+    // if (ball_track_target.real_distance < 0.32f)
+    // {
+    //     if (ball_track_target.hit_flag == 2)
+    //         return;
+    //     if (ball_track_target.real_distance != 0)
+    //         ball_track_target.hit_flag = 2;
+    // }
+    // else
+    // {
+    //     ball_track_target.hit_flag = 0;
+    // }
      
-    float hit_distance = BALL_TRACK_TARGET_DEEPTH + 0.04f * ball_track_target.hit_num;
-    if (hit_distance > 0.5f)
-    {
-       hit_distance = 0.5f;
-    }
+    float hit_distance = BALL_TRACK_TARGET_DEEPTH + BALL_TRACK_TARGET_DOWN * ball_track_target.hit_num;
+    if (hit_distance > BALL_TRACK_TARGET_DEEPTH_MAX) {hit_distance = BALL_TRACK_TARGET_DEEPTH_MAX;}
+    // if (hit_distance > 0.5f)
+    // {
+    //    hit_distance = 0.5f;
+    // }
     
     // 判断是否击球
     if (ball_track_target.real_distance < hit_distance)

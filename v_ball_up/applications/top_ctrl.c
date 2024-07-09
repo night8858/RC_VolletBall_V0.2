@@ -237,13 +237,13 @@ static void juggle_Mode_auto(void)
         //    angle = 30;
         //}
     }
-    if (ball_track_target.hit_flag == 2)
-    {
-        hit_big_once();
-        back_to_zero();
-        //angle = 0;
-        // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET);
-    }
+    // if (ball_track_target.hit_flag == 2)
+    // {
+    //     hit_big_once();
+    //     back_to_zero();
+    //     //angle = 0;
+    //     // HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET);
+    // }
     if(ball_track_target.hit_flag == 0)
     {
 
@@ -283,7 +283,7 @@ static void back_to_zero(void)
 
 static void hit_once(void)
 {
-    uint16_t angle = 16;   //21.6
+    uint16_t angle = 25;   //21.6
 
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
@@ -334,7 +334,7 @@ static void hit_big_once(void)
 // 启动颠球
 static void hit_start(void)
 {
-    uint16_t angle = 25;
+    uint16_t angle = BALL_TRACK_TARGET_FORCE;
 
     DM4340_Date[0].target_angle = (-(float_constrain(83 + angle, 83, 113)) / 180 * PI);
     DM4340_Date[1].target_angle = (-(float_constrain(147 + angle, 147, 177)) / 180 * PI);
