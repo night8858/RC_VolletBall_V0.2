@@ -257,7 +257,7 @@ static void M6020_motor_relative_angle_control(motor_6020_t *gimbal_motor)
     int flag = 1;
     // 角度环，速度环串级pid
 
-    gimbal_motor->motor_gyro_set = M6020_PID_calc(&gimbal_motor->gimbal_motor_relative_angle_pid, gimbal_motor->relative_angle, gimbal_motor->relative_angle_set, gimbal_motor->motor_gyro);
+    gimbal_motor->motor_gyro_set = M6020_PID_calc(&gimbal_motor->gimbal_motor_relative_angle_pid, gimbal_motor->relative_angle, gimbal_motor->relative_angle_set, -(gimbal_motor->gimbal_motor_measure->speed_rpm*1.0f));
     gimbal_motor->current_set = PID_calc(&gimbal_motor->gimbal_motor_gyro_pid, gimbal_motor->motor_gyro, gimbal_motor->motor_gyro_set); // 控制值赋值
     gimbal_motor->given_current = (int16_t)(gimbal_motor->current_set);
 }
@@ -272,6 +272,7 @@ static void M3508_motor_speed_control(motor_3508_t *chassis_motor)
 
     // 速度环pid
     chassis_motor->current_set = PID_calc(&chassis_motor->chassis_motor_gyro_pid, chassis_motor->motor_speed, chassis_motor->motor_speed_set); // 控制值赋值
+    chassis_motor->current_set += chassis_motor->motor_speed_set*M3505_MOTOR_SPEED_PID_FW;
     chassis_motor->given_current = (int16_t)(chassis_motor->current_set);
 
 }
