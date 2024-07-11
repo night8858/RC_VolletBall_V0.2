@@ -6,8 +6,10 @@
 #define BALL_TRACK_TARGET_Y 240        // 目标点的y坐标
 #define BALL_TRACK_TARGET_DEEPTH 0.32f // 目标点的深度  //36???怪   //0.38 OOK
 #define BALL_TRACK_TARGET_DOWN 0.06f    // 绿地0.04
-#define BALL_TRACK_TARGET_DEEPTH_MAX 0.5f
+#define BALL_TRACK_TARGET_DEEPTH_MAX 0.4f
 #define BALL_TRACK_TARGET_FORCE 30
+#define BALL_TRACK_TARGET_FORCE_BEGIN 30
+#define BALL_TRACK_TARGET_FORCE_MAX 30
 #define RACKET_TO_CAMERA_DISTANCE 0 // 球拍到摄像头的距离
 #define RACQUET_CENTER_HIGHT 0.08f  // 球拍中心高度
 
@@ -26,7 +28,7 @@
 //p:5.6 i:0 d:-0.9
 #define POS_PID_KP 5.0f   // PID参数KP  // 绿地5.6
 #define POS_PID_KI 0.0f   // PID参数KI
-#define POS_PID_KD 0.2f  // PID参数KD
+#define POS_PID_KD 0.4f  // PID参数KD
  
  //19  0  2.8
 #define POS_PID_MAX_OUTPUT 10000
